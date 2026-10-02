@@ -1,4 +1,12 @@
 %==============================================================================
+%  SUBMISSION PORTAL -- log in to complete the submission:
+%  https://submission.springernature.com/submission/ed40d312-e1b7-4d02-9075-86bd6970525f
+%
+%  TIMELINE
+%    16 October 2026 -- deadline for all co-authors to approve this version
+%                       and provide their final comments
+%    26 October 2026 -- submission to the journal
+%==============================================================================
 %  PlantMetWiki -- Scientific Data ARTICLE
 %  Submitted to the Collection: "10 years of the FAIR principles"
 %  https://www.nature.com/collections/eedeeaaihi   (deadline 14 November 2026)
@@ -72,20 +80,30 @@
 % DELETE THIS WHOLE BLOCK (down to the matching marker) BEFORE SUBMISSION.
 %==============================================================================
 \newcommand{\ckbox}{\framebox[2.4ex]{\rule{0pt}{2.2ex}}}
+\newcommand{\ckdone}{\framebox[2.4ex]{\rule[-0.3ex]{0pt}{2.2ex}$\times$}}
 
 \begin{center}
-\fbox{\begin{minipage}{0.93\textwidth}
+\fcolorbox{red}{white}{\begin{minipage}{0.93\textwidth}
+\color{red}
 \vspace{0.4em}
 \begin{center}\textbf{\large Co-author approval}\\[0.3em]
 \textit{Internal record --- not part of the submitted manuscript}\end{center}
 \vspace{0.2em}
 
+\textbf{Timeline}
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+  \item \textbf{16 October 2026} --- deadline to approve this version and provide
+        your final comments.
+  \item \textbf{26 October 2026} --- submission to the journal.
+\end{itemize}
+
+\vspace{0.4em}
 Each author confirms: \textbf{``I have approved the manuscript for publication in the
-current version.''}
+current version.''} Tick the box and add the date.
 
 \vspace{0.8em}
 \renewcommand{\arraystretch}{1.55}
-\begin{tabular}{@{}p{3.2em} p{0.46\textwidth} p{0.26\textwidth}@{}}
+\begin{tabular}{@{}p{3.2em} p{0.44\textwidth} p{0.26\textwidth}@{}}
 \ckbox & Elena Del Pup                & 2 October 2026 \\
 \ckbox & Max Muller                   & \dotfill \\
 \ckbox & Marvin Martens               & \dotfill \\
@@ -96,9 +114,27 @@ current version.''}
        & \footnotesize \textit{Author}& \footnotesize \textit{Date} \\
 \end{tabular}
 
-\vspace{0.6em}
-{\footnotesize Version reviewed: compiled \today. Record the manuscript version
-(e.g.\ the git commit) alongside each signature so it is unambiguous which text was approved.}
+\vspace{1.0em}
+\rule{\linewidth}{0.4pt}
+\vspace{0.2em}
+{\footnotesize\textbf{Example --- how to fill this in} (delete this example before
+circulating, or leave it as a guide):}
+
+\vspace{0.3em}
+\renewcommand{\arraystretch}{1.55}
+\begin{tabular}{@{}p{3.2em} p{0.44\textwidth} p{0.26\textwidth}@{}}
+\ckdone & A. Coauthor \footnotesize(example) & \hrulefill\ 14 Oct 2026 \\
+\end{tabular}
+
+\vspace{0.3em}
+{\footnotesize In LaTeX, change that author's \texttt{\textbackslash ckbox} to
+\texttt{\textbackslash ckdone} and replace the \texttt{\textbackslash dotfill} with the date.
+On paper or PDF, tick the box and write the date by hand.}
+
+\vspace{0.8em}
+{\footnotesize \textbf{Version reviewed: compiled \today.} Record the manuscript version
+(e.g.\ the git commit hash) alongside each signature so it is unambiguous which text was
+approved.}
 \vspace{0.4em}
 \end{minipage}}
 \end{center}
