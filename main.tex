@@ -1267,42 +1267,31 @@ reviewed and edited the content as needed and take full responsibility for the c
 \newpage
 \section*{Figures}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\textwidth]{figures/figure1.png}
-\caption{\textbf{PlantMetWiki data transformation pipeline and architecture.} All repositories for
-building and hosting PlantMetWiki are available on the pathway-LOD GitHub community
-(\url{https://github.com/pathway-lod}). The diagram shows the five stages of the PlantMetWiki
-knowledge-graph construction. \textbf{(1) Source data} (blue): MIBiG 4.0 and plantiSMASH 2.0
-biosynthetic gene cluster (BGC) annotations, PlantCyc 17.0 biochemical databases (1,162 pathways,
-1,316 reactions, 439 NCBI taxa), and the Open Bio-Ontologies (OBO) Foundry NCBITaxon ontology. The
-NCBI taxonomy subset is generated with ROBOT v1.9.6 MIREOT extraction. \textbf{(2) Pipeline tools}
-(yellow): PlantCyc input validation checks of \texttt{proteins.dat} and \texttt{genes.dat} for
-taxonomic annotation consistency before any files are generated
-(\texttt{validate\_plantcyc\_input.py}). The GPML conversion tool (\texttt{build\_pathways.py})
-produces 2,478 GPML2021 pathway and reaction files. A post-build XSD validator confirms schema
-compliance (\texttt{test\_gpml\_files.py}). The RDF conversion layer generates three named graphs
-(Java \texttt{gpml2rdf-4.0.4.jar} for the main pathway graph; custom Python scripts). The BGC mapping
-"map-to-RDF" pipeline links BGC gene nodes to pathway enzymes. The RDF data is validated using a
-custom Python script that uses the RDFlib library. \textbf{(3) Metadata creation} (red): a VoID RDF
-Schema vocabulary is used to capture the metadata of all RDF datasets. This creation happens in three
-separate stages: core RDF conversion (\texttt{create\_void\_from\_metadata.py}), BGC crosslinks
-mapping (\texttt{create\_void\_bgc.py}) and NCBI Taxonomy subsetting. \textbf{(4) Virtuoso
-triplestore} (green): seven named graphs. The pathway graphs hold the core WikiPathways RDF,
-entity-level species annotations, and PlantCyc-specific properties. The \texttt{graph/ncbitaxon} graph
-provides taxon labels and hierarchy for the 424 taxa represented in the RDF, plus their
-ancestors up to the ontology root (1,181 taxon classes in total). \textbf{(5) Access and results}
-(purple): a public SPARQL endpoint (\url{https://plantmetwiki.bioinformatics.nl/sparql}) and SNORQL UI
-browser interface (\url{https://plantmetwiki.bioinformatics.nl}) allow direct querying of the Virtuoso
-named graphs. A tutorial and documentation (\url{https://pathway-lod.github.io/SPARQLTutorials/}) and
-SPARQL query examples (\url{https://github.com/pathway-lod/SPARQLQueries}) are available. Jupyter
-notebooks support the creation of publication-ready figures, cross-species pathway inference analyses,
-and federated queries to external endpoints such as Wikidata. Solid arrows: automated steps; dashed
-arrows: manual steps.}
+\begin{figure}[p]\centering
+\includegraphics[height=0.64\textheight,keepaspectratio]{figures/figure1.png}
+\caption{\scriptsize \textbf{PlantMetWiki data transformation pipeline and architecture.} The five
+stages of PlantMetWiki knowledge-graph construction. \textbf{(1) Source data} (blue): MIBiG 4.0 and
+plantiSMASH 2.0 biosynthetic gene cluster (BGC) annotations, PlantCyc 17.0 (1,162 pathways, 1,316
+reactions, 439 NCBI taxa), and the OBO Foundry NCBITaxon ontology. \textbf{(2) Pipeline tools}
+(yellow): PlantCyc input validation checks \texttt{proteins.dat} and \texttt{genes.dat} for taxonomic
+consistency before any files are generated; the GPML conversion tool produces 2,478 GPML2021 pathway
+and reaction files; a post-build validator confirms GPML2021 XSD compliance; the RDF conversion layer
+generates three named graphs; and the BGC "map-to-RDF" pipeline links BGC gene nodes to pathway
+enzymes. \textbf{(3) Metadata creation} (red): a VoID RDF Schema vocabulary captures the metadata of
+all RDF datasets, in three stages (core RDF conversion, BGC crosslink mapping, NCBI Taxonomy
+subsetting). \textbf{(4) Virtuoso triplestore} (green): seven named graphs holding the core
+WikiPathways RDF, entity-level species annotations, PlantCyc-specific properties, the BGC crosslinks,
+the NCBITaxon lineage subset, and the VoID metadata. \textbf{(5) Access and results} (purple): a
+public SPARQL endpoint and SNORQL UI allow direct querying of the named graphs, supported by a
+tutorial, documentation and example queries; Jupyter notebooks reproduce the figures, the
+cross-species inference analyses, and the federated queries to external endpoints such as Wikidata.
+All repositories are at \url{https://github.com/pathway-lod}; tool versions, scripts and URLs are
+given in Materials and Methods. Solid arrows: automated steps; dashed arrows: manual steps.}
 \label{fig:pipeline}\end{figure}
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\textwidth]{figures/figure2.png}
-\caption{\textbf{PlantMetWiki core graph model.} \textbf{(A) Pathway semantic model.} Every pathway
+\caption{\footnotesize \textbf{PlantMetWiki core graph model.} \textbf{(A) Pathway semantic model.} Every pathway
 (\texttt{wp:Pathway}, blue centre; 1,162 PlantCyc pathways PC* and 1,316 reactions RC*) is associated
 with two categories of RDF resource via \texttt{dcterms:isPartOf}: DataNodes (biological entities;
 blue dashed box) and Interactions (directed biological events; brown dashed box). DataNode types:
@@ -1329,7 +1318,7 @@ formation: \texttt{wp:Binding}/\texttt{wp:ComplexBinding} links \texttt{wp:Metab
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\textwidth]{figures/figure3.png}
-\caption{\textbf{Semantic model of the capsaicin biosynthesis pathway (PWY-5710) across named
+\caption{\footnotesize \textbf{Semantic model of the capsaicin biosynthesis pathway (PWY-5710) across named
 graphs.} Capsaicin biosynthesis (PWY-5710, \texttt{wp:Pathway}) and DataNode MONOMER-13528
 (\textit{Capsicum chinense} capsaicin synthase, UniProt O81646, \texttt{wp:Protein}) shown across
 three named graphs. Solid grey edges originate from \texttt{graph/pathways} (core WikiPathways RDF,
@@ -1342,10 +1331,10 @@ Protein and GeneProduct nodes. The Metabolite, Protein and GeneProduct DataNodes
 PWY-5710 via \texttt{dcterms:isPartOf} in \texttt{graph/pathways}.}
 \label{fig:capsaicin}\end{figure}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\textwidth]{figures/figure4a.pdf}\\[1.2em]
-\includegraphics[width=\textwidth]{figures/figure4b.pdf}
-\caption{\textbf{Metabolic annotation matrix and cross-species inference potential of PlantMetWiki and
+\begin{figure}[p]\centering
+\includegraphics[width=0.92\textwidth]{figures/figure4a.pdf}\\[0.8em]
+\includegraphics[width=0.92\textwidth]{figures/figure4b.pdf}
+\caption{\footnotesize \textbf{Metabolic annotation matrix and cross-species inference potential of PlantMetWiki and
 contribution of \textit{A. thaliana}.} \textbf{(A)} Global breakdown of all (reaction $\times$ species)
 pairs across all pathways with $\geq$1 species annotation. "Annotated" = a \texttt{wp:Catalysis} link
 exists for the species--reaction pair; "Inferable gap" = a gap where $\geq$1 other species in the same
@@ -1362,7 +1351,7 @@ several sources; no \textit{A. thaliana} evidence). \textbf{(D)} Distribution of
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\textwidth]{figures/figure5.pdf}
-\caption{\textbf{Metabolite cross-reference coverage: direct BridgeDb mapping complements InChIKey
+\caption{\footnotesize \textbf{Metabolite cross-reference coverage: direct BridgeDb mapping complements InChIKey
 federation.} \textbf{(A)} How the 4,577 \texttt{wp:Metabolite} nodes resolve to external chemical
 databases: 3,198 (69.9\%) carry $\geq$1 BridgeDb-materialised cross-reference and are resolvable
 directly in the graph without federation; 1,207 (26.4\%) carry only an InChIKey and remain reachable
@@ -1377,9 +1366,9 @@ BridgeDb metabolite build and remains source-only. Mappings are added under sepa
 never overwrite the curated identifier.}
 \label{fig:bridgedb}\end{figure}
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\textwidth]{figures/figure6.pdf}
-\caption{\textbf{Wikidata coverage and chemical novelty of the 4,111 InChIKey-annotated
+\begin{figure}[p]\centering
+\includegraphics[width=0.95\textwidth]{figures/figure6.pdf}
+\caption{\footnotesize \textbf{Wikidata coverage and chemical novelty of the 4,111 InChIKey-annotated
 metabolites.} \textbf{(A)} Overall split into exact InChIKey matches (blue, already in Wikidata),
 skeleton-only matches (light blue, Wikidata holds a stereoisomer/tautomer/salt form of the same
 molecule, but not this exact form), and no structural match (red, the molecule is entirely absent from
