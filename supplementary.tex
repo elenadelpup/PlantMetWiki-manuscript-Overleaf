@@ -42,9 +42,12 @@
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{caption}   % \captionof, so legends sit in the text flow
+\usepackage{lineno}    % line numbers, matching the main manuscript
 \usepackage[hidelinks]{hyperref}
 \usepackage{setspace}
 
+\linenumbers
 \onehalfspacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
@@ -91,10 +94,12 @@ $^{*}$Correspondence: \href{mailto:elena.delpup@wur.nl}{elena.delpup@wur.nl},
 \clearpage
 
 %------------------------------------------------------------------ S1
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.86\textwidth]{supplementary_figures/figS1a.pdf}\\[1.2em]
 \includegraphics[width=\textwidth]{supplementary_figures/figS1b.pdf}
-\caption{\footnotesize \textbf{Top panel: Overview bar chart.} Total unique counts of the main
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Top panel: Overview bar chart.} Total unique counts of the main
 \texttt{wp:} content types in PlantMetWiki, on a logarithmic scale. Counts are true
 \emph{distinct-entity} totals (\texttt{COUNT(DISTINCT ?e)} per class).
 \texttt{wp:Pathway} (PC*) and \texttt{wp:Pathway} (RC*): pathways and reactions are both typed
@@ -116,13 +121,16 @@ colours: no direct \texttt{wp:organism} triple. \textbf{Genes} (\texttt{wp:GeneP
 \texttt{wp:organism}; the rest are species-neutral in the source PlantCyc data.
 \textbf{Interactions}: split into \texttt{wp:Conversion} (biochemical reactions, brown) and all
 other \texttt{wp:} sub-types (light brown).}
-\label{figS:overview}\end{figure}
+\label{figS:overview}
+
 \clearpage
 
 %------------------------------------------------------------------ S2
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS2.pdf}
-\caption{\footnotesize \textbf{Interaction type distribution.} \texttt{wp:Interaction} (parent
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Interaction type distribution.} \texttt{wp:Interaction} (parent
 class) instances shown alongside each specific \texttt{wp:} interaction sub-type (WikiPathways
 vocabulary, \url{http://vocabularies.wikipathways.org/wp#}). \texttt{wp:Conversion}: biochemical
 transformation connecting a metabolite substrate to a metabolite product. \texttt{wp:Catalysis}:
@@ -133,13 +141,16 @@ etc.). \texttt{wp:TranscriptionTranslation}: links gene, to transcript, to prote
 \texttt{wp:Binding} or \texttt{wp:ComplexBinding}: physical interaction or complex formation.
 Sub-type counts sum to more than the parent count because edges can carry multiple \texttt{wp:}
 type labels.}
-\label{figS:interactions}\end{figure}
+\label{figS:interactions}
+
 \clearpage
 
 %------------------------------------------------------------------ S3
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS3.pdf}
-\caption{\footnotesize \textbf{PlantMetWiki core graph cumulative coverage curves.} For each
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{PlantMetWiki core graph cumulative coverage curves.} For each
 metric, pathways are ranked by count (highest first) and the cumulative fraction of the dataset
 total is plotted against pathway rank. Pathway membership is encoded via
 \texttt{dcterms:isPartOf}; entity types are \texttt{wp:GeneProduct}, \texttt{wp:Protein},
@@ -156,13 +167,16 @@ slowly, reflecting that taxonomic diversity is distributed across many medium-si
 Curves that do not reach 100\% (metabolites reach $\sim$63\%, enzymes $\sim$95\%) indicate the
 remaining unique entities have no recorded \texttt{dcterms:isPartOf} membership to any
 \texttt{wp:Pathway}-typed resource in this ranking.}
-\label{figS:cumulative}\end{figure}
+\label{figS:cumulative}
+
 \clearpage
 
 %------------------------------------------------------------------ S4
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS4.pdf}
-\caption{\footnotesize \textbf{PlantMetWiki core graph pathway content scatter plot with labelled
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{PlantMetWiki core graph pathway content scatter plot with labelled
 outliers.} Pathways plotted by metabolite and gene content, with point size encoding the number
 of annotated species. Red rings and labels mark the 15 \texttt{wp:Pathway} objects furthest from
 the point-cloud centroid (Euclidean distance in \texttt{wp:Metabolite} $\times$
@@ -173,13 +187,16 @@ the pathway title followed by its PlantCyc identifier in parentheses
 (\texttt{dcterms:identifier} in \texttt{graph/gpml-properties-extra}, e.g. "PWY-6585", captured
 from the GPML \texttt{<Property key="UniqueID">} during conversion: this is the code to look up
 the same pathway directly in PlantCyc).}
-\label{figS:scatter}\end{figure}
+\label{figS:scatter}
+
 \clearpage
 
 %------------------------------------------------------------------ S5
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS5.pdf}
-\caption{\footnotesize \textbf{Pathway content coverage (top 50 pathways).} Pathways ranked by
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Pathway content coverage (top 50 pathways).} Pathways ranked by
 total content (sum of all nine metrics below), most content-rich at top. PlantCyc PWY/RXN
 identifier shown in parentheses next to each pathway title (\texttt{dcterms:identifier} in
 \texttt{graph/gpml-properties-extra}). \textbf{(A)} Absolute counts, horizontal stacked bars:
@@ -190,13 +207,16 @@ identifier shown in parentheses next to each pathway title (\texttt{dcterms:iden
 normalization (0 = minimum, 1 = maximum across the top 50 pathways) of the same nine metrics.
 Unlike the species figure, there is no direct/indirect distinction here: every count is already
 scoped to a single pathway via direct RDF membership, so no catalysis-chain tracing is needed.}
-\label{figS:pathwaycoverage}\end{figure}
+\label{figS:pathwaycoverage}
+
 \clearpage
 
 %------------------------------------------------------------------ S6
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS6.pdf}
-\caption{\footnotesize \textbf{PlantMetWiki core graph species coverage (top 50 species).} Both
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{PlantMetWiki core graph species coverage (top 50 species).} Both
 panels share the same vertical species axis (most pathway-rich at top), avoiding rotated category
 labels. \textbf{(A)} Absolute counts, horizontal stacked bars. Solid: \texttt{wp:Pathway}
 (containing a direct gene/protein of the species), \texttt{wp:GeneProduct}/\texttt{wp:Protein}
@@ -209,13 +229,16 @@ chain-attributable). \textbf{(B)} Min--max normalisation (0 = minimum, 1 = maxim
 metabolites (\texttt{wp:Metabolite}), conversions (\texttt{wp:Conversion}), and catalysis
 (\texttt{wp:Catalysis}). Normalisation reveals cross-species patterns independent of the large
 absolute differences driven by \textit{Arabidopsis thaliana} (NCBITaxon\_3702).}
-\label{figS:speciescoverage}\end{figure}
+\label{figS:speciescoverage}
+
 \clearpage
 
 %------------------------------------------------------------------ S7
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.92\textwidth]{supplementary_figures/figS7.pdf}
-\caption{\footnotesize \textbf{Gene-level overlap between Biosynthetic Gene Cluster (BGC) sources
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Gene-level overlap between Biosynthetic Gene Cluster (BGC) sources
 and PlantCyc pathway annotations in PlantMetWiki.} Sets represent all \texttt{wp:GeneProduct}
 gene members identified by \texttt{identifiers.org/tair.name/} IRIs: plantiSMASH BGC genes
 ($n = 940$), MIBiG BGC genes ($n = 69$), and PlantCyc pathway genes ($n = 2{,}758$; all genes with
@@ -225,13 +248,16 @@ gene members identified by \texttt{identifiers.org/tair.name/} IRIs: plantiSMASH
 plantiSMASH BGC genes, 57 (6\%) overlap with at least one PlantCyc pathway gene; for MIBiG, 9 of
 69 (13\%). 35 genes are shared between the plantiSMASH and MIBiG BGC graphs but absent from any
 current PlantCyc pathway.}
-\label{figS:bgcvenn}\end{figure}
+\label{figS:bgcvenn}
+
 \clearpage
 
 %------------------------------------------------------------------ S8
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.95\textwidth]{supplementary_figures/figS8.pdf}
-\caption{\footnotesize \textbf{MIBiG to plantiSMASH BGC coverage representation.} Gene-sharing
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{MIBiG to plantiSMASH BGC coverage representation.} Gene-sharing
 matrix between the top 15 PlantCyc pathways (ranked by number of connected BGCs) and individual
 Biosynthetic Gene Clusters from plantiSMASH (PS:) and MIBiG. Rows are PlantCyc pathways labelled
 by their stable accession (PWY/RXN ID from \texttt{graph/gpml-properties-extra}) and title
@@ -239,13 +265,16 @@ by their stable accession (PWY/RXN ID from \texttt{graph/gpml-properties-extra})
 shared \texttt{wp:GeneProduct} IRIs (\texttt{identifiers.org/tair.name/}) between a pathway and a
 BGC; empty cells indicate no shared gene. Full crosslink data (all 225 BGC--gene--pathway
 triples) is in Supplementary Table S5.}
-\label{figS:bgcmatrix}\end{figure}
+\label{figS:bgcmatrix}
+
 \clearpage
 
 %------------------------------------------------------------------ S9
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS9.pdf}
-\caption{\footnotesize \textbf{RDF network of the most-connected PlantCyc pathway} (PC721 /
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{RDF network of the most-connected PlantCyc pathway} (PC721 /
 PWY-5863, \textit{superpathway of phylloquinol biosynthesis}), showing all Biosynthetic Gene
 Clusters linked to it via shared \texttt{wp:GeneProduct} gene members. Circles (left) represent
 BGCs (\texttt{pmw:BiosyntheticGeneCluster}), coloured by source: plantiSMASH (orange, $n = 4$) and
@@ -256,14 +285,17 @@ gene edge); dark edges: \texttt{dcterms:isPartOf} (gene to pathway edge). This t
 illustrates the SPARQL join mechanism between \texttt{graph/bgc-*} and \texttt{graph/pathways} via
 the shared identifiers.org IRI space: a gene appearing in both a BGC graph and the pathway graph
 provides the cross-graph link without requiring any pre-computed mapping table.}
-\label{figS:bgcnetwork}\end{figure}
+\label{figS:bgcnetwork}
+
 \clearpage
 
 %------------------------------------------------------------------ S10
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.80\textwidth]{supplementary_figures/figS10a.pdf}\\[1.2em]
 \includegraphics[width=\textwidth]{supplementary_figures/figS10b.pdf}
-\caption{\footnotesize \textbf{Top panel: Pathway coverage of \textit{Capsicum} species in
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Top panel: Pathway coverage of \textit{Capsicum} species in
 PlantMetWiki.} Bars show the number of pathways for which each taxon has at least one directly
 annotated \texttt{wp:GeneProduct} or \texttt{wp:Protein} DataNode (\texttt{wp:organism} in
 \texttt{graph/gpml-taxonomy-extra}). The annotation count (number of annotated nodes and pathways)
@@ -280,13 +312,16 @@ binomial name and NCBITaxon identifier. Orange = at least one \texttt{wp:Protein
 annotated enzyme in this pathway despite being the most pathway-rich \textit{Capsicum} species in
 PlantMetWiki overall (34 pathways). Cross-species inference candidates are reactions covered in
 \textit{C. chinense}, \textit{C. frutescens}, or the genus \textit{Capsicum}.}
-\label{figS:capsicum}\end{figure}
+\label{figS:capsicum}
+
 \clearpage
 
 %------------------------------------------------------------------ S11
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS11.pdf}
-\caption{\footnotesize \textbf{All DataNodes in capsaicin biosynthesis (PWY-5710) and their
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{All DataNodes in capsaicin biosynthesis (PWY-5710) and their
 species annotations across the two RDF graphs.} The
 \texttt{wp:GeneProduct}/\texttt{wp:Protein} DataNodes (green/blue circles) are arranged in a
 horizontal row, sorted by associated species, and connect to PWY-5710 (centre,
@@ -298,13 +333,16 @@ direct species annotation and are shared across all annotated species. NCBITaxon
 connected to their annotated DataNodes via \texttt{wp:organism} (dashed purple edges,
 \texttt{graph/gpml-taxonomy-extra}). One representative edge label per predicate type is shown
 for clarity.}
-\label{figS:capsaicinnodes}\end{figure}
+\label{figS:capsaicinnodes}
+
 \clearpage
 
 %------------------------------------------------------------------ S12
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS12.pdf}
-\caption{\footnotesize \textbf{Complete DataNode RDF graph for capsaicin biosynthesis (PWY-5710)
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Complete DataNode RDF graph for capsaicin biosynthesis (PWY-5710)
 concentric network.} Every node is an individual RDF resource and every edge an individual triple.
 PWY-5710 (\texttt{wp:Pathway}, large blue circle) sits at the centre; ring 1 holds the four
 \texttt{rdfs:Class} nodes reachable via \texttt{rdf:type}; ring 2 holds all 51 DataNode instances
@@ -315,14 +353,17 @@ annotated DataNodes via \texttt{wp:organism} (purple dashed edges,
 \texttt{graph/gpml-taxonomy-extra}). NCBITaxon nodes are ordered angularly to minimise edge
 crossings. The data can be exported as a Cytoscape.js file for further exploration and editing in
 Cytoscape Desktop (see Data availability).}
-\label{figS:capsaicinconcentric}\end{figure}
+\label{figS:capsaicinconcentric}
+
 \clearpage
 
 %------------------------------------------------------------------ S13
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.78\textwidth]{supplementary_figures/figS13a.pdf}\\[1.0em]
 \includegraphics[width=0.88\textwidth]{supplementary_figures/figS13b.pdf}
-\caption{\footnotesize \textbf{Top panel: Enzyme coverage per species in
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Top panel: Enzyme coverage per species in
 hyoscyamine/scopolamine biosynthesis (PWY-7341).} Bars show the count of directly annotated
 \texttt{wp:Protein} enzyme nodes per species (NCBITaxon ID in parentheses). Orange = Solanaceae
 species; green = Brassicaceae; grey = other families. \textit{Atropa belladonna}
@@ -336,14 +377,17 @@ ID. Orange = reaction covered by an annotated \texttt{wp:Protein} via \texttt{wp
 grey = gap. Despite \textit{Atropa belladonna} being the principal pharmaceutical source of
 scopolamine, its annotation depth is far below \textit{Hyoscyamus niger}, making it the primary
 cross-species inference target in this pathway.}
-\label{figS:scopolamine}\end{figure}
+\label{figS:scopolamine}
+
 \clearpage
 
 %------------------------------------------------------------------ S14
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.90\textwidth]{supplementary_figures/figS14a.pdf}\\[1.0em]
 \includegraphics[width=\textwidth]{supplementary_figures/figS14b.pdf}
-\caption{\footnotesize \textbf{Top panel: Enzyme coverage per species in avenacin A biosynthesis
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Top panel: Enzyme coverage per species in avenacin A biosynthesis
 (PWY-7476).} Bars show directly annotated \texttt{wp:Protein} enzyme nodes per species (total
 annotation depth). Blue = \textit{Avena strigosa} (NCBITaxon:38783, the only known producer);
 orange = \textit{Arabidopsis thaliana} (NCBITaxon:3702, non-producer with orthologous triterpenoid
@@ -356,14 +400,17 @@ reveals a stark asymmetry: \textit{A. strigosa} covers 9 of 13 reactions while \
 thaliana} covers only 2, both shared with \textit{A. strigosa}. All \textit{A. thaliana}
 annotation potential is therefore a cross-species transfer candidate, not independent evidence of
 avenacin production in \textit{Arabidopsis}.}
-\label{figS:avenacin}\end{figure}
+\label{figS:avenacin}
+
 \clearpage
 
 %------------------------------------------------------------------ S15
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[height=0.40\textheight,keepaspectratio]{supplementary_figures/figS15a.pdf}\\[1.0em]
 \includegraphics[width=0.95\textwidth]{supplementary_figures/figS15b.pdf}
-\caption{\footnotesize \textbf{Top panel: Enzyme coverage per species in monolignol biosynthesis
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Top panel: Enzyme coverage per species in monolignol biosynthesis
 (PWY-361)}, the most taxonomically diverse pathway in PlantMetWiki (29 species). Species are
 coloured by functional category (model plant, grass, tree, crop, legume, Solanaceae). The dashed
 vertical line marks \textit{Arabidopsis thaliana}'s (NCBITaxon:3702) reference count of 19
@@ -374,13 +421,16 @@ show substantially lower coverage, motivating cross-species inference within the
 other species show substantial gaps. Within the Poaceae (grasses), the best-covered species reach
 only 5 of 15 reactions, but combining annotations across the grass sub-family covers 13 of 15,
 demonstrating the power of cross-family inference for biomass-relevant pathways.}
-\label{figS:monolignol}\end{figure}
+\label{figS:monolignol}
+
 \clearpage
 
 %------------------------------------------------------------------ S16
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS16.pdf}
-\caption{\footnotesize \textbf{Cross-species gap analysis for theobromine biosynthesis.} All
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Cross-species gap analysis for theobromine biosynthesis.} All
 species known to produce theobromine according to Wikidata (\texttt{wdt:P703}, "found in taxon")
 shown alongside their PlantMetWiki gene-annotation depth for theobromine-containing pathways.
 How to read it: species present in Wikidata but with zero or low PlantMetWiki annotation
@@ -388,38 +438,47 @@ How to read it: species present in Wikidata but with zero or low PlantMetWiki an
 \textit{Coffea arabica} and \textit{Camellia sinensis} are well annotated) are priority candidates
 for annotation transfer, because Wikidata already provides taxonomic evidence that the pathway
 should exist in these species.}
-\label{figS:theobromine}\end{figure}
+\label{figS:theobromine}
+
 \clearpage
 
 %------------------------------------------------------------------ S17
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.95\textwidth]{supplementary_figures/figS17.pdf}
-\caption{\footnotesize \textbf{Methylxanthine metabolic family network.} Caffeine, theobromine,
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Methylxanthine metabolic family network.} Caffeine, theobromine,
 theophylline and related methylxanthines, with node size proportional to the number of
 PlantMetWiki pathways each compound appears in, and Wikidata QIDs / ChEBI IDs shown as
 cross-reference labels. How to read it: larger, fully labelled nodes (caffeine: 8 pathways,
 theobromine: 7) are well characterised in both PlantMetWiki and Wikidata; smaller nodes
 (theophylline: 3 pathways, monomethylxanthines: 0) are progressively less curated.}
-\label{figS:methylxanthine}\end{figure}
+\label{figS:methylxanthine}
+
 \clearpage
 
 %------------------------------------------------------------------ S18
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{supplementary_figures/figS18.pdf}
-\caption{\footnotesize \textbf{Metabolite identifier coverage from PlantCyc (before BridgeDb
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Metabolite identifier coverage from PlantCyc (before BridgeDb
 mapping).} \textbf{(A)} Identifier coverage across all 4,577 \texttt{wp:Metabolite} nodes in
 PlantMetWiki: the proportion of metabolites carrying each external identifier type; 90\% (4,111)
 have an InChIKey, the prerequisite for federated SPARQL queries to Wikidata via
 \texttt{wdt:P235}. \textbf{(B)} Breakdown of the other cross-reference databases (ChEBI, MetaNetX,
 PubChem, KEGG, HMDB) and how many metabolites carry each. As a result, 4,111 metabolites (90\%)
 can be directly federated to Wikidata via InChIKey (\texttt{wdt:P235}).}
-\label{figS:identifiercoverage}\end{figure}
+\label{figS:identifiercoverage}
+
 \clearpage
 
 %------------------------------------------------------------------ S19
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.95\textwidth]{supplementary_figures/figS19.pdf}
-\caption{\footnotesize \textbf{Wikidata absence declines with the taxonomic breadth of the
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Wikidata absence declines with the taxonomic breadth of the
 biosynthetic evidence.} For each of the 4,111 InChIKey-annotated PlantMetWiki metabolites,
 taxonomic breadth is measured through the catalysis chain: the number of distinct species whose
 annotated enzyme (\texttt{wp:Protein}, carrying \texttt{wp:organism}) catalyses a
@@ -431,6 +490,7 @@ no annotated species produces ($n = 1{,}617$), to 30.6\% for a single species ($
 18.7\% for two or three ($n = 664$), 8.5\% for four to nine ($n = 235$), and 7.3\% for ten or more
 ($n = 41$), showing that the Wikidata gap is concentrated in taxonomically restricted, specialized
 plant chemistry.}
-\label{figS:breadth}\end{figure}
+\label{figS:breadth}
+
 
 \end{document}
