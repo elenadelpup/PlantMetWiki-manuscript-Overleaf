@@ -57,6 +57,7 @@
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{xcolor}
+\usepackage{caption}   % \captionof, so figure legends are line-numbered
 \usepackage{lineno}
 \usepackage[hidelinks]{hyperref}
 \usepackage{setspace}
@@ -531,7 +532,7 @@ enzymes actually participate in), \textit{A. thaliana} is linked to 1,354 metabo
 nodes), and 4,732 catalysis interactions (38\% of all \texttt{wp:Catalysis} nodes) (Fig.~S6).
 
 Biosynthetic gene cluster (BGC) crosslinks, integrated from MIBiG 4.0 and plantiSMASH 2.0 predictions,
-contribute an additional 7,843 triples to the knowledge graph, including all 43 plant BGCs from MIBiG
+contribute an additional 7,735 triples to the knowledge graph, including all 43 plant BGCs from MIBiG
 4.0, out of which 9 are annotated to \textit{A. thaliana}, and 65 plantiSMASH-detected \textit{A.
 thaliana} BGCs in the plantiSMASH 2.0 database\cite{owen2025}. Of these 74 \textit{A. thaliana} BGCs
 in total, 44 (38 from plantiSMASH and six from MIBiG) share at least one gene
@@ -553,7 +554,7 @@ PlantCyc pathway.
 
 The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-graph Virtuoso
 triplestore including seven named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
-layer of the data model (Supplementary Table S6). The core graph (3,826,567 triples) encodes 2,758
+layer of the data model (Supplementary Table S6). The core graph (3,847,644 triples) encodes 2,758
 gene products, 3,750 enzymes, 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927
 are biochemical conversions and 12,359 are catalytic links. Pathway content is supported by 4,085
 distinct literature references annotated with PubMed IDs on pathway nodes. A separate properties graph
@@ -1287,8 +1288,8 @@ and deposited in versioned releases in Zenodo at \url{https://zenodo.org/communi
 Elena Del Pup: Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation,
 Software, Writing -- original draft.
 Max Muller: Data curation, Formal analysis, Software, Validation.
-Egon L. Willighagen: Conceptualization, Formal analysis, Methodology, Software, Writing -- review \& editing.
 Marvin Martens: Methodology, Software, Validation.
+Egon L. Willighagen: Conceptualization, Formal analysis, Methodology, Software, Writing -- review \& editing.
 Marnix H. Medema: Funding acquisition, Project administration, Supervision, Writing -- review \& editing.
 Denise Slenter: Conceptualization, Data curation, Formal analysis, Methodology, Software, Supervision,
 Validation, Writing -- original draft, Writing -- review \& editing.
@@ -1333,9 +1334,11 @@ reviewed and edited the AI-assisted work as needed and take full responsibility 
 \clearpage
 \section*{Figures}
 
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[height=0.64\textheight,keepaspectratio]{figures/figure1.png}
-\caption{\scriptsize \textbf{PlantMetWiki data transformation pipeline and architecture.} The five
+\end{center}
+
+\captionof{figure}{\scriptsize \textbf{PlantMetWiki data transformation pipeline and architecture.} The five
 stages of PlantMetWiki knowledge-graph construction. \textbf{(1) Source data} (blue): MIBiG 4.0 and
 plantiSMASH 2.0 biosynthetic gene cluster (BGC) annotations, PlantCyc 17.0 (1,162 pathways, 1,316
 reactions, 439 NCBI taxa), and the OBO Foundry NCBITaxon ontology. \textbf{(2) Pipeline tools}
@@ -1353,12 +1356,15 @@ tutorial, documentation and example queries; Jupyter notebooks reproduce the fig
 cross-species inference analyses, and the federated queries to external endpoints such as Wikidata.
 All repositories are at \url{https://github.com/pathway-lod}; tool versions, scripts and URLs are
 given in Materials and Methods. Solid arrows: automated steps; dashed arrows: manual steps.}
-\label{fig:pipeline}\end{figure}
+\label{fig:pipeline}
+
 \clearpage
 
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{figures/figure2.png}
-\caption{\footnotesize \textbf{PlantMetWiki core graph model.} \textbf{(A) Pathway semantic model.} Every pathway
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{PlantMetWiki core graph model.} \textbf{(A) Pathway semantic model.} Every pathway
 (\texttt{wp:Pathway}, blue centre; 1,162 PlantCyc pathways PC* and 1,316 reactions RC*) is associated
 with two categories of RDF resource via \texttt{dcterms:isPartOf}: DataNodes (biological entities;
 blue dashed box) and Interactions (directed biological events; brown dashed box). DataNode types:
@@ -1381,12 +1387,15 @@ targets a \texttt{wp:Conversion} node. \texttt{wp:Conversion} goes from one or m
 \texttt{wp:Metabolite} (substrates) to one or more \texttt{wp:Metabolite} (products); (4) Complex
 formation: \texttt{wp:Binding}/\texttt{wp:ComplexBinding} links \texttt{wp:Metabolite} or
 \texttt{wp:Complex} nodes to a \texttt{wp:Complex}.}
-\label{fig:model}\end{figure}
+\label{fig:model}
+
 \clearpage
 
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{figures/figure3.png}
-\caption{\footnotesize \textbf{Semantic model of the capsaicin biosynthesis pathway (PWY-5710) across named
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Semantic model of the capsaicin biosynthesis pathway (PWY-5710) across named
 graphs.} Capsaicin biosynthesis (PWY-5710, \texttt{wp:Pathway}) and DataNode MONOMER-13528
 (\textit{Capsicum chinense} capsaicin synthase, UniProt O81646, \texttt{wp:Protein}) shown across
 three named graphs. Solid grey edges originate from \texttt{graph/pathways} (core WikiPathways RDF,
@@ -1397,13 +1406,16 @@ taxonomy-extra layer and mapped to the OBO Foundry IRI graph, resulting in NCBIT
 (Viridiplantae) mapped to the pathway and NCBITaxon:80379 -- among others -- mapped to the individual
 Protein and GeneProduct nodes. The Metabolite, Protein and GeneProduct DataNodes are connected to
 PWY-5710 via \texttt{dcterms:isPartOf} in \texttt{graph/pathways}.}
-\label{fig:capsaicin}\end{figure}
+\label{fig:capsaicin}
+
 \clearpage
 
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.92\textwidth]{figures/figure4a.pdf}\\[0.8em]
 \includegraphics[width=0.92\textwidth]{figures/figure4b.pdf}
-\caption{\footnotesize \textbf{Metabolic annotation matrix and cross-species inference potential of PlantMetWiki and
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Metabolic annotation matrix and cross-species inference potential of PlantMetWiki and
 contribution of \textit{A. thaliana}.} \textbf{(A)} Global breakdown of all (reaction $\times$ species)
 pairs across all pathways with $\geq$1 species annotation. "Annotated" = a \texttt{wp:Catalysis} link
 exists for the species--reaction pair; "Inferable gap" = a gap where $\geq$1 other species in the same
@@ -1416,12 +1428,15 @@ category. Monolignol biosynthesis is the 14th pathway in the rank. \textbf{(C)} 
 several sources; no \textit{A. thaliana} evidence). \textbf{(D)} Distribution of evidence depth
 (number of species with enzymes annotated to a given reaction) across inferable gap cells.
 \textbf{(E)} Top species ranked by the total inferable gap cells they could help resolve.}
-\label{fig:matrix}\end{figure}
+\label{fig:matrix}
+
 \clearpage
 
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=\textwidth]{figures/figure5.pdf}
-\caption{\footnotesize \textbf{Metabolite cross-reference coverage: direct BridgeDb mapping complements InChIKey
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Metabolite cross-reference coverage: direct BridgeDb mapping complements InChIKey
 federation.} \textbf{(A)} How the 4,577 \texttt{wp:Metabolite} nodes resolve to external chemical
 databases: 3,198 (69.9\%) carry $\geq$1 BridgeDb-materialised cross-reference and are resolvable
 directly in the graph without federation; 1,207 (26.4\%) carry only an InChIKey and remain reachable
@@ -1434,12 +1449,15 @@ KEGG and adds Wikidata (3,059), ChemSpider (2,317), HMDB (975) and LipidMaps (51
 the source, so most mapped metabolites become hubs to $\geq$4 databases. MetaNetX is not part of the
 BridgeDb metabolite build and remains source-only. Mappings are added under separate predicates and
 never overwrite the curated identifier.}
-\label{fig:bridgedb}\end{figure}
+\label{fig:bridgedb}
+
 \clearpage
 
-\begin{figure}[p]\centering
+\begin{center}
 \includegraphics[width=0.95\textwidth]{figures/figure6.pdf}
-\caption{\footnotesize \textbf{Wikidata coverage and chemical novelty of the 4,111 InChIKey-annotated
+\end{center}
+
+\captionof{figure}{\footnotesize \textbf{Wikidata coverage and chemical novelty of the 4,111 InChIKey-annotated
 metabolites.} \textbf{(A)} Overall split into exact InChIKey matches (blue, already in Wikidata),
 skeleton-only matches (light blue, Wikidata holds a stereoisomer/tautomer/salt form of the same
 molecule, but not this exact form), and no structural match (red, the molecule is entirely absent from
@@ -1456,7 +1474,8 @@ pathway count and labelled with the producing genus. Restricting to single-speci
 reaction intermediates with no organism-annotated enzyme and highlights the taxonomically restricted
 specialized metabolites PlantMetWiki uniquely holds. The full ranked list of all 421 novel candidates
 is in Supplementary Table S7.}
-\label{fig:wikidata}\end{figure}
+\label{fig:wikidata}
+
 
 %==============================================================================
 % REFERENCES
