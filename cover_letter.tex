@@ -1,0 +1,126 @@
+%==============================================================================
+%  PlantMetWiki -- COVER LETTER
+%  Compiles to its own PDF, uploaded as the "covering letter" file.
+%  Scientific Data: uploading a covering letter is a technical requirement of
+%  the submission system; its content is not used to make editorial decisions.
+%
+%  SUBMISSION PORTAL:
+%  https://submission.springernature.com/submission/ed40d312-e1b7-4d02-9075-86bd6970525f
+%
+%  TIMELINE
+%    16 October 2026 -- co-author approval deadline and final comments
+%    26 October 2026 -- submission to the journal
+%
+%  TWO FIGURES WERE CHANGED FROM THE SUPPLIED DRAFT so the letter agrees with
+%  the manuscript and the live endpoint -- see the notes at the end of this file.
+%
+%  The journal's note on suggested reviewers (not part of the letter):
+%    "Suggested reviewers or Editorial Board Members: please include these as
+%     you wish, but neither are mandated, and rest assured we have processes to
+%     assign manuscripts and reviewers without input, and suggestions are not
+%     required to expedite review."
+%==============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{fontspec}
+\fi
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+\pagestyle{empty}
+
+\begin{document}
+
+\hfill \today
+
+\vspace{1em}
+To the Editors,\\
+\textit{Scientific Data}
+
+\vspace{0.5em}
+\textbf{Re: submission to the Collection ``10 years of the FAIR principles''}\\
+\textbf{PlantMetWiki: a FAIR knowledge graph for plant metabolic pathway
+cross-species representation and integration}
+
+\vspace{1em}
+Dear Editors,
+
+Plants represent the most chemically diverse kingdom of life thanks to their extremely diverse
+specialized metabolism. Knowledge of biosynthesis and its evolution is key to discovering new plant
+specialized metabolites. However, only a few biosynthetic pathways of plant specialized metabolites
+are fully resolved, limiting the potential to metabolically engineer these compounds at an
+industrial scale for applications in medicine, novel foods, agriculture, and bioenergy. Furthermore,
+plant pathway knowledge is fragmented across different databases and individual publications, and
+there is no open-access infrastructure that integrates pathway predictions and extends biochemical
+reaction knowledge with natural product information.
+
+Here, we address these gaps with Plant Metabolic Pathways Wiki (PlantMetWiki), a queryable
+open-access knowledge base of plant biosynthetic pathways from PlantCyc (Hawkins et al., 2025;
+doi:10.1093/nar/gkae1231) connecting information to known and predicted genomic loci of clustered
+biosynthetic genes from plantiSMASH 2.0 (Del Pup et al., 2026; doi:10.1016/j.jmb.2026.169798) and
+MIBiG (Zdouc et al., 2025; doi:10.1093/nar/gkae1115), respectively. PlantMetWiki includes 19,927
+unique biochemical conversions across 1,162 curated pathways from 424 plant species or genera, and
+leverages a novel approach to model multispecies pathways by adapting the existing WikiPathways
+infrastructure (Agrawal et al., 2024; doi:10.1093/nar/gkad960). Our webserver supports joint
+analysis with multi-omics datasets and can be easily extended with information in external resources
+such as Wikidata (Waagmeester et al., 2020; doi:10.7554/eLife.52614) and LOTUS (Rutz et al., 2022;
+doi:10.7554/eLife.70780). Our approach enables the generation of hypotheses from plant metabolism to
+other research areas, including biomarker discovery, toxicology, precision nutrition, and forensic
+(wildlife) sciences.
+
+PlantMetWiki is available in Semantic Web format and can be accessed via a dedicated SPARQL endpoint
+for programmatic access, and via the SNORQL user interface with prewritten SPARQL queries to analyze
+pathway information in the knowledge graph and combine it with user data, such as (multi-)omics
+datasets, phenotypes, and predicted pathways. The results can be downloaded as CSV, JSON, or XML for
+further visualization of pathway annotations, hypothesis generation, and natural product discovery.
+
+We anticipate that PlantMetWiki will support collaborative curation and hypothesis generation in
+plant biosynthesis by leveraging linked data, thereby advancing the discovery and characterization
+of plant natural products.
+
+\vspace{1em}
+On behalf of the PlantMetWiki developer team,
+
+\vspace{0.5em}
+Elena Del Pup, Max Muller, Marvin Martens, Egon Willighagen, Marnix H. Medema,
+Denise Slenter \& Justin J.J. van der Hooft
+
+\end{document}
+
+%==============================================================================
+%  CHANGES FROM THE SUPPLIED DRAFT -- revert if you disagree
+%
+%  1. "over 11,000 unique biochemical reactions from 643 plant species or
+%     genera"  ->  "19,927 unique biochemical conversions across 1,162 curated
+%     pathways from 424 plant species or genera".
+%
+%     Checked against the live endpoint:
+%       - No measure in the graph is near 643 taxa. The graph holds 424
+%         NCBITaxon identifiers (423 species/genus level plus Viridiplantae);
+%         PlantCyc 17.0 supplies 439. The manuscript Results state 424.
+%         643 would contradict the manuscript.
+%       - Nothing labelled "reactions" is near 11,000. The closest figure is
+%         11,138 unique DataNodes -- which are biological entities (genes,
+%         enzymes, metabolites, complexes), not reactions. Reactions are
+%         19,927 wp:Conversion edges, or 1,316 standalone RC* reaction files.
+%         "11,000 reactions" looks like the entity count mislabelled.
+%
+%  2. Citation years aligned with references.bib and the published versions:
+%       - plantiSMASH 2.0: the draft cited the 2025 bioRxiv preprint
+%         (doi:10.1101/2025.10.28.683968). It is now published in J Mol Biol
+%         (2026; doi:10.1016/j.jmb.2026.169798), which is what the manuscript
+%         cites. Updated.
+%       - MIBiG: Zdouc et al. 2024 -> 2025, matching NAR 53 D678-D690 and the
+%         manuscript's reference list. DOI unchanged.
+%==============================================================================
