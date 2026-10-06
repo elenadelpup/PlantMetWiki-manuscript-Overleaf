@@ -557,7 +557,7 @@ PlantCyc pathway.
 
 The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-graph Virtuoso
 triplestore including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
-layer of the data model (Supplementary Table S6). The core graph (3,847,644 triples) encodes 2,758
+layer of the data model (Table \ref{tab:graphs}; Supplementary Table S6). The core graph (3,847,644 triples) encodes 2,758
 gene products, 3,750 enzymes, 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927
 are biochemical conversions and 12,359 are catalytic links. Pathway content is supported by 4,085
 distinct literature references annotated with PubMed IDs on pathway nodes. A separate properties graph
@@ -582,6 +582,82 @@ data, a client can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \te
 the same SPARQL query that retrieves the data, without consulting an external ontology service. All workflows used to generate the
 resource are openly available and version-controlled, enabling reproducible regeneration and
 versioning from source data.
+
+% ---------------------------------------------------------------------------
+%  Table: named graph inventory.  Paste into the Data Records section, just
+%  before the "The resulting current PlantMetWiki RDF knowledge graph..."
+%  paragraph, and refer to it as Table~\ref{tab:graphs}.
+%
+%  longtable (not a float), so the lineno package numbers these lines, exactly
+%  as for Table~\ref{tab:fair}.  Uses only booktabs/longtable/array, all of
+%  which main.tex already loads.
+%
+%  TRIPLE COUNTS: live endpoint, queried 6 October 2026.
+%  VERSION/DOI  : update the three gpml-to-rdf rows once release 3.4 is minted.
+% ---------------------------------------------------------------------------
+{\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}
+                    r@{\hspace{1.2em}}
+                    >{\raggedright\arraybackslash}p{0.36\textwidth}
+                    >{\raggedright\arraybackslash}p{0.27\textwidth}@{}}
+\caption{\textbf{The eight named graphs of the PlantMetWiki triplestore.}
+Triple counts were retrieved from the live SPARQL endpoint on 6 October 2026.
+Each content graph is independently versioned and deposited, so any result can
+be traced to the exact release that produced it. Full source URIs, source
+filenames and per-graph notes are in Supplementary Table S6.}
+\label{tab:graphs}\\
+\toprule
+\textbf{Named graph} & \textbf{Triples} & \textbf{Content} & \textbf{Version (deposit)} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Named graph} & \textbf{Triples} & \textbf{Content} & \textbf{Version (deposit)} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{graph/pathways} & 3,847,644 &
+Core WikiPathways RDF: pathways and reactions, gene products, enzymes,
+metabolites and typed interaction edges &
+\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \cite{delpup2026rdf} \\
+\addlinespace
+\texttt{graph/gpml-} \texttt{properties-extra} & 2,617,839 &
+PlantCyc/GPML key--value annotations preserved as \texttt{pmw:gpmlProperty}
+triples &
+\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \cite{delpup2026rdf} \\
+\addlinespace
+\texttt{graph/gpml-} \texttt{taxonomy-extra} & 30,178 &
+Per-node \texttt{wp:organism} species annotations plus the Viridiplantae root &
+\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \cite{delpup2026rdf} \\
+\addlinespace
+\texttt{graph/ncbitaxon} & 17,707 &
+MIREOT subset of NCBITaxon: 424 seed taxa and their ancestors, for
+cross-graph label resolution &
+OBO Foundry \texttt{v2026-05-13} \\
+\addlinespace
+\texttt{graph/bgc-} \texttt{plantismash} & 5,965 &
+Crosslinks to 65 plantiSMASH v2 biosynthetic gene clusters
+(\textit{A.\ thaliana}) &
+\texttt{plantismash-v2}\newline \cite{delpup2026bgc} \\
+\addlinespace
+\texttt{graph/bgc-mibig} & 1,770 &
+Crosslinks to 43 MIBiG 4.0 biosynthetic gene clusters &
+\texttt{mibig-4.0}\newline \cite{delpup2026bgc} \\
+\addlinespace
+\texttt{graph/vocabularies} & 1,092 &
+Self-describing data model: the \texttt{pmw:} vocabulary (6 terms) plus
+\texttt{wp:} (38) and \texttt{gpml:} (87) as SKOS concept schemes &
+\texttt{pmw:} v1.0 (CC0) \\
+\addlinespace
+\texttt{void} & 240 &
+VoID and PROV-O records: provenance, licensing, versioning and download
+locations for every content graph &
+--- \\
+\midrule
+\textbf{Total} & \textbf{6,522,435} & & \\
+\end{longtable}
+}
+
 
 
 
@@ -633,8 +709,7 @@ The hyoscyamine and scopolamine biosynthesis pathway (PWY-7341; PC953) illustrat
 scenario: unlike capsaicin, where a single congeneric species supplies one direct candidate for one
 missing reaction, here the missing annotation of a single target species must be reconstructed from
 several partial, non-redundant sources. \textit{Atropa belladonna} (NCBITaxon:33113) is a plant from
-the Solanaceae family and a hyoscyamine-rich producer of tropane alkaloids, from which atropine --
-the racemic mixture formed from its principal alkaloid, L-hyoscyamine -- takes its name. \textit{A.
+the Solanaceae family and a hyoscyamine-rich producer of tropane alkaloids, from which atropine (the racemic mixture formed from its principal alkaloid, L-hyoscyamine) takes its name. \textit{A.
 belladonna} contains only a single directly annotated enzyme, covering just one of the pathway's 16
 biochemical conversions, despite 13 Solanaceae species being annotated in the same pathway.
 \textit{Hyoscyamus niger} (NCBITaxon:4079), by comparison, contains four annotated enzymes mapping to
