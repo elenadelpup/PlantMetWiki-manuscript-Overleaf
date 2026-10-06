@@ -558,31 +558,31 @@ PlantCyc pathway.
 The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-graph Virtuoso
 triplestore including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
 layer of the data model (Table~\ref{tab:graphs}; Supplementary Table S6). Across these eight graphs
-the endpoint serves 6,522,435 triples. The core graph (3,847,644 triples) encodes 2,758
-gene products, 3,750 enzymes, 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927
-are biochemical conversions and 12,359 are catalytic links. Pathway content is supported by 4,085
-distinct literature references annotated with PubMed IDs on pathway nodes. A separate properties graph
-(2,617,839 triples) preserves PlantCyc-specific key--value annotations as RDF triples, making PlantCyc
-metadata available for SPARQL queries beyond what the core WikiPathways vocabulary captures. This
-graph represents the basis for future expansions of the current semantic model and supports the use of
-PlantMetWiki as an expandable framework for pathway modelling beyond the WikiPathways attributes.
-Dataset provenance, licensing information, versioning metadata, and download locations are described
-with VoID metadata records following the VoID Schema RDF vocabulary\cite{alexander2011}. These are
-available as a \texttt{void} graph (\url{http://rdf-plantmetwiki.bioinformatics.nl/void}) hosted in
-the Virtuoso database and accessible via the SPARQL endpoint. A further vocabularies graph (1,092
-triples) makes the data model itself self-describing at the endpoint. It publishes the PlantMetWiki
-vocabulary (\texttt{pmw:}, version 1.0, CC0), which formally defines the six terms this resource
-introduces for information the WikiPathways vocabularies do not cover: biosynthetic gene cluster
-membership (\texttt{pmw:BiosyntheticGeneCluster}, \texttt{pmw:MemberIdentifier}) and the
-PlantCyc/GPML key--value property layer (\texttt{pmw:gpmlProperty}, \texttt{pmw:key},
-\texttt{pmw:value}, \texttt{pmw:plantcycId}). Alongside these it carries the two WikiPathways
-vocabularies as SKOS concept schemes, 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All terms
-are typed as OWL classes and properties and carry \texttt{rdfs:label}, textual definitions, and
+the endpoint serves 6,522,435 triples. The core graph encodes 2,758 gene products, 3,750 enzymes,
+4,577 metabolites, and 54,800 typed interaction edges, of which 19,927 are biochemical conversions
+and 12,359 are catalytic links. Pathway content is supported by 4,085 distinct literature references
+annotated with PubMed IDs on pathway nodes. A separate properties graph preserves PlantCyc-specific
+key--value annotations as RDF triples, making PlantCyc metadata available for SPARQL queries beyond
+what the core WikiPathways vocabulary captures. This graph represents the basis for future
+expansions of the current semantic model and supports the use of PlantMetWiki as an expandable
+framework for pathway modelling beyond the WikiPathways attributes. Dataset provenance, licensing
+information, versioning metadata, and download locations are described with VoID metadata records
+following the VoID Schema RDF vocabulary\cite{alexander2011}. These are available as a \texttt{void}
+graph (\url{http://rdf-plantmetwiki.bioinformatics.nl/void}) hosted in the Virtuoso database and
+accessible via the SPARQL endpoint. A further vocabularies graph makes the data model itself
+self-describing at the endpoint. It publishes the PlantMetWiki vocabulary (\texttt{pmw:}, version
+1.0, CC0), which formally defines the six terms this resource introduces for information the
+WikiPathways vocabularies do not cover: biosynthetic gene cluster membership
+(\texttt{pmw:BiosyntheticGeneCluster}, \texttt{pmw:MemberIdentifier}) and the PlantCyc/GPML
+key--value property layer (\texttt{pmw:gpmlProperty}, \texttt{pmw:key}, \texttt{pmw:value},
+\texttt{pmw:plantcycId}). Alongside these it carries the two WikiPathways vocabularies as SKOS
+concept schemes, 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All terms are typed as OWL
+classes and properties and carry \texttt{rdfs:label}, textual definitions, and
 \texttt{rdfs:domain}/\texttt{rdfs:range} constraints. Because these definitions sit alongside the
 data, a client can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in
-the same SPARQL query that retrieves the data, without consulting an external ontology service. All workflows used to generate the
-resource are openly available and version-controlled, enabling reproducible regeneration and
-versioning from source data.
+the same SPARQL query that retrieves the data, without consulting an external ontology service. All
+workflows used to generate the resource are openly available and version-controlled, enabling
+reproducible regeneration and versioning from source data.
 
 % ---------------------------------------------------------------------------
 %  Table 2: named graph inventory.  longtable (not a float) so that the lineno
