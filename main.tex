@@ -60,6 +60,10 @@
 \usepackage{caption}   % \captionof, so figure legends are line-numbered
 \usepackage{lineno}
 \usepackage[hidelinks]{hyperref}
+% Long URLs (query strings especially) offer no break points at ? & = and run
+% into the right margin. xurl permits a break at any character; load it after
+% hyperref, which is what provides \url in the first place.
+\usepackage{xurl}
 \usepackage{setspace}
 
 \linenumbers
@@ -1274,7 +1278,7 @@ every commit (\url{https://github.com/PathVisio/GPML/blob/master/GPML2021/GPML20
 
 \subsection*{RDF conversion, semantic enrichment, and BridgeDb mapping}
 RDF conversion of the GPML files was performed using the gpml2rdf Java tool (v4.0.4,
-\texttt{org.wikipathways.wp2rdf.CreateRDF}), which implements the WikiPathways RDF model and uses
+\texttt{org.\allowbreak{}wikipathways.\allowbreak{}wp2rdf.\allowbreak{}CreateRDF}), which implements the WikiPathways RDF model and uses
 libGPML v4.0.4\cite{pico2025} for GPML parsing. The full pipeline is available at
 \url{https://github.com/pathway-lod/gpml-to-rdf} and archived as versioned
 software\cite{delpup2026gpml2rdf}. Before conversion, each GPML file is assigned a
@@ -1286,8 +1290,8 @@ Core RDF conversion is parallelized across GPML files using GNU Make (\texttt{ma
 file converted independently. The converter produces two representations per file: a WikiPathways RDF
 (WPRDF) file following the \texttt{wp:Pathway} semantic model, and a GPML RDF (GPMLRDF) file capturing
 the raw GPML structure, including all the PlantCyc-derived information. All Internationalized Resource
-Identifiers (IRIs) use the base domain \texttt{rdf-plantmetwiki.bioinformatics.nl}, generating pathway
-IRIs of the form \texttt{http://rdf-plantmetwiki.bioinformatics.nl/pathways/PC\{N\}\_r\{version\}}.
+Identifiers (IRIs) use the base domain \texttt{rdf-\allowbreak{}plantmetwiki.\allowbreak{}bioinformatics.\allowbreak{}nl}, generating pathway
+IRIs of the form \texttt{http://\allowbreak{}rdf-\allowbreak{}plantmetwiki.\allowbreak{}bioinformatics.\allowbreak{}nl/\allowbreak{}pathways/\allowbreak{}PC\{N\}\_\allowbreak{}r\{version\}}.
 BridgeDb (build 20260102; derived from HMDB, ChEBI, and Wikidata\cite{bridgedb2026db}) metabolite
 identifier mapping adds
 independent information via \texttt{wp:bdb*} predicates (\texttt{wp:bdbChEBI}, \texttt{wp:bdbHmdb},
@@ -1378,7 +1382,7 @@ external federation endpoint, the NCBITaxon ontology (release v2026-05-13, OBO F
 Universal)\cite{federhen2012} is loaded from \url{http://purl.obolibrary.org/obo/ncbitaxon.owl} into a
 dedicated \texttt{graph/ncbitaxon} named graph. The pathway IRIs already use the Open Bio-Ontologies
 (OBO) Foundry\cite{smith2007} IRI scheme
-(\texttt{http://purl.obolibrary.org/obo/NCBITaxon\_<id>}), so taxon labels are resolved through a
+(\texttt{http://\allowbreak{}purl.\allowbreak{}obolibrary.\allowbreak{}org/\allowbreak{}obo/\allowbreak{}NCBITaxon\_\allowbreak{}<id>}), so taxon labels are resolved through a
 simple cross-graph SPARQL join without any IRI translation. ROBOT\cite{jackson2019} (method MIREOT) is
 used to downsize the NCBITaxon ontology and extract all PlantCyc-derived taxa plus their ancestors up
 the lineage to the ontology root. This provides the \texttt{rdfs:label} of every taxon in the lineage
@@ -1430,9 +1434,9 @@ Virtuoso.
 All relevant data are deposited and versioned in the PlantMetWiki community on Zenodo
 (\url{https://zenodo.org/communities/plantmetwiki/}), including relevant license and copyright
 information. The core knowledge graph is released as PlantMetWiki RDF v3.3\cite{delpup2026rdf},
-containing the core pathway bundle (\texttt{all-plantcyc17.0.0-gpml2021-v3.2.ttl.gz}), the GPML
-property layer (\texttt{all\_gpml\_properties\_extra-plantcyc17.0.0-gpml2021-v3.ttl.gz}), the
-taxonomy layer (\texttt{all\_gpml\_taxonomy\_extra-plantcyc17.0.0-gpml2021-v3.ttl.gz}) and the VoID
+containing the core pathway bundle (\texttt{all-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.2.\allowbreak{}ttl.\allowbreak{}gz}), the GPML
+property layer (\texttt{all\_\allowbreak{}gpml\_\allowbreak{}properties\_\allowbreak{}extra-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}), the
+taxonomy layer (\texttt{all\_\allowbreak{}gpml\_\allowbreak{}taxonomy\_\allowbreak{}extra-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}) and the VoID
 metadata file. The biosynthetic gene cluster crosslinks are released separately as PlantMetWiki BGC
 crosslinks bgc-v1.0.2\cite{delpup2026bgc}. The BridgeDb metabolite identifier-mapping database used
 to materialise metabolite cross-references is archived on Figshare\cite{bridgedb2026db}. Tutorial pages are available at \url{https://pathway-lod.github.io/SPARQLTutorials/}.
