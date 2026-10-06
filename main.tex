@@ -1219,7 +1219,9 @@ tutorial and documentation are available. The pathway data and connected annotat
 available via a SPARQL endpoint which can be accessed by the PlantMetWiki SPARQL Explorer, a SNORQL
 User Interface (UI) including a panel with example queries. SNORQL is a query editor that offers
 syntax highlighting for writing and executing SPARQL queries directly on our existing SPARQL endpoint,
-mirroring the usage of WikiPathways\cite{martens2020}. The example queries auto-populate the SPARQL
+mirroring the usage of WikiPathways\cite{martens2020}. The PlantMetWiki deployment of the interface,
+together with the scripts that load the endpoint's named graphs, is released as versioned software
+and archived on Zenodo\cite{delpup2026snorql}. The example queries auto-populate the SPARQL
 Explorer and can be adapted by users directly on the webserver, or in a customizable GitHub repository
 (\url{https://github.com/pathway-lod/SPARQLQueries}). This repository stores queries in folders,
 allowing new users to navigate through our example queries panel with more ease and to generate
@@ -1249,6 +1251,20 @@ taxonomy-extra dataset's VoID metadata explicitly declares the OBO Foundry NCBIT
 making the provenance of all taxon IRIs machine-readable. The MIREOT extraction method and ROBOT
 tooling are documented in the dataset description, enabling reproducibility of the local SPARQL
 endpoint setup.
+
+The same endpoint-side mechanism publishes the data model itself. A dedicated
+\texttt{graph/vocabularies} named graph is loaded with the term definitions of every vocabulary
+PlantMetWiki uses or defines: the WikiPathways \texttt{wp:} and \texttt{gpml:} vocabularies, fetched
+from their canonical URLs at \url{https://vocabularies.wikipathways.org/}, the VoID vocabulary, and
+the PlantMetWiki vocabulary \texttt{pmw:}. The latter is version-controlled alongside the deployment
+scripts\cite{delpup2026snorql} and defines the six terms this resource introduces for information the
+WikiPathways vocabularies do not cover: \texttt{pmw:BiosyntheticGeneCluster} and
+\texttt{pmw:MemberIdentifier} for biosynthetic gene cluster membership, and
+\texttt{pmw:gpmlProperty}, \texttt{pmw:key}, \texttt{pmw:value} and \texttt{pmw:plantcycId} for the
+PlantCyc/GPML key--value property layer. Because these definitions are served from the same endpoint
+as the data they describe, any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term can be resolved in
+the same SPARQL query that retrieves the data, and the graph carries its own VoID record declaring
+its sources, vocabularies and provenance.
 
 The VoID metadata files describe the named graphs in the Virtuoso triple store as
 \texttt{void:Dataset} instances, and record dataset titles, versioning, triple counts, publisher,
