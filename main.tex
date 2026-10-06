@@ -382,8 +382,9 @@ representation &
 \addlinespace
 I2: (Meta)data use vocabularies that follow FAIR principles &
 Included vocabularies are based on OWL representations available on BioPortal (WikiPathways) and OBO
-Foundry (NCBITaxon ontology). The \texttt{wp:} and \texttt{gpml:} term definitions are additionally
-loaded into a dedicated vocabularies graph, so the schema is resolvable from the endpoint itself \\
+Foundry (NCBITaxon ontology). The \texttt{wp:} and \texttt{gpml:} term definitions, and the
+PlantMetWiki-specific \texttt{pmw:} vocabulary, are published in a dedicated vocabularies graph, so
+the full schema is resolvable from the endpoint itself \\
 \addlinespace
 I3: (Meta)data include qualified references to other (meta)data &
 Interactions between biological entities are described using the new GPML2021 schema, including
@@ -568,13 +569,17 @@ Dataset provenance, licensing information, versioning metadata, and download loc
 with VoID metadata records following the VoID Schema RDF vocabulary\cite{alexander2011}. These are
 available as a \texttt{void} graph (\url{http://rdf-plantmetwiki.bioinformatics.nl/void}) hosted in
 the Virtuoso database and accessible via the SPARQL endpoint. A further vocabularies graph (1,092
-triples) makes the data model itself self-describing at the endpoint: it holds the machine-readable
-definitions of the two WikiPathways vocabularies used throughout PlantMetWiki, organised as two SKOS
-concept schemes covering 125 terms (38 in \texttt{wp:} and 87 in \texttt{gpml:}). The terms are
-typed as OWL classes and properties and carry \texttt{rdfs:label}, textual definitions, and
+triples) makes the data model itself self-describing at the endpoint. It publishes the PlantMetWiki
+vocabulary (\texttt{pmw:}, version 1.0, CC0), which formally defines the six terms this resource
+introduces for information the WikiPathways vocabularies do not cover: biosynthetic gene cluster
+membership (\texttt{pmw:BiosyntheticGeneCluster}, \texttt{pmw:MemberIdentifier}) and the
+PlantCyc/GPML key--value property layer (\texttt{pmw:gpmlProperty}, \texttt{pmw:key},
+\texttt{pmw:value}, \texttt{pmw:plantcycId}). Alongside these it carries the two WikiPathways
+vocabularies as SKOS concept schemes, 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All terms
+are typed as OWL classes and properties and carry \texttt{rdfs:label}, textual definitions, and
 \texttt{rdfs:domain}/\texttt{rdfs:range} constraints. Because these definitions sit alongside the
-data, a client can resolve the meaning of any \texttt{wp:} or \texttt{gpml:} term in the same SPARQL
-query that retrieves the data, without consulting an external ontology service. All workflows used to generate the
+data, a client can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in
+the same SPARQL query that retrieves the data, without consulting an external ontology service. All workflows used to generate the
 resource are openly available and version-controlled, enabling reproducible regeneration and
 versioning from source data.
 
