@@ -67,6 +67,9 @@
 
 % Author-facing notes. Delete all \note occurrences before submission.
 \newcommand{\note}[1]{\textcolor{red}{\textbf{[NOTE: #1]}}}
+% Revisions of 6 October 2026, shown in red for review. To accept them all and
+% render in black, change this definition to:  \newcommand{\rev}[1]{#1}
+\newcommand{\rev}[1]{\textcolor{red}{#1}}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
@@ -181,22 +184,39 @@ JJJvdH. Email: \href{mailto:justin.vanderhooft@wur.nl}{justin.vanderhooft@wur.nl
 %==============================================================================
 \section*{Abstract}
 
-Plants produce a vast diversity of specialized metabolites with ecological,
-agro-industrial, and pharmaceutical applications. Discovering plant natural products relies on
-combining multi-omics evidence with biochemical transformations, yet pathway-level annotations
-remain fragmented across species, databases, and publications, limiting cross-species analyses
-and systematic hypothesis generation. To support integration and reuse of plant metabolic
-knowledge, we developed PlantMetWiki, a FAIR Linked Open Data knowledge graph built on
-infrastructure adapted from WikiPathways. It represents 1,162 plant metabolic pathways from the
-Plant Metabolic Network's PlantCyc 17.0 as Resource Description Framework (RDF) graphs,
-preserving pathway structure, literature provenance, and taxonomic information, and extends them
-with crosslinks to biosynthetic gene clusters (MIBiG and plantiSMASH) and mapped metabolite
-identifiers. Modelling pathways as a multispecies graph allows biosynthetic knowledge to be
-compared across taxa, connected to its genomic context, and queried alongside external chemical
-resources through federation, exposing metabolic, genomic, and chemical annotation gaps.
-PlantMetWiki is distributed through a public SPARQL endpoint with open-source, reproducible
-transformation and validation workflows, providing a foundation for FAIR reuse of plant pathway
-knowledge.
+% --- ORIGINAL (replaced 6 October 2026; uncomment to restore) ------------------------------
+% Plants produce a vast diversity of specialized metabolites with ecological,
+% agro-industrial, and pharmaceutical applications. Discovering plant natural products relies on
+% combining multi-omics evidence with biochemical transformations, yet pathway-level annotations
+% remain fragmented across species, databases, and publications, limiting cross-species analyses
+% and systematic hypothesis generation. To support integration and reuse of plant metabolic
+% knowledge, we developed PlantMetWiki, a FAIR Linked Open Data knowledge graph built on
+% infrastructure adapted from WikiPathways. It represents 1,162 plant metabolic pathways from the
+% Plant Metabolic Network's PlantCyc 17.0 as Resource Description Framework (RDF) graphs,
+% preserving pathway structure, literature provenance, and taxonomic information, and extends them
+% with crosslinks to biosynthetic gene clusters (MIBiG and plantiSMASH) and mapped metabolite
+% identifiers. Modelling pathways as a multispecies graph allows biosynthetic knowledge to be
+% compared across taxa, connected to its genomic context, and queried alongside external chemical
+% resources through federation, exposing metabolic, genomic, and chemical annotation gaps.
+% PlantMetWiki is distributed through a public SPARQL endpoint with open-source, reproducible
+% transformation and validation workflows, providing a foundation for FAIR reuse of plant pathway
+% knowledge.
+% --------------------------------------------------------------------------
+
+\rev{Plants produce a vast diversity of specialized metabolites with ecological, agro-industrial and
+pharmaceutical applications, yet pathway-level annotations remain fragmented across species,
+databases and publications, limiting cross-species analyses and systematic hypothesis generation.
+Ten years after the FAIR principles, the obstacle is not only that annotations are incomplete
+but that they are not machine-actionable or reproducibly derived. We present PlantMetWiki, a
+reproducible architecture that transforms heterogeneous plant pathway knowledge into a multispecies
+Linked Open Data resource. A versioned, open-source pipeline converts the Plant Metabolic Network's
+PlantCyc 17.0 into Resource Description Framework (RDF) on infrastructure adapted from WikiPathways,
+preserving pathway structure, literature provenance and taxonomic information, and enriches it with
+crosslinks to biosynthetic gene clusters (MIBiG and plantiSMASH) and mapped metabolite identifiers.
+The resulting graph of 1,162 pathways is served from a public SPARQL endpoint, with each layer
+independently versioned, licensed and citable. Three use cases demonstrate why these design choices
+matter: cross-species pathway comparison, integration with genomic context, and federated querying
+against external chemical resources, each exposing annotation gaps in plant metabolism.}
 
 %==============================================================================
 % INTRODUCTION -- restored in full from the preprint (no shortening).
@@ -299,13 +319,39 @@ BridgeDb\cite{slenter2018,vaniersel2010}, crosslinks to biosynthetic gene cluste
 MIBiG 4.0\cite{zdouc2025} and predicted clusters from plantiSMASH 2.0\cite{delpup2026}, and natural
 product chemistry through federated queries to Wikidata.
 
-PlantMetWiki enables users to (1) compare pathways across species, leveraging shared reactions,
-enzymes, substrates, and products, to identify annotation gaps, (2) explore connections between
-curated pathways and their genomic context, including predictions from plantiSMASH genome mining, and
-(3) calculate completeness between complementary data resources in the natural products space with
-federated queries. In this work, we describe the generation of PlantMetWiki, its FAIR (Findable,
-Accessible, Interoperable, and Reusable) data infrastructure, and example applications demonstrating
-cross-species pathway comparison and integration with plant natural product knowledge. By
+\rev{The FAIR principles were formulated ten years ago to make research data Findable, Accessible,
+Interoperable and Reusable for machines as well as for people\cite{wilkinson2016}. For plant
+metabolic pathways, Interoperability and Reusability remain the hardest to satisfy. Pathway
+knowledge is distributed across databases that each use their own identifiers, file formats and
+species scopes, so comparing a pathway between two species, or linking it to the genomic or chemical
+evidence that supports it, still requires manual reconciliation. The limitation is not only that
+annotations are incomplete, but that they are not machine-actionable: they cannot be queried across
+resources, and the transformations that produced them are rarely reproducible. Addressing this
+requires more than another pathway database. It requires a transformation architecture in which
+every step from source data to query endpoint is versioned, documented and repeatable, and in which
+the semantic model is published alongside the data it describes.}
+
+% --- ORIGINAL (replaced 6 October 2026; uncomment to restore) ------------------------------
+% PlantMetWiki enables users to (1) compare pathways across species, leveraging shared reactions,
+% enzymes, substrates, and products, to identify annotation gaps, (2) explore connections between
+% curated pathways and their genomic context, including predictions from plantiSMASH genome mining, and
+% (3) calculate completeness between complementary data resources in the natural products space with
+% federated queries. In this work, we describe the generation of PlantMetWiki, its FAIR (Findable,
+% Accessible, Interoperable, and Reusable) data infrastructure, and example applications demonstrating
+% cross-species pathway comparison and integration with plant natural product knowledge. By
+% --------------------------------------------------------------------------
+\rev{In this work we describe PlantMetWiki as a reproducible FAIR architecture for plant pathway
+knowledge: a versioned pipeline that converts PlantCyc flat files to GPML2021, transforms them to
+RDF, enriches them with taxonomic and property layers, crosslinks them to biosynthetic gene
+clusters, and deploys them to a public SPARQL endpoint, with every stage archived and citable. We
+then demonstrate why these design decisions matter through three use cases, each of which depends on
+a specific one: (1) comparing pathways across species through shared reactions, enzymes, substrates
+and products to identify annotation gaps, which depends on taxon-resolved multispecies modelling;
+(2) connecting curated pathways to their genomic context, including plantiSMASH predictions, which
+depends on qualified crosslinks between separable named graphs; and (3) quantifying completeness
+against complementary resources through federated queries, which depends on interoperable chemical
+identifiers.}
+By
 representing pathways as a multispecies semantic graph with (gene, metabolite, and taxa) identifier
 mapping and RDF-based data models available for querying, PlantMetWiki connects pathway information
 to complementary biological, taxonomic, and chemical knowledge available across the LOD ecosystem and
@@ -335,7 +381,11 @@ plantiSMASH), and federated queries. PlantMetWiki supports the FAIR principles b
 semantic representations, including standard ontologies, machine-readable metadata, and public data
 access mechanisms, described in more detail in Table~\ref{tab:fair}.
 
-\begin{longtable}{p{0.44\textwidth} p{0.50\textwidth}}
+% --- ORIGINAL (replaced 6 October 2026; uncomment to restore) ---------------------
+% \begin{longtable}{p{0.44\textwidth} p{0.50\textwidth}}
+% --------------------------------------------------------------------------
+{\footnotesize
+\begin{longtable}{p{0.36\textwidth} p{0.56\textwidth}}
 \caption{Adaptation of the FAIR principles in the PlantMetWiki resource.}
 \label{tab:fair}\\
 \toprule
@@ -351,16 +401,21 @@ access mechanisms, described in more detail in Table~\ref{tab:fair}.
 F1: (Meta)data are assigned globally unique and persistent identifiers &
 (1) Uniform Resource Identifiers (URIs) resource identifiers for all data elements;
 (2) Resolvable Uniform Resource Locators (URLs) for publications and metabolites for all species;
-(3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana} \\
+(3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana}
+\rev{Demonstrated by the metabolite cross-reference coverage in Fig.~\ref{fig:bridgedb}.} \\
 \addlinespace
 F2: Data are described with rich metadata (defined by R1 below) &
-RDF model is supported with VoID header file, including license and provenance information. \\
+RDF model is supported with VoID header file, including license and provenance information.
+\rev{Demonstrated by the per-graph metadata in Table~\ref{tab:graphs}.} \\
 \addlinespace
 F3: Metadata clearly and explicitly include the identifier of the data they describe &
 Identifier, version, and location of releases from PlantCyc, plantiSMASH, MIBiG, NCBI ontology, and
-BridgeDb metabolite mapping files are available in the VoID header file. \\
+BridgeDb metabolite mapping files are available in the VoID header file.
+\rev{Demonstrated by Table~\ref{tab:graphs}, which resolves each graph to the release that produced
+it.} \\
 \addlinespace
-F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint \\
+F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint
+\rev{Every query reported in this work is executed against the endpoint.} \\
 \addlinespace
 A1: (Meta)data are retrievable by their identifier using a standardized communications protocol.
 A1.1 The protocol is open, free, and universally implementable.
@@ -369,26 +424,33 @@ A1.2 The protocol allows for an authentication and authorization procedure, wher
 (2) SPARQL documentation is open, free, and universally implementable, enhanced with a dedicated
 tutorial;
 (3) Authentication and authorization can be implemented, however not necessary due to the nature of
-our data \\
+our data
+\rev{Demonstrated by the tutorial queries that reproduce Figs~\ref{fig:matrix}--\ref{fig:wikidata}.} \\
 \addlinespace
 A2: Metadata are accessible, even when the data are no longer available &
 (1) All data accessible via the SPARQL endpoint are archived on Zenodo;
-(2) The software to create the data is available on GitHub \\
+(2) The software to create the data is available on GitHub
+\rev{Demonstrated by the Zenodo deposits listed under Data availability.} \\
 \addlinespace
 I1: (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge
 representation &
 (1) Framework is based on 10+ years RDF model from WikiPathways;
-(2) VoID header file follows the Dublin Core Schema \\
+(2) VoID header file follows the Dublin Core Schema
+\rev{Demonstrated by the core graph model in Fig.~\ref{fig:model}.} \\
 \addlinespace
 I2: (Meta)data use vocabularies that follow FAIR principles &
 Included vocabularies are based on OWL representations available on BioPortal (WikiPathways) and OBO
 Foundry (NCBITaxon ontology). The \texttt{wp:} and \texttt{gpml:} term definitions, and the
 PlantMetWiki-specific \texttt{pmw:} vocabulary, are published in a dedicated vocabularies graph, so
-the full schema is resolvable from the endpoint itself \\
+the full schema is resolvable from the endpoint itself
+\rev{Demonstrated by the vocabularies graph (Table~\ref{tab:graphs}), which lets a client resolve
+any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in the same query as the data.} \\
 \addlinespace
 I3: (Meta)data include qualified references to other (meta)data &
 Interactions between biological entities are described using the new GPML2021 schema, including
-detailed biological interactions compatible with cross-references \\
+detailed biological interactions compatible with cross-references
+\rev{Demonstrated by Fig.~\ref{fig:capsaicin}, where capsaicin biosynthesis is assembled across the
+pathway, taxonomy and BGC graphs, and by the BGC convergence on PC721 (Fig.~S9).} \\
 \addlinespace
 R1: (Meta)data are richly described with a plurality of accurate and relevant attributes.
 R1.1 (Meta)data are released with a clear and accessible data usage license.
@@ -398,10 +460,16 @@ R1.3 (Meta)data meet domain-relevant community standards &
 (2) License and provenance of data and software are included in the SNORQL UI banner, to support user
 awareness;
 (3) GPML and BridgeDb are recognized resources in FAIRSharing, on which the PlantMetWiki tool is
-built \\
+built
+\rev{Demonstrated by the per-graph licences and versions in Table~\ref{tab:graphs}.} \\
 \end{longtable}
+}
 
 \subsection*{Building a cross-species semantic model and expandable RDF framework for plant specialized metabolism}
+
+\rev{The first design decision is to preserve PlantCyc's pathway structure in an established pathway
+schema rather than a bespoke model, so that the resulting RDF is interoperable with the existing
+WikiPathways ecosystem.}
 
 The PlantMetWiki open-source web interface is the result of six co-designed and jointly operating
 repositories hosted in the GitHub Pathway-LOD community (see Code availability statement) that
@@ -657,7 +725,14 @@ locations for every content graph &
 
 
 
-\subsection*{Multispecies pathway modelling enables comparative cross-species pathway analysis and annotation prioritization}
+% --- ORIGINAL (replaced 6 October 2026; uncomment to restore) ---------------------
+% \subsection*{Multispecies pathway modelling enables comparative cross-species pathway analysis and annotation prioritization}
+% --------------------------------------------------------------------------
+\subsection*{\rev{Taxon-resolved multispecies modelling enables cross-species comparison and annotation prioritization}}
+
+\rev{The analyses below test the second design decision: representing each pathway as a single
+multispecies graph in which species are first-class, taxon-resolved annotations rather than separate
+per-species copies.}
 
 A central feature of PlantMetWiki is the representation of pathways as multispecies semantic graphs
 in which genes, enzymes, reactions, metabolites, and taxonomic annotations can be queried together.
@@ -813,6 +888,10 @@ reference species in PlantMetWiki, cross-species inference in this resource is n
 a model-plant reference and draws on a broad repertoire of annotated taxa.
 
 \subsection*{Connecting plant metabolism to the Linked Open Data ecosystem through mapping and federation}
+
+\rev{The third design decision, mapping metabolites onto interoperable chemical identifiers, is what
+allows the resource to be queried alongside the wider Linked Open Data ecosystem; the following
+analyses test how far that reach extends.}
 
 The PlantMetWiki SPARQL endpoint positions the resource as a key tool in the LOD ecosystem through
 two complementary strategies: direct cross-resource identifier mapping (via BridgeDb), which
@@ -1697,6 +1776,11 @@ Slenter, D. N. \textit{et al.} WikiPathways: a multifaceted pathway database bri
 
 \bibitem{vaniersel2010}
 van Iersel, M. P. \textit{et al.} The BridgeDb framework: standardized access to gene, protein and metabolite identifier mapping services. \textit{BMC Bioinformatics} \textbf{11}, 5 (2010). \url{https://doi.org/10.1186/1471-2105-11-5}
+
+\bibitem{wilkinson2016}
+Wilkinson, M. D. \textit{et al.} The FAIR Guiding Principles for scientific data management and
+stewardship. \textit{Sci. Data} \textbf{3}, 160018 (2016).
+\url{https://doi.org/10.1038/sdata.2016.18}
 
 \bibitem{wolters2024}
 Wolters, F. C. \textit{et al.} Pairing omics to decode the diversity of plant specialized metabolism. \textit{Curr. Opin. Plant Biol.} \textbf{82}, 102657 (2024). \url{https://doi.org/10.1016/j.pbi.2024.102657}
