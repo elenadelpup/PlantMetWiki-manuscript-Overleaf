@@ -383,21 +383,21 @@ access mechanisms, described in more detail in Table~\ref{tab:fair}.
 F1: (Meta)data are assigned globally unique and persistent identifiers &
 (1) Uniform Resource Identifiers (URIs) resource identifiers for all data elements;
 (2) Resolvable Uniform Resource Locators (URLs) for publications and metabolites for all species;
-(3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana}
-\rev{Demonstrated by the metabolite cross-reference coverage in Fig.~\ref{fig:bridgedb}.} \\
+(3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana}.
+\rev{See the metabolite cross-reference coverage in Fig.~\ref{fig:bridgedb}.} \\
 \addlinespace
 F2: Data are described with rich metadata (defined by R1 below) &
 RDF model is supported with VoID header file, including license and provenance information.
-\rev{Demonstrated by the per-graph metadata in Table~\ref{tab:graphs}.} \\
+\rev{See the per-graph metadata in Table~\ref{tab:graphs}.} \\
 \addlinespace
 F3: Metadata clearly and explicitly include the identifier of the data they describe &
 Identifier, version, and location of releases from PlantCyc, plantiSMASH, MIBiG, NCBI ontology, and
 BridgeDb metabolite mapping files are available in the VoID header file.
-\rev{Demonstrated by Table~\ref{tab:graphs}, which resolves each graph to the release that produced
+\rev{See Table~\ref{tab:graphs}, which resolves each graph to the release that produced
 it.} \\
 \addlinespace
-F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint
-\rev{Every query reported in this work is executed against the endpoint.} \\
+F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint.
+\rev{See the queries reported throughout this work, all of which are run against this endpoint.} \\
 \addlinespace
 A1: (Meta)data are retrievable by their identifier using a standardized communications protocol.
 A1.1 The protocol is open, free, and universally implementable.
@@ -406,33 +406,33 @@ A1.2 The protocol allows for an authentication and authorization procedure, wher
 (2) SPARQL documentation is open, free, and universally implementable, enhanced with a dedicated
 tutorial;
 (3) Authentication and authorization can be implemented, however not necessary due to the nature of
-our data
-\rev{Demonstrated by the tutorial queries that reproduce Figs~\ref{fig:matrix}--\ref{fig:wikidata}.} \\
+our data.
+\rev{See the tutorial queries that reproduce Figs~\ref{fig:matrix}--\ref{fig:wikidata}.} \\
 \addlinespace
 A2: Metadata are accessible, even when the data are no longer available &
 (1) All data accessible via the SPARQL endpoint are archived on Zenodo;
-(2) The software to create the data is available on GitHub
-\rev{Demonstrated by the Zenodo deposits listed under Data availability.} \\
+(2) The software to create the data is available on GitHub.
+\rev{See the Zenodo deposits listed under Data availability.} \\
 \addlinespace
 I1: (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge
 representation &
 (1) Framework is based on 10+ years RDF model from WikiPathways;
-(2) VoID header file follows the Dublin Core Schema
-\rev{Demonstrated by the core graph model in Fig.~\ref{fig:model}.} \\
+(2) VoID header file follows the Dublin Core Schema.
+\rev{See the core graph model in Fig.~\ref{fig:model}.} \\
 \addlinespace
 I2: (Meta)data use vocabularies that follow FAIR principles &
 Included vocabularies are based on OWL representations available on BioPortal (WikiPathways) and OBO
 Foundry (NCBITaxon ontology). The \texttt{wp:} and \texttt{gpml:} term definitions, and the
 PlantMetWiki-specific \texttt{pmw:} vocabulary, are published in a dedicated vocabularies graph, so
-the full schema is resolvable from the endpoint itself
-\rev{Demonstrated by the vocabularies graph (Table~\ref{tab:graphs}), which lets a client resolve
+the full schema is resolvable from the endpoint itself.
+\rev{See the vocabularies graph (Table~\ref{tab:graphs}), which lets a client resolve
 any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in the same query as the data.} \\
 \addlinespace
 I3: (Meta)data include qualified references to other (meta)data &
 Interactions between biological entities are described using the new GPML2021 schema, including
-detailed biological interactions compatible with cross-references
-\rev{Demonstrated by Fig.~\ref{fig:capsaicin}, where capsaicin biosynthesis is assembled across the
-pathway, taxonomy and BGC graphs, and by the BGC convergence on PC721 (Fig.~S9).} \\
+detailed biological interactions compatible with cross-references.
+\rev{See Fig.~\ref{fig:capsaicin}, where capsaicin biosynthesis is assembled across the
+pathway, taxonomy and BGC graphs, and the BGC convergence on PC721 (Fig.~S9).} \\
 \addlinespace
 R1: (Meta)data are richly described with a plurality of accurate and relevant attributes.
 R1.1 (Meta)data are released with a clear and accessible data usage license.
@@ -442,8 +442,8 @@ R1.3 (Meta)data meet domain-relevant community standards &
 (2) License and provenance of data and software are included in the SNORQL UI banner, to support user
 awareness;
 (3) GPML and BridgeDb are recognized resources in FAIRSharing, on which the PlantMetWiki tool is
-built
-\rev{Demonstrated by the per-graph licences and versions in Table~\ref{tab:graphs}.} \\
+built.
+\rev{See the per-graph licences and versions in Table~\ref{tab:graphs}.} \\
 \end{longtable}
 }
 
