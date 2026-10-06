@@ -1099,7 +1099,8 @@ using a custom open-source data extraction workflow (see Data availability). Dat
 bottom-up, starting from each pathway record. For each pathway, constituent reactions, metabolites,
 proteins, genes, enzyme complexes, regulatory interactions, and literature references are retrieved
 and represented in GPML with the custom Cyc2Wiki pipeline
-(\url{https://github.com/pathway-lod/Cyc_to_wiki}). Reactions present in PlantCyc but not assigned to
+(\url{https://github.com/pathway-lod/Cyc_to_wiki}), archived as versioned
+software\cite{delpup2026cyc2wiki}. Reactions present in PlantCyc but not assigned to
 a pathway were exported as standalone reaction representations to preserve the coverage of all
 biochemical transformations. The resulting GPML files constitute the foundation of the PlantMetWiki
 knowledge graph and provide a reproducible intermediate format for downstream semantic conversion. The
@@ -1154,7 +1155,8 @@ file converted independently. The converter produces two representations per fil
 the raw GPML structure, including all the PlantCyc-derived information. All Internationalized Resource
 Identifiers (IRIs) use the base domain \texttt{rdf-plantmetwiki.bioinformatics.nl}, generating pathway
 IRIs of the form \texttt{http://rdf-plantmetwiki.bioinformatics.nl/pathways/PC\{N\}\_r\{version\}}.
-BridgeDb (build 20260102; derived from HMDB, ChEBI, and Wikidata) metabolite identifier mapping adds
+BridgeDb (build 20260102; derived from HMDB, ChEBI, and Wikidata\cite{bridgedb2026db}) metabolite
+identifier mapping adds
 independent information via \texttt{wp:bdb*} predicates (\texttt{wp:bdbChEBI}, \texttt{wp:bdbHmdb},
 \texttt{wp:bdbWikidata}, \texttt{wp:bdbPubChem}, \texttt{wp:bdbInChIKey},
 \texttt{wp:bdbKeggCompound}, \texttt{wp:bdbLipidMaps}, \texttt{wp:bdbChemspider}). The
@@ -1183,7 +1185,8 @@ RDF validation is performed at three levels using RDFlib (\url{https://github.co
 checks on the aggregated taxonomy and properties bundles for required predicates and minimum triple
 counts; and (3) pattern scanning of the large core graph bundle and full parsing of the VoID file,
 verifying that at least four \texttt{void:Dataset} instances are present. The complete RDF dataset is
-uploaded to the PlantMetWiki community on Zenodo via the Zenodo API, with metadata and license
+uploaded to the PlantMetWiki community on Zenodo as a versioned, citable
+release\cite{delpup2026rdf} via the Zenodo API, with metadata and license
 information derived from the VoID header. The resulting RDF is structured as four named graphs: (1)
 core pathways, representing the pathway model for all 1,162 PlantCyc pathways; (2) core reactions,
 containing the model for all 1,316 individual PlantCyc-derived reactions; (3) taxonomy extra,
@@ -1194,7 +1197,8 @@ identifiers, stable pathway Uniform Resource Identifiers (URIs), and key--value 
 \subsection*{Extending pathway knowledge with crosslinks to biosynthetic gene clusters}
 The PlantCyc-derived pathway RDF is extended with crosslinks to two BGC databases: MIBiG (curated
 BGCs)\cite{zdouc2025} and plantiSMASH 2.0 (predicted plant BGCs)\cite{delpup2026}, with a custom
-open-source pipeline (see Data availability). BGC gene cluster membership data from both sources was
+open-source pipeline (see Data availability). The resulting crosslink dataset is archived and
+versioned on Zenodo\cite{delpup2026bgc}. BGC gene cluster membership data from both sources was
 converted to RDF Turtle format following a BGC-first data model. Each cluster is represented as a
 \texttt{pmw:BiosyntheticGeneCluster} resource with its constituent genes linked via the OBO Relations
 Ontology predicate RO:0000051 (\texttt{has\_part}). The \texttt{dcterms:source} predicates record
@@ -1290,9 +1294,15 @@ Virtuoso.
 %==============================================================================
 \section*{Data availability}
 
-All relevant data are deposited and versioned in Zenodo at
-\url{https://zenodo.org/communities/plantmetwiki/}, including relevant license and copyright
-information. Tutorial pages are available at \url{https://pathway-lod.github.io/SPARQLTutorials/}.
+All relevant data are deposited and versioned in the PlantMetWiki community on Zenodo
+(\url{https://zenodo.org/communities/plantmetwiki/}), including relevant license and copyright
+information. The core knowledge graph is released as PlantMetWiki RDF v3.3\cite{delpup2026rdf},
+containing the core pathway bundle (\texttt{all-plantcyc17.0.0-gpml2021-v3.2.ttl.gz}), the GPML
+property layer (\texttt{all\_gpml\_properties\_extra-plantcyc17.0.0-gpml2021-v3.ttl.gz}), the
+taxonomy layer (\texttt{all\_gpml\_taxonomy\_extra-plantcyc17.0.0-gpml2021-v3.ttl.gz}) and the VoID
+metadata file. The biosynthetic gene cluster crosslinks are released separately as PlantMetWiki BGC
+crosslinks bgc-v1.0.2\cite{delpup2026bgc}. The BridgeDb metabolite identifier-mapping database used
+to materialise metabolite cross-references is archived on Figshare\cite{bridgedb2026db}. Tutorial pages are available at \url{https://pathway-lod.github.io/SPARQLTutorials/}.
 Jupyter notebooks containing the steps to reproducibly generate the figures are available on GitHub
 at \url{https://github.com/pathway-lod/gpml-to-rdf/tree/main/notebooks}. PlantMetWiki is listed on
 bio.tools at \url{https://bio.tools/plantmetwiki}. Further project metadata is available on the
@@ -1507,7 +1517,10 @@ is in Supplementary Table S7.}
 \section*{Code availability}
 
 All relevant code to this manuscript is deposited in GitHub at \url{https://github.com/pathway-lod}
-and deposited in versioned releases in Zenodo at \url{https://zenodo.org/communities/plantmetwiki/}.
+and in versioned releases in the PlantMetWiki community on Zenodo
+(\url{https://zenodo.org/communities/plantmetwiki/}). The two principal components are archived as
+citable software: the PlantCyc-to-GPML2021 conversion pipeline\cite{delpup2026cyc2wiki} and the
+SNORQL user interface together with the endpoint loading scripts\cite{delpup2026snorql}.
 
 %==============================================================================
 % REFERENCES
