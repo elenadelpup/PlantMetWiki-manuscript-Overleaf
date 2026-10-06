@@ -385,9 +385,26 @@ access mechanisms, described in more detail in Table~\ref{tab:fair}.
 \bottomrule
 \endfoot
 F1: (Meta)data are assigned globally unique and persistent identifiers &
-(1) Uniform Resource Identifiers (URIs) resource identifiers for all data elements;
-(2) Resolvable Uniform Resource Locators (URLs) for publications and metabolites for all species;
-(3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana}.
+% --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
+% (1) Uniform Resource Identifiers (URIs) resource identifiers for all data elements;
+% (2) Resolvable Uniform Resource Locators (URLs) for publications and metabolites for all species;
+% (3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana}.
+% --------------------------------------------------------------------------
+\rev{(1) \textit{Globally unique identifiers}: every pathway, reaction, node and annotation is named
+by an Internationalized Resource Identifier (IRI) minted in a single controlled namespace under
+\texttt{rdf-\allowbreak{}plantmetwiki.\allowbreak{}bioinformatics.\allowbreak{}nl}; (2)
+\textit{Persistence}: persistence is carried by registered identifier schemes rather than by the
+host domain, with each release archived under a version-independent Zenodo concept DOI that resolves
+to the latest version alongside a DOI for every individual version, and taxon terms named by OBO
+Foundry PURLs
+(\texttt{http://\allowbreak{}purl.\allowbreak{}obolibrary.\allowbreak{}org/\allowbreak{}obo/\allowbreak{}NCBITaxon\_\allowbreak{}<id>});
+(3) \textit{External identifiers}: genes, proteins and metabolites are mapped by BridgeDb onto
+community identifier schemes expressed as \texttt{identifiers.\allowbreak{}org} IRIs, and
+metabolites additionally carry InChIKeys as structure-derived identifiers; (4) \textit{Resolution}:
+resolvability is an access mechanism layered on the above, not a substitute for it. Pathway IRIs
+dereference over HTTP with content negotiation, returning RDF to clients requesting
+\texttt{text/turtle} and HTML to browsers, and \texttt{foaf:page} links point to the corresponding
+PlantCyc entry.}
 \rev{See the metabolite cross-reference coverage in Fig.~\ref{fig:bridgedb}.} \\
 \addlinespace
 F2: Data are described with rich metadata (defined by R1 below) &
@@ -400,7 +417,14 @@ BridgeDb metabolite mapping files are available in the VoID header file.
 \rev{See Table~\ref{tab:graphs}, which resolves each graph to the release that produced
 it.} \\
 \addlinespace
-F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint.
+% --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
+% F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint.
+% --------------------------------------------------------------------------
+F4: (Meta)data are registered or indexed in a searchable resource & \rev{Indexed in community
+registries rather than only queryable: the resource is registered on bio.tools and its project
+metadata is published as a nanopublication space under a \texttt{w3id.\allowbreak{}org} identifier,
+while GPML and BridgeDb, on which PlantMetWiki is built, are registered in FAIRsharing. Content is
+in addition directly searchable through the public SPARQL endpoint.}
 \rev{See the queries reported throughout this work, all of which are run against this endpoint.} \\
 \addlinespace
 A1: (Meta)data are retrievable by their identifier using a standardized communications protocol.
@@ -420,8 +444,16 @@ A2: Metadata are accessible, even when the data are no longer available &
 \addlinespace
 I1: (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge
 representation &
-(1) Framework is based on 10+ years RDF model from WikiPathways;
-(2) VoID header file follows the Dublin Core Schema.
+% --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
+% (1) Framework is based on 10+ years RDF model from WikiPathways;
+% (2) VoID header file follows the Dublin Core Schema.
+% --------------------------------------------------------------------------
+\rev{(1) RDF is the knowledge representation language, using the WikiPathways RDF model developed
+and maintained over more than ten years; (2) classes and properties are defined in OWL, and the
+\texttt{wp:} and \texttt{gpml:} term sets are additionally published as SKOS concept schemes; (3)
+dataset-level metadata uses VoID with Dublin Core terms, and provenance uses PROV-O. RDF, OWL, SKOS
+and PROV-O are W3C Recommendations; VoID is a W3C Interest Group Note and Dublin Core Terms a DCMI
+standard, all with openly available specifications.}
 \rev{See the core graph model in Fig.~\ref{fig:model}.} \\
 \addlinespace
 I2: (Meta)data use vocabularies that follow FAIR principles &
@@ -433,8 +465,16 @@ the full schema is resolvable from the endpoint itself.
 any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in the same query as the data.} \\
 \addlinespace
 I3: (Meta)data include qualified references to other (meta)data &
-Interactions between biological entities are described using the new GPML2021 schema, including
-detailed biological interactions compatible with cross-references.
+% --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
+% Interactions between biological entities are described using the new GPML2021 schema, including
+% detailed biological interactions compatible with cross-references.
+% --------------------------------------------------------------------------
+\rev{References to external data are typed rather than implicit: interactions between biological
+entities use the GPML2021 schema, which distinguishes conversion from catalysis and other
+interaction types; organisms are linked to NCBITaxon terms; metabolites, genes and proteins carry
+BridgeDb-materialised cross-references to HMDB, ChEBI and Wikidata; biosynthetic gene clusters are
+linked to MIBiG and plantiSMASH records through dedicated \texttt{pmw:} terms; and each pathway carries a
+\texttt{foaf:page} link to its PlantCyc entry and PubMed identifiers for its supporting literature.}
 \rev{See Fig.~\ref{fig:capsaicin}, where capsaicin biosynthesis is assembled across the
 pathway, taxonomy and BGC graphs, and the BGC convergence on PC721 (Fig.~S9).} \\
 \addlinespace
