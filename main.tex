@@ -1144,7 +1144,8 @@ every commit (\url{https://github.com/PathVisio/GPML/blob/master/GPML2021/GPML20
 RDF conversion of the GPML files was performed using the gpml2rdf Java tool (v4.0.4,
 \texttt{org.wikipathways.wp2rdf.CreateRDF}), which implements the WikiPathways RDF model and uses
 libGPML v4.0.4\cite{pico2025} for GPML parsing. The full pipeline is available at
-\url{https://github.com/pathway-lod/gpml-to-rdf}. Before conversion, each GPML file is assigned a
+\url{https://github.com/pathway-lod/gpml-to-rdf} and archived as versioned
+software\cite{delpup2026gpml2rdf}. Before conversion, each GPML file is assigned a
 stable numeric identifier (PC1--PC1162 for pathways; RC1--RC1316 for reactions) using Groovy renaming
 scripts, decoupling the RDF identifiers from the PlantCyc pathway IDs while preserving the original
 identifiers as properties inside the graph.
@@ -1518,9 +1519,11 @@ is in Supplementary Table S7.}
 
 All relevant code to this manuscript is deposited in GitHub at \url{https://github.com/pathway-lod}
 and in versioned releases in the PlantMetWiki community on Zenodo
-(\url{https://zenodo.org/communities/plantmetwiki/}). The two principal components are archived as
-citable software: the PlantCyc-to-GPML2021 conversion pipeline\cite{delpup2026cyc2wiki} and the
-SNORQL user interface together with the endpoint loading scripts\cite{delpup2026snorql}.
+(\url{https://zenodo.org/communities/plantmetwiki/}). The three principal components are archived as
+citable software, one per stage of the pipeline: the PlantCyc-to-GPML2021 conversion
+pipeline\cite{delpup2026cyc2wiki}, the GPML-to-RDF conversion and semantic enrichment
+layer\cite{delpup2026gpml2rdf}, and the SNORQL user interface together with the endpoint loading
+scripts\cite{delpup2026snorql}.
 
 %==============================================================================
 % REFERENCES
