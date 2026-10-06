@@ -78,15 +78,13 @@ unique biochemical conversions across 1,162 curated pathways from 424 plant spec
 leverages a novel approach to model multispecies pathways by adapting the existing WikiPathways
 infrastructure (Agrawal et al., 2024; doi:10.1093/nar/gkad960).
 
-In the manuscript we describe how we implemented each of the FAIR principles, and not only followed
-them in spirit: persistent identifiers for all data elements, VoID and PROV-O provenance for every
+In the manuscript we describe how we implemented each of the FAIR principles, including persistent identifiers for all data elements, VoID and PROV-O provenance for every
 named graph, the vocabularies we use and define published alongside the data so that the model can
 be resolved from the endpoint itself, and versioned Zenodo releases for each step of the pipeline.
-We also show interoperability in use. Federated queries to Wikidata (Waagmeester et al., 2020;
-doi:10.7554/eLife.52614) identify 421 metabolites for which no structurally related entry exists
-there, and identifier mapping with BridgeDb materializes cross-references for 3,198 of the 4,577
+We also show interoperability via federated queries to Wikidata (Waagmeester et al., 2020;
+doi:10.7554/eLife.52614), which led to identifying 421 metabolites without any structurally related entry. Identifier mapping with BridgeDb materializes cross-references for 3,198 of the 4,577
 metabolites (70\%), raising ChEBI coverage from 174 to 2,805 metabolites and PubChem from 75 to
-2,926. Using the same graph we also quantify what is still missing, by classifying 29,061
+2,926. Using PlantMetWiki we also quantify the potential of translating knowledge across across species, by classifying 29,061
 species--reaction combinations into annotated, inferable, and non-inferable annotation gaps.
 
 PlantMetWiki is available in Semantic Web format and can be accessed via a dedicated SPARQL endpoint
@@ -94,18 +92,17 @@ for programmatic access, and via the SNORQL user interface with prewritten SPARQ
 pathway information in the knowledge graph and combine it with user data, such as (multi-)omics
 datasets, phenotypes, and predicted pathways. The results can be downloaded as CSV, JSON, or XML for
 further visualization of pathway annotations, hypothesis generation, and natural product discovery.
-Our webserver can be easily extended with information in external resources such as Wikidata and
-LOTUS (Rutz et al., 2022; doi:10.7554/eLife.70780). Our approach enables the generation of
+Our approach enables the generation of
 hypotheses from plant metabolism to other research areas, including biomarker discovery,
 toxicology, precision nutrition, and forensic (wildlife) sciences.
 
 Our conversion workflow operates on standard BioCyc flat-file exports, so the same steps can be
-reused for MetaCyc and other BioCyc organism databases. We anticipate that PlantMetWiki will support
+reused for MetaCyc and other BioCyc databases featuring other kingdoms than plants. We anticipate that PlantMetWiki will support
 collaborative curation and hypothesis generation in plant biosynthesis by leveraging linked data,
 thereby advancing the discovery and characterization of plant natural products.
 
 \vspace{1em}
-On behalf of the PlantMetWiki developer team,
+On behalf of the PlantMetWiki coauthors,
 
 \vspace{0.5em}
 Elena Del Pup, Max Muller, Marvin Martens, Egon Willighagen, Marnix H. Medema,
