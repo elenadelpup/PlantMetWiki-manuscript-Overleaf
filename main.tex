@@ -382,7 +382,8 @@ representation &
 \addlinespace
 I2: (Meta)data use vocabularies that follow FAIR principles &
 Included vocabularies are based on OWL representations available on BioPortal (WikiPathways) and OBO
-Foundry (NCBITaxon ontology) \\
+Foundry (NCBITaxon ontology). The \texttt{wp:} and \texttt{gpml:} term definitions are additionally
+loaded into a dedicated vocabularies graph, so the schema is resolvable from the endpoint itself \\
 \addlinespace
 I3: (Meta)data include qualified references to other (meta)data &
 Interactions between biological entities are described using the new GPML2021 schema, including
@@ -554,7 +555,7 @@ plantiSMASH and two MIBiG) through 4 shared genes (Fig.~S9) out of 23 genes in t
 PlantCyc pathway.
 
 The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-graph Virtuoso
-triplestore including seven named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
+triplestore including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
 layer of the data model (Supplementary Table S6). The core graph (3,847,644 triples) encodes 2,758
 gene products, 3,750 enzymes, 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927
 are biochemical conversions and 12,359 are catalytic links. Pathway content is supported by 4,085
@@ -566,7 +567,14 @@ PlantMetWiki as an expandable framework for pathway modelling beyond the WikiPat
 Dataset provenance, licensing information, versioning metadata, and download locations are described
 with VoID metadata records following the VoID Schema RDF vocabulary\cite{alexander2011}. These are
 available as a \texttt{void} graph (\url{http://rdf-plantmetwiki.bioinformatics.nl/void}) hosted in
-the Virtuoso database and accessible via the SPARQL endpoint. All workflows used to generate the
+the Virtuoso database and accessible via the SPARQL endpoint. A further vocabularies graph (1,092
+triples) makes the data model itself self-describing at the endpoint: it holds the machine-readable
+definitions of the two WikiPathways vocabularies used throughout PlantMetWiki, organised as two SKOS
+concept schemes covering 125 terms (38 in \texttt{wp:} and 87 in \texttt{gpml:}). The terms are
+typed as OWL classes and properties and carry \texttt{rdfs:label}, textual definitions, and
+\texttt{rdfs:domain}/\texttt{rdfs:range} constraints. Because these definitions sit alongside the
+data, a client can resolve the meaning of any \texttt{wp:} or \texttt{gpml:} term in the same SPARQL
+query that retrieves the data, without consulting an external ontology service. All workflows used to generate the
 resource are openly available and version-controlled, enabling reproducible regeneration and
 versioning from source data.
 
@@ -1345,9 +1353,10 @@ and reaction files; a post-build validator confirms GPML2021 XSD compliance; the
 generates three named graphs; and the BGC "map-to-RDF" pipeline links BGC gene nodes to pathway
 enzymes. \textbf{(3) Metadata creation} (red): a VoID RDF Schema vocabulary captures the metadata of
 all RDF datasets, in three stages (core RDF conversion, BGC crosslink mapping, NCBI Taxonomy
-subsetting). \textbf{(4) Virtuoso triplestore} (green): seven named graphs holding the core
+subsetting). \textbf{(4) Virtuoso triplestore} (green): eight named graphs holding the core
 WikiPathways RDF, entity-level species annotations, PlantCyc-specific properties, the BGC crosslinks,
-the NCBITaxon lineage subset, and the VoID metadata. \textbf{(5) Access and results} (purple): a
+the NCBITaxon lineage subset, the VoID metadata, and the \texttt{wp:}/\texttt{gpml:} vocabulary
+definitions. \textbf{(5) Access and results} (purple): a
 public SPARQL endpoint and SNORQL UI allow direct querying of the named graphs, supported by a
 tutorial, documentation and example queries; Jupyter notebooks reproduce the figures, the
 cross-species inference analyses, and the federated queries to external endpoints such as Wikidata.
