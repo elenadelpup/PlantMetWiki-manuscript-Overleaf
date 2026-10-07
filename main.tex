@@ -1037,8 +1037,9 @@ undefined in the PlantMetWiki/PlantCyc record but are fully specified in the Wik
 (Supplementary Table S7). The apparent absence is therefore not missing chemistry but a difference in
 the completeness of stereochemical annotation between a pathway-centric source (PlantCyc) and a
 compound-centric one (PubChem/Wikidata). The remaining 421 metabolites (34.1\% of the unmatched set;
-10.2\% of all InChIKey-annotated metabolites) have no skeleton-level match, indicating that Wikidata
-contains no structurally related representation and marking them as the strongest candidates for
+10.2\% of all InChIKey-annotated metabolites) have no skeleton-level match, indicating that
+no structurally related Wikidata representation was identified using the skeleton-level comparison applied,
+marking them as the strongest candidates for
 genuinely novel contributions to the LOD ecosystem (Figure~\ref{fig:wikidata}A,C; Supplementary Table
 S7).
 
@@ -1071,7 +1072,8 @@ resource rich in lineage-specific plant specialized compounds.
 These results demonstrate that the relationship between PlantMetWiki and Wikidata is bidirectional.
 Wikidata enriches PlantMetWiki with biological-role, taxonomic, pharmacological, and toxicological
 information, while PlantMetWiki contributes pathway context and at least 421 largely specialized
-metabolites for which no structurally related representation currently exists in Wikidata. Beyond
+metabolites for which no structurally related Wikidata representation was identified using
+the skeleton-level comparison applied. Beyond
 identifying gaps, federation also exposes cross-resource curation differences: as shown for momilactone
 A, exact-match absences can reflect differing stereochemical completeness rather than missing
 chemistry, so the two-tier (exact plus skeleton-level) comparison both separates genuine novelty from
@@ -1105,7 +1107,7 @@ annotation in individual species despite supporting evidence elsewhere in the gr
 biosynthetic gene cluster resources exposed clustered genomic regions that currently lack pathway
 assignments. Federated querying against Wikidata revealed both representation-level discrepancies
 arising from alternative stereochemical forms and 421 metabolites for which no structurally related
-representation currently exists. These examples demonstrate that incompleteness can become visible
+Wikidata representation was identified using the skeleton-level comparison applied. These examples demonstrate that incompleteness can become visible
 only when complementary knowledge sources are considered simultaneously. The distinction between
 exact InChIKey matches and skeleton-level matches illustrates the importance of chemical
 normalization when assessing interoperability between biological knowledge graphs, as many apparent
