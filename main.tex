@@ -158,7 +158,7 @@ Elena Del Pup\textsuperscript{1,*},
 Max Muller\textsuperscript{1},
 Marvin Martens\textsuperscript{2},
 Egon L. Willighagen\textsuperscript{2},
-Marnix H. Medema\textsuperscript{1,3},
+Marnix~H.~Medema\textsuperscript{1,3},
 Denise Slenter\textsuperscript{2,4,5,*},
 Justin J.J. van der Hooft\textsuperscript{1,6,*}
 \end{center}
@@ -412,8 +412,7 @@ it.} \\
 % --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
 % F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint.
 % --------------------------------------------------------------------------
-F4: (Meta)data are registered or indexed in a searchable resource & Indexed in community
-registries rather than only queryable: the resource is registered on bio.tools and its project
+F4: (Meta)data are registered or indexed in a searchable resource &  The resource is registered on bio.tools and its project
 metadata is published as a nanopublication space under a \texttt{w3id.\allowbreak{}org} identifier,
 while GPML and BridgeDb, on which PlantMetWiki is built, are registered in FAIRsharing. Content is
 in addition directly searchable through the public SPARQL endpoint.
@@ -770,6 +769,7 @@ GPML diagram branch-point duplicates; raw \texttt{wp:Conversion} node counts ret
 are correspondingly higher.
 
 \subsubsection*{Capsaicin biosynthesis}
+\vspace*{-1em}
 The capsaicin biosynthesis pathway (PWY-5710; PC629) illustrates how PlantMetWiki can be used to
 identify annotation gaps and generate a concrete annotation-transfer hypothesis within an economically
 important species for a well-characterized metabolite. PlantMetWiki contains annotations for four
@@ -783,61 +783,65 @@ conventional pathway browsing. The pathway contains additional species annotatio
 \textit{C. chinense}, \textit{C. frutescens}, and four phylogenetically distant species that
 contribute annotations to individual pathway steps (Fig.~S10–12). The pathway comprises seven biochemical
 conversions, of which only 10 of the 63 possible species--reaction combinations (15.9\%) are directly
-O81646; Figure~\ref{fig:capsaicin}), the pathway's terminal acyltransferase, is annotated in \textit{C.
+annotated across all nine species combined (Fig.~S10--12). As an example, capsaicin synthase (MONOMER-13528, UniProt
+O81646, Figure~\ref{fig:capsaicin}), the pathway's terminal acyltransferase, is annotated in \textit{C.
 chinense} and catalyzes a reaction (RXN-8925) that is unannotated in \textit{C. annuum}, \textit{C.
 frutescens}, and the genus-level \textit{Capsicum} node. The \textit{C. chinense} capsaicin synthase
 sequence is therefore a direct, named candidate for targeted annotation of the missing \textit{C.
 annuum} step, showing how PlantMetWiki's reaction-level resolution converts a generic annotation gap
 into a specific, testable hypothesis. More broadly, by exposing which reactions lack species-specific
 evidence and identifying related taxa to support annotation transfer, PlantMetWiki enables systematic
-prioritization of candidate pathway annotations for \textit{Capsicum} species.
+prioritization of candidate pathway annotations for \textit{Capsicum} species, showcasing an inferable gap discovered through linked FAIR data in one knowledge graph query.
 
+\subsubsection*{Hyoscyamine and scopolamine biosynthesis}
+\vspace*{-1em}
 The hyoscyamine and scopolamine biosynthesis pathway (PWY-7341; PC953) illustrates a complementary
 scenario: unlike capsaicin, where a single congeneric species supplies one direct candidate for one
-missing reaction, here the missing annotation of a single target species must be reconstructed from
-several partial, non-redundant sources. \textit{Atropa belladonna} (NCBITaxon:33113) is a plant from
-the Solanaceae family and a hyoscyamine-rich producer of tropane alkaloids, from which atropine (the racemic mixture formed from its principal alkaloid, L-hyoscyamine) takes its name. \textit{A.
+missing reaction, here the missing annotation of a single target species must be reconstructed from diverse non-redundant sources. \textit{Atropa belladonna} (NCBITaxon:33113) from
+the Solanaceae family is a hyoscyamine-rich producer of tropane alkaloids, from which atropine (the racemic mixture formed from its principal alkaloid, L-hyoscyamine) takes its name. \textit{A.
 belladonna} contains only a single directly annotated enzyme, covering just one of the pathway's 16
-biochemical conversions, despite 13 Solanaceae species being annotated in the same pathway.
+biochemical conversions, despite 13 different Solanaceae species showing annotations in the same pathway.
 \textit{Hyoscyamus niger} (NCBITaxon:4079), by comparison, contains four annotated enzymes mapping to
 two of the 16 reactions, and \textit{Datura stramonium} (NCBITaxon:4076) contributes a further three
 reactions, together providing five reaction-level candidates (none overlapping with \textit{A.
-belladonna}'s single annotated step) for completing the \textit{A. belladonna} pathway annotation.
+belladonna}'s single annotated step) for completing the \textit{A. belladonna} pathway annotation for atropine production.
 Across the pathway, only 16 of 208 possible species--reaction combinations are directly annotated
 (7.7\%), indicating substantial annotation sparsity. No single relative can resolve this gap on its
 own: the annotated Solanaceae species each contribute non-overlapping reaction-level coverage of
-biosynthetic knowledge, so reconstructing the biosynthetic routes for hyoscyamine and scopolamine
-production and identifying candidate enzymes and reactions for comparative analysis in \textit{A.
-belladonna} requires tapping into this pool (Fig.~S13). Notably, this transfer strategy mirrors an
+biosynthetic knowledge (Fig.~S13 a and b). Reconstructing the biosynthetic routes for the production of hyoscyamine and scopolamine and identifying candidate enzymes and reactions for comparative analysis in \textit{A. belladonna} requires connecting this pool of heterogeneous knowledge. In particular, this transfer strategy mirrors an
 experimentally validated precedent: heterologous expression of the \textit{H. niger} H6H gene in
-\textit{A. belladonna} redirects alkaloid flux almost entirely toward scopolamine, confirming that a
-computationally prioritized donor species can correspondF to a biologically validated gene transfer
-supporting plant metabolic engineering. This example illustrates how PlantMetWiki can integrate
+\textit{A. belladonna} redirects alkaloid flux almost entirely to scopolamine, confirming that a
+computationally prioritized donor species can correspond to a biologically validated gene transfer
+supporting plant metabolic engineering. This example illustrates how PlantMetWiki is a unique resource that allows plant researchers to integrate
 fragmented biosynthetic knowledge distributed across many related species into a single queryable
 evidence base, supporting comparative exploration and hypothesis generation of candidate pathway
 components, as well as metabolic engineering targets.
 
+\subsubsection*{Avenacin A-1 biosynthesis}
+\vspace*{-1em}
 Avenacin A-1\cite{leveau2019} biosynthesis (PWY-7476; PC241) illustrates the limits of
 enzyme-count-based cross-species comparison. Avenacin A-1 is an antifungal triterpenoid saponin
-produced by \textit{Avena strigosa} (NCBITaxon:38783). \textit{A. thaliana}, which lacks the
+produced by \textit{Avena strigosa} (NCBITaxon:38783). The model species \textit{A. thaliana}, which lacks the
 oat-specific avenacin pathway\cite{li2021}, contains annotations for seven enzymes to reactions in the
 same pathway, corresponding to 87.5\% of the eight enzyme-associated bioconversion
 (\texttt{wp:Conversion}) steps annotated in the native producer. At the reaction level, however, this
 apparent overlap does not hold: of the pathway's 13 biochemical conversions, \textit{A. strigosa}
-covers nine, while \textit{A. thaliana}'s seven annotated enzymes collectively map onto only two
-reactions, both already covered in \textit{A. strigosa} itself. This is because PlantMetWiki's
+covers nine, while \textit{A. thaliana}'s seven annotated enzymes map onto two
+reactions both already covered in \textit{A. strigosa} itself. Since PlantMetWiki's
 species--reaction mapping reflects which \texttt{wp:Conversion} node an enzyme is linked to via
 \texttt{wp:Catalysis} (i.e., shared position in the pathway graph). \textit{A. thaliana}'s seven
 enzymes are multiple paralogs independently annotated to the same two broadly conserved, upstream
 triterpenoid-backbone reactions shared across many species, rather than to the seven downstream,
-avenacin-specific tailoring reactions unique to \textit{Avena}\cite{li2021} (Fig.~S14). \textit{A.
+avenacin-specific tailoring reactions unique to \textit{Avena}\cite{li2021} (Fig.~S14 a and b). \textit{A.
 thaliana} therefore provides no reaction-level evidence that is not already present in the native
 producer, despite its near-equivalent enzyme count. The remaining four reactions that have no
 \texttt{wp:Catalysis} evidence from any of the 15 species annotated in this pathway, including
 \textit{A. strigosa} itself, constitute a non-inferable gap: PlantMetWiki currently provides no
-cross-species evidence that could support annotation of these steps, highlighting them as priorities
+cross-species evidence that could support tentative annotations of these steps, highlighting them as priorities
 for experimental characterization rather than annotation transfer (Fig.~S14).
 
+\subsubsection*{Monolignol biosynthesis}
+\vspace*{-1em}
 Monolignol biosynthesis (PWY-361; PC504) demonstrates the value of PlantMetWiki for breadth-based,
 family-level inference across an agronomically critical pathway. With 29 annotated species spanning
 model plants, major crop grasses, trees, and non-model taxa, PWY-361 is the most taxonomically diverse
@@ -854,32 +858,31 @@ the target crops than the \textit{A. thaliana} reference. Improving monolignol p
 these species has direct relevance for the rational design of modified-lignin varieties for cellulosic
 bioenergy and improved biomass digestibility (Fig.~S15).
 
-These four scenarios illustrate different uses of the cross-species pathway representations in
-PlantMetWiki: hypothesis generation for annotation transfer of reaction steps and related enzymes from
+These four scenarios presented above illustrate different uses of the cross-species pathway representations in
+PlantMetWiki: from hypothesis generation for annotation transfer of reaction steps and related enzymes of
 a related species (capsaicin), pooled reconstruction of bioconversion steps from multiple
 complementary sources (hyoscyamine/scopolamine), the difference between cross-species coverage of
-precursor and tailoring enzymatic steps (avenacin), and breadth-based inference within a large,
+precursor and tailoring enzymatic steps (avenacin), to breadth-based inference within a large,
 taxonomically diverse family (monolignol). By combining pathway structure with species annotations in
 a common semantic framework, PlantMetWiki enables researchers to identify annotation gaps, retrieve
 candidate annotations from related species, and prioritize biosynthetic hypotheses for experimental
-follow-up. The public SPARQL endpoint provides reproducible access to these analyses, and all queries
+follow-up. The public SPARQL endpoint provides quick access to these analyses and allows for customizable queries, while the Zenodo releases provide reproducibility for workflow development, and all queries
 used in this study are available through the accompanying notebooks and example queries (see Data
-availability).
+availability section).
 
-Applying this reaction completeness quantification strategy across PlantMetWiki reveals the proportion
+Applying this reaction completeness quantification strategy across PlantMetWiki revealed the proportion
 of pathway--species annotation gaps for which supporting evidence is available elsewhere in the
 knowledge graph. Across 1,093 pathways with at least one species-tagged (\texttt{wp:organism}) enzyme
 annotation, the complete reaction-by-species matrix comprised 29,061 possible species--reaction
 combinations. Of these, 7,012 (24.1\%) contained direct annotations, while 13,922 (47.9\%) represented
 inferable gaps supported by annotations in at least one other species (Figure~\ref{fig:matrix}A). The
 remaining 8,127 combinations (28.0\%) corresponded to reactions lacking evidence across all species
-represented in the pathway (Figure~\ref{fig:matrix}). These results indicate that almost two thirds
+represented in the pathway. These results indicate that almost two thirds
 (63.1\%) of all currently unannotated pathway positions in PlantMetWiki are potentially addressable
 through cross-species evidence transfer. The remaining 36.9\% reflect pathway steps for which no
-evidence is currently available anywhere in the knowledge graph and which therefore require additional
+evidence is currently available anywhere in the knowledge graph and therefore requires additional
 experimental characterization rather than annotation propagation. The pathway case studies presented
-above showed consistently higher levels of inferable annotation space than the global average, as
-reflected in Figure~\ref{fig:matrix}B. Capsaicin biosynthesis contained 55.6\% inferable gaps,
+above showed higher levels of inferable annotation space than the global average. Capsaicin biosynthesis contained 55.6\% inferable gaps,
 hyoscyamine and scopolamine biosynthesis 48.6\%, avenacin A biosynthesis 56.9\%, and monolignol
 biosynthesis 83.7\%, compared to 47.9\% globally. This reflects the selection criteria used to
 identify these case studies ($\geq$3 annotated species, $\geq$8 biochemical conversions, $\geq$6
