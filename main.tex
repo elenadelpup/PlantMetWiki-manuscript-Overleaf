@@ -71,9 +71,11 @@
 
 % Author-facing notes. Delete all \note occurrences before submission.
 \newcommand{\note}[1]{\textcolor{red}{\textbf{[NOTE: #1]}}}
-% Revisions of 6 October 2026, shown in red for review. To accept them all and
-% render in black, change this definition to:  \newcommand{\rev}[1]{#1}
-\newcommand{\rev}[1]{\textcolor{red}{#1}}
+% Revisions of 6 October 2026, accepted and rendered in black.
+% \rev{} markers are kept in the source so each addition stays traceable in
+% git history; to show them in red again for a future review round, change
+% this back to:  \newcommand{\rev}[1]{\textcolor{red}{#1}}
+\newcommand{\rev}[1]{#1}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
@@ -724,7 +726,7 @@ Crosslinks to 65 plantiSMASH v2 biosynthetic gene clusters
 Crosslinks to 43 MIBiG 4.0 biosynthetic gene clusters &
 \texttt{mibig-4.0}\newline \cite{delpup2026bgc} \\
 \addlinespace
-\texttt{graph/vocabularies} & 1,092 &
+\texttt{graph/} \texttt{vocabularies} & 1,092 &
 Self-describing data model: the \texttt{pmw:} vocabulary (6 terms) plus
 \texttt{wp:} (38) and \texttt{gpml:} (87) as SKOS concept schemes &
 \texttt{pmw:} v1.0 (CC0) \\
@@ -1422,7 +1424,7 @@ tooling are documented in the dataset description, enabling reproducibility of t
 endpoint setup.
 
 The same endpoint-side mechanism publishes the data model itself. A dedicated
-\texttt{graph/vocabularies} named graph is loaded with the term definitions of every vocabulary
+\texttt{graph/\allowbreak{}vocabularies} named graph is loaded with the term definitions of every vocabulary
 PlantMetWiki uses or defines: the WikiPathways \texttt{wp:} and \texttt{gpml:} vocabularies, fetched
 from their canonical URLs at \url{https://vocabularies.wikipathways.org/}, the VoID vocabulary, and
 the PlantMetWiki vocabulary \texttt{pmw:}. The latter is version-controlled alongside the deployment
