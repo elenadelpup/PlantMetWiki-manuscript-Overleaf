@@ -195,16 +195,6 @@ combining multi-omics evidence with biochemical transformations, yet pathway-lev
 remain fragmented across species, databases, and publications, limiting cross-species analyses
 and systematic hypothesis generation. To support integration and reuse of plant metabolic
 knowledge, we developed PlantMetWiki, a FAIR architecture that transforms heterogeneous plant pathway knowledge into a multispecies knowledge graph and Linked Open Data resource. 
-% infrastructure adapted from WikiPathways. It represents 1,162 plant metabolic pathways from the
-% Plant Metabolic Network's PlantCyc 17.0 as Resource Description Framework (RDF) graphs,
-% preserving pathway structure, literature provenance, and taxonomic information, and extends them
-% with crosslinks to biosynthetic gene clusters (MIBiG and plantiSMASH) and mapped metabolite
-% identifiers. Modelling pathways as a multispecies graph allows biosynthetic knowledge to be
-% compared across taxa, connected to its genomic context, and queried alongside external chemical
-% resources through federation, exposing metabolic, genomic, and chemical annotation gaps.
-% PlantMetWiki is distributed through a public SPARQL endpoint with open-source, reproducible
-% transformation and validation workflows, providing a foundation for FAIR reuse of plant pathway
-% knowledge.
 A versioned open-source pipeline converts the Plant Metabolic Network's
 PlantCyc 17.0 into Resource Description Framework (RDF) on infrastructure adapted from WikiPathways,
 preserving pathway structure, provenance, and taxonomic information, and enriches it with
@@ -672,7 +662,7 @@ key--value property layer (\texttt{pmw:gpmlProperty}, \texttt{pmw:key}, \texttt{
 concept schemes, 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All integrated vocabulary terms are typed as OWL
 classes and properties and carry \texttt{rdfs:label}, textual definitions, and
 \texttt{rdfs:domain}/\texttt{rdfs:range} constraints. Because these definitions sit alongside the
-data, a client can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in
+data, they can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in
 the same SPARQL query that retrieves the data, without consulting an external ontology service. All
 workflows used to generate the knowledge graph are openly available and version-controlled, enabling
 reproducible regeneration and versioning from source data.
@@ -774,9 +764,7 @@ transfer.
 
 To retrieve the missing species-reaction annotations, we examined pathways representing distinct biological
 scenarios, including species-specific specialized metabolism, medicinal alkaloid biosynthesis, and
-specialized metabolites from non-model plants.
-
-Throughout this section, reaction counts refer to distinct biochemical conversions after collapsing
+specialized metabolites from non-model plants. Throughout this section, reaction counts refer to distinct biochemical conversions after collapsing
 GPML diagram branch-point duplicates; raw \texttt{wp:Conversion} node counts returned by the endpoint
 are correspondingly higher.
 
@@ -792,7 +780,7 @@ species, with \textit{C. annuum} showing no directly annotated gene or enzyme no
 biosynthesis pathway. This absence reflects a limitation of the source curation, which could be resolved by cross-species querying and data integration to reveal pathway-specific gaps that are difficult to identify through
 conventional pathway browsing. The pathway contains additional species annotations (nine in total), including
 \textit{C. chinense}, \textit{C. frutescens}, and four phylogenetically distant species that
-contribute annotations to individual pathway steps. The pathway comprises seven biochemical
+contribute annotations to individual pathway steps (Fig.~S10–12). The pathway comprises seven biochemical
 conversions, of which only 10 of the 63 possible species--reaction combinations (15.9\%) are directly
 O81646; Figure~\ref{fig:capsaicin}), the pathway's terminal acyltransferase, is annotated in \textit{C.
 chinense} and catalyzes a reaction (RXN-8925) that is unannotated in \textit{C. annuum}, \textit{C.
@@ -822,7 +810,7 @@ production and identifying candidate enzymes and reactions for comparative analy
 belladonna} requires tapping into this pool (Fig.~S13). Notably, this transfer strategy mirrors an
 experimentally validated precedent: heterologous expression of the \textit{H. niger} H6H gene in
 \textit{A. belladonna} redirects alkaloid flux almost entirely toward scopolamine, confirming that a
-computationally prioritized donor species can correspond to a biologically validated gene transfer
+computationally prioritized donor species can correspondF to a biologically validated gene transfer
 supporting plant metabolic engineering. This example illustrates how PlantMetWiki can integrate
 fragmented biosynthetic knowledge distributed across many related species into a single queryable
 evidence base, supporting comparative exploration and hypothesis generation of candidate pathway
