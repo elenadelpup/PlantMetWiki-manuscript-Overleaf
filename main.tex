@@ -654,7 +654,7 @@ triplestore, including eight named graphs (Figure~\ref{fig:pipeline}), each repr
 layer of the data model (Table~\ref{tab:graphs}; Supplementary Table S6). Across these eight graphs,
 the endpoint serves 6,522,435 triples. The core graph encodes 2,758 gene products, 3,750 enzymes,
 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927 are biochemical conversions
-and 12,359 are catalytic links. Pathway content is supported by 4,085 distinct literature references
+and 12,359 are catalytic links. Pathway content is supported by \rev{5,722} distinct literature references
 annotated with PubMed IDs on pathway nodes. A separate properties graph preserves PlantCyc-specific
 key--value annotations as RDF triples, making PlantCyc metadata available for SPARQL queries beyond
 what the core WikiPathways vocabulary captures. This graph represents the basis for future
@@ -681,9 +681,9 @@ reproducible regeneration and versioning from source data.
 %  Table 2: named graph inventory.  longtable (not a float) so that the lineno
 %  package numbers these lines, as for the FAIR table.
 %
-%  TRIPLE COUNTS: live SPARQL endpoint, queried 6 October 2026.
-%  TODO after release 3.4 is minted: update the Version column of the three
-%  gpml-to-rdf rows, and the triple counts if they change.
+%  TRIPLE COUNTS: live SPARQL endpoint, queried 7 October 2026, after release
+%  3.4.1 settled the void:triples duplicate-counting bug (see commit
+%  9b3233f in gpml-to-rdf). Re-verify if a later release changes these graphs.
 % ---------------------------------------------------------------------------
 {\footnotesize
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}
@@ -691,8 +691,7 @@ reproducible regeneration and versioning from source data.
                     >{\raggedright\arraybackslash}p{0.36\textwidth}
                     >{\raggedright\arraybackslash}p{0.27\textwidth}@{}}
 \caption{\textbf{The eight named graphs of the PlantMetWiki triplestore.}
-Triple counts were retrieved from the live SPARQL endpoint on 6 October 2026.
-\rev{[PENDING: the endpoint still serves the previous load. Once reloaded with release 3.4, the taxonomy graph is unchanged at 30,178 triples and the core graph becomes 3,826,567 ($-$21,077), for a new total of 6,474,584. These are deduplicated bundle counts, verified directly against the released files; earlier figures circulated for this release (4,097,096 / 42,319) counted raw, non-deduplicated statements and should be disregarded.]}
+\rev{Triple counts were retrieved from the live SPARQL endpoint on 7 October 2026, after release 3.4.1.}
 Each content graph is independently versioned and deposited, so any result can
 be traced to the exact release that produced it. Full source URIs, source
 filenames and per-graph notes are in Supplementary Table S6.}
@@ -707,19 +706,19 @@ filenames and per-graph notes are in Supplementary Table S6.}
 \endhead
 \bottomrule
 \endfoot
-\texttt{graph/pathways} & 3,847,644 &
+\texttt{graph/pathways} & \rev{3,826,567} &
 Core WikiPathways RDF: pathways and reactions, gene products, enzymes,
 metabolites and typed interaction edges &
-\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \rev{(release 3.4)}~\cite{delpup2026rdf} \\
+\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \rev{(release 3.4.1)}~\cite{delpup2026rdf} \\
 \addlinespace
 \texttt{graph/gpml-} \texttt{properties-extra} & 2,617,839 &
 PlantCyc/GPML key--value annotations preserved as \texttt{pmw:gpmlProperty}
 triples &
-\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \rev{(release 3.4)}~\cite{delpup2026rdf} \\
+\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \rev{(release 3.4.1)}~\cite{delpup2026rdf} \\
 \addlinespace
 \texttt{graph/gpml-} \texttt{taxonomy-extra} & 30,178 &
 Per-node \texttt{wp:organism} species annotations plus the Viridiplantae root &
-\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \rev{(release 3.4)}~\cite{delpup2026rdf} \\
+\texttt{plantcyc17.0.0-} \texttt{gpml2021-v3}\newline \rev{(release 3.4.1)}~\cite{delpup2026rdf} \\
 \addlinespace
 \texttt{graph/ncbitaxon} & 17,707 &
 MIREOT subset of NCBITaxon: 424 seed taxa and their ancestors, for
@@ -740,12 +739,12 @@ Self-describing data model: the \texttt{pmw:} vocabulary (6 terms) plus
 \texttt{wp:} (38) and \texttt{gpml:} (87) as SKOS concept schemes &
 \texttt{pmw:} v1.0 (CC0) \\
 \addlinespace
-\texttt{void} & 240 &
+\texttt{void} & \rev{243} &
 VoID and PROV-O records: provenance, licensing, versioning and download
 locations for every content graph &
 --- \\
 \midrule
-\textbf{Total} & \textbf{6,522,435} & & \\
+\textbf{Total} & \textbf{\rev{6,501,361}} & & \\
 \end{longtable}
 }
 
@@ -1474,7 +1473,7 @@ Virtuoso.
 
 All relevant data are deposited and versioned in the PlantMetWiki community on Zenodo
 (\url{https://zenodo.org/communities/plantmetwiki/}), including relevant license and copyright
-information. The core knowledge graph is released as PlantMetWiki RDF v3.4\cite{delpup2026rdf},
+information. The core knowledge graph is released as PlantMetWiki RDF v3.4.1\cite{delpup2026rdf},
 containing the core pathway bundle (\texttt{all-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}), the GPML
 property layer (\texttt{all\_\allowbreak{}gpml\_\allowbreak{}properties\_\allowbreak{}extra-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}), the
 taxonomy layer (\texttt{all\_\allowbreak{}gpml\_\allowbreak{}taxonomy\_\allowbreak{}extra-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}) and the VoID
@@ -1899,7 +1898,7 @@ Metabolite BridgeDb ID Mapping Database (20260102). [Data set]. Figshare \url{ht
 Brickley, D. \& Miller, L. FOAF Vocabulary Specification. \url{https://xmlns.com/foaf/spec/20140114.html}. (2014).
 
 \bibitem{delpup2026rdf}
-Del Pup, E. \& Willighagen, E. PlantMetWiki RDF. Version 3.4. [Data set]. Zenodo \url{https://doi.org/10.5281/zenodo.23191220} (2026).
+Del Pup, E. \& Willighagen, E. PlantMetWiki RDF. Version 3.4.1. [Data set]. Zenodo \url{https://doi.org/10.5281/zenodo.23208119} (2026).
 
 \bibitem{delpup2026bgc}
 Del Pup, E. \& Slenter, D. PlantMetWiki BGC crosslinks: MIBiG and plantiSMASH to RDF. Version bgc-v1.0.2. [Data set]. Zenodo \url{https://doi.org/10.5281/zenodo.20640349} (2026).
