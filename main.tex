@@ -1473,18 +1473,19 @@ Virtuoso.
 %==============================================================================
 \section*{Data availability}
 
-All relevant data are deposited and versioned in the PlantMetWiki community on Zenodo
-(\url{https://zenodo.org/communities/plantmetwiki/}), including relevant license and copyright
-information. The core knowledge graph is released as PlantMetWiki RDF v3.4.1\cite{delpup2026rdf},
-containing the core pathway bundle (\texttt{all-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}), the GPML
-property layer (\texttt{all\_\allowbreak{}gpml\_\allowbreak{}properties\_\allowbreak{}extra-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}), the
-taxonomy layer (\texttt{all\_\allowbreak{}gpml\_\allowbreak{}taxonomy\_\allowbreak{}extra-\allowbreak{}plantcyc17.0.0-\allowbreak{}gpml2021-\allowbreak{}v3.\allowbreak{}ttl.\allowbreak{}gz}) and the VoID
-metadata file. The biosynthetic gene cluster crosslinks are released separately as PlantMetWiki BGC
-crosslinks bgc-v1.0.2\cite{delpup2026bgc}. The BridgeDb metabolite identifier-mapping database used
-to materialise metabolite cross-references is archived on Figshare\cite{bridgedb2026db}. Tutorial pages are available at \url{https://pathway-lod.github.io/SPARQLTutorials/}.
-Jupyter notebooks containing the steps to reproducibly generate the figures are available on GitHub
-at \url{https://github.com/pathway-lod/gpml-to-rdf/tree/main/notebooks}. PlantMetWiki is listed on
-bio.tools at \url{https://bio.tools/plantmetwiki}. Further project metadata is available on the
+All data are deposited and versioned in the PlantMetWiki community on Zenodo
+(\url{https://zenodo.org/communities/plantmetwiki/}), including licence and provenance metadata for
+each release. The PlantMetWiki RDF knowledge graph is available as version 3.4.1\cite{delpup2026rdf},
+comprising the core pathway bundle, the GPML property layer, the GPML taxonomy layer, and a VoID
+metadata file describing all three. Biosynthetic gene cluster crosslinks are distributed separately as
+PlantMetWiki BGC crosslinks bgc-v1.0.2\cite{delpup2026bgc}. The BridgeDb metabolite
+identifier-mapping database used to materialise metabolite cross-references is archived on
+Figshare\cite{bridgedb2026db}. The public SPARQL endpoint is available at
+\url{https://plantmetwiki.bioinformatics.nl/sparql}. Tutorial pages demonstrating SPARQL query
+construction are available at \url{https://pathway-lod.github.io/SPARQLTutorials/}. Jupyter notebooks
+reproducing the figures and analyses in this manuscript are available on GitHub at
+\url{https://github.com/pathway-lod/gpml-to-rdf/tree/main/notebooks}. PlantMetWiki is registered on
+bio.tools at \url{https://bio.tools/plantmetwiki}, and further project metadata is published on the
 Nanodash platform (Knowledgepixels) at \url{https://w3id.org/spaces/plantmetwiki}.
 
 
@@ -1492,11 +1493,16 @@ Nanodash platform (Knowledgepixels) at \url{https://w3id.org/spaces/plantmetwiki
 
 All relevant code to this manuscript is deposited in GitHub at \url{https://github.com/pathway-lod}
 and in versioned releases in the PlantMetWiki community on Zenodo
-(\url{https://zenodo.org/communities/plantmetwiki/}). The three principal components are archived as
-citable software, one per stage of the pipeline: the PlantCyc-to-GPML2021 conversion
-pipeline\cite{delpup2026cyc2wiki}, the GPML-to-RDF conversion and semantic enrichment
-layer\cite{delpup2026gpml2rdf}, and the SNORQL user interface together with the endpoint loading
-scripts\cite{delpup2026snorql}.
+(\url{https://zenodo.org/communities/plantmetwiki/}). Four principal components are archived as
+citable software, each tied to a stage of the data-generation pipeline (Figure~\ref{fig:pipeline}): the
+PlantCyc-to-GPML2021 conversion pipeline that produces the GPML2021 pathway and reaction files
+(\emph{pipeline tools})\cite{delpup2026cyc2wiki}; the GPML-to-RDF conversion and semantic enrichment
+layer that generates the named graphs and their VoID metadata (\emph{pipeline tools; metadata
+creation})\cite{delpup2026gpml2rdf}; the BGC crosslink generation pipeline that links MIBiG and
+plantiSMASH gene clusters to pathway enzymes, archived together with its output
+(\emph{pipeline tools})\cite{delpup2026bgc}; and the SNORQL user interface together with the scripts
+that load the named graphs into the Virtuoso triplestore (\emph{Virtuoso triplestore; access and
+results})\cite{delpup2026snorql}.
 
 
 \section*{Supplementary tables}
