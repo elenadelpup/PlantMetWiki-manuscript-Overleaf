@@ -163,12 +163,12 @@ Justin J.J. van der Hooft\textsuperscript{1,6,*}
 
 \vspace{0.5em}
 \noindent\footnotesize
-\textsuperscript{1}Bioinformatics Group, Wageningen University, Wageningen, the Netherlands.\\
-\textsuperscript{2}Department of Translational Genomics, NUTRIM, Maastricht University, Maastricht, the Netherlands.\\
-\textsuperscript{3}Institute of Biology, Leiden University, Leiden, the Netherlands.\\
-\textsuperscript{4}Department of Advanced Computing Sciences, DACS, Maastricht University, Maastricht, the Netherlands.\\
-\textsuperscript{5}Institute of Data Science, IDS, Maastricht University, the Netherlands.\\
-\textsuperscript{6}Department of Biochemistry, University of Johannesburg, Johannesburg 2006, South Africa.
+\textsuperscript{1} Bioinformatics Group, Wageningen University, Wageningen, the Netherlands.\\
+\textsuperscript{2} Department of Translational Genomics, NUTRIM, Maastricht University, Maastricht, the Netherlands.\\
+\textsuperscript{3} Institute of Biology, Leiden University, Leiden, the Netherlands.\\
+\textsuperscript{4} Department of Advanced Computing Sciences, DACS, Maastricht University, Maastricht, the Netherlands.\\
+\textsuperscript{5} Institute of Data Science, IDS, Maastricht University, the Netherlands.\\
+\textsuperscript{6} Department of Biochemistry, University of Johannesburg, Johannesburg 2006, South Africa.
 
 \vspace{0.5em}
 \noindent\textsuperscript{*}Correspondence may be addressed to: EDP. Email: \href{mailto:elena.delpup@wur.nl}{elena.delpup@wur.nl}.
@@ -390,7 +390,7 @@ F1: (Meta)data are assigned globally unique and persistent identifiers &
 % (2) Resolvable Uniform Resource Locators (URLs) for publications and metabolites for all species;
 % (3) Identifier mapping of genes and proteins with resolvable URLs in \textit{Arabidopsis thaliana}.
 % --------------------------------------------------------------------------
-\rev{(1) \textit{Globally unique identifiers}: every pathway, reaction, node and annotation is named
+(1) \textit{Globally unique identifiers}: every pathway, reaction, node and annotation is named
 by an Internationalized Resource Identifier (IRI) minted in a single controlled namespace under
 \texttt{rdf-\allowbreak{}plantmetwiki.\allowbreak{}bioinformatics.\allowbreak{}nl}; (2)
 \textit{Persistence}: persistence is carried by registered identifier schemes rather than by the
@@ -404,7 +404,7 @@ metabolites additionally carry InChIKeys as structure-derived identifiers; (4) \
 resolvability is an access mechanism layered on the above, not a substitute for it. Pathway IRIs
 dereference over HTTP with content negotiation, returning RDF to clients requesting
 \texttt{text/turtle} and HTML to browsers, and \texttt{foaf:page} links point to the corresponding
-PlantCyc entry.}
+PlantCyc entry.
 \rev{See the metabolite cross-reference coverage in Fig.~\ref{fig:bridgedb}.} \\
 \addlinespace
 F2: Data are described with rich metadata (defined by R1 below) &
@@ -420,11 +420,11 @@ it.} \\
 % --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
 % F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint.
 % --------------------------------------------------------------------------
-F4: (Meta)data are registered or indexed in a searchable resource & \rev{Indexed in community
+F4: (Meta)data are registered or indexed in a searchable resource & Indexed in community
 registries rather than only queryable: the resource is registered on bio.tools and its project
 metadata is published as a nanopublication space under a \texttt{w3id.\allowbreak{}org} identifier,
 while GPML and BridgeDb, on which PlantMetWiki is built, are registered in FAIRsharing. Content is
-in addition directly searchable through the public SPARQL endpoint.}
+in addition directly searchable through the public SPARQL endpoint.
 \rev{See the queries reported throughout this work, all of which are run against this endpoint.} \\
 \addlinespace
 A1: (Meta)data are retrievable by their identifier using a standardized communications protocol.
@@ -448,12 +448,12 @@ representation &
 % (1) Framework is based on 10+ years RDF model from WikiPathways;
 % (2) VoID header file follows the Dublin Core Schema.
 % --------------------------------------------------------------------------
-\rev{(1) RDF is the knowledge representation language, using the WikiPathways RDF model developed
+(1) RDF is the knowledge representation language, using the WikiPathways RDF model developed
 and maintained over more than ten years; (2) classes and properties are defined in OWL, and the
 \texttt{wp:} and \texttt{gpml:} term sets are additionally published as SKOS concept schemes; (3)
 dataset-level metadata uses VoID with Dublin Core terms, and provenance uses PROV-O. RDF, OWL, SKOS
 and PROV-O are W3C Recommendations; VoID is a W3C Interest Group Note and Dublin Core Terms a DCMI
-standard, all with openly available specifications.}
+standard, all with openly available specifications.
 \rev{See the core graph model in Fig.~\ref{fig:model}.} \\
 \addlinespace
 I2: (Meta)data use vocabularies that follow FAIR principles &
@@ -469,12 +469,12 @@ I3: (Meta)data include qualified references to other (meta)data &
 % Interactions between biological entities are described using the new GPML2021 schema, including
 % detailed biological interactions compatible with cross-references.
 % --------------------------------------------------------------------------
-\rev{References to external data are typed rather than implicit: interactions between biological
+References to external data are typed rather than implicit: interactions between biological
 entities use the GPML2021 schema, which distinguishes conversion from catalysis and other
 interaction types; organisms are linked to NCBITaxon terms; metabolites, genes and proteins carry
 BridgeDb-materialised cross-references to HMDB, ChEBI and Wikidata; biosynthetic gene clusters are
 linked to MIBiG and plantiSMASH records through dedicated \texttt{pmw:} terms; and each pathway carries a
-\texttt{foaf:page} link to its PlantCyc entry and PubMed identifiers for its supporting literature.}
+\texttt{foaf:page} link to its PlantCyc entry and PubMed identifiers for its supporting literature.
 \rev{See Fig.~\ref{fig:capsaicin}, where capsaicin biosynthesis is assembled across the
 pathway, taxonomy and BGC graphs, and the BGC convergence on PC721 (Fig.~S9).} \\
 \addlinespace
@@ -650,8 +650,8 @@ plantiSMASH and two MIBiG) through 4 shared genes (Fig.~S9) out of 23 genes in t
 PlantCyc pathway.
 
 The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-graph Virtuoso
-triplestore including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
-layer of the data model (Table~\ref{tab:graphs}; Supplementary Table S6). Across these eight graphs
+triplestore, including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
+layer of the data model (Table~\ref{tab:graphs}; Supplementary Table S6). Across these eight graphs,
 the endpoint serves 6,522,435 triples. The core graph encodes 2,758 gene products, 3,750 enzymes,
 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927 are biochemical conversions
 and 12,359 are catalytic links. Pathway content is supported by 4,085 distinct literature references
@@ -659,23 +659,22 @@ annotated with PubMed IDs on pathway nodes. A separate properties graph preserve
 key--value annotations as RDF triples, making PlantCyc metadata available for SPARQL queries beyond
 what the core WikiPathways vocabulary captures. This graph represents the basis for future
 expansions of the current semantic model and supports the use of PlantMetWiki as an expandable
-framework for pathway modelling beyond the WikiPathways attributes. Dataset provenance, licensing
+framework for pathway modeling beyond the WikiPathways attributes. Dataset provenance, licensing
 information, versioning metadata, and download locations are described with VoID metadata records
 following the VoID Schema RDF vocabulary\cite{alexander2011}. These are available as a \texttt{void}
 graph (\url{http://rdf-plantmetwiki.bioinformatics.nl/void}) hosted in the Virtuoso database and
-accessible via the SPARQL endpoint. A further vocabularies graph makes the data model itself
-self-describing at the endpoint. It publishes the PlantMetWiki vocabulary (\texttt{pmw:}, version
+accessible via the SPARQL endpoint. A vocabulary graph enables a self-describing data model, publishing the PlantMetWiki vocabulary (\texttt{pmw:}, version
 1.0, CC0), which formally defines the six terms this resource introduces for information the
 WikiPathways vocabularies do not cover: biosynthetic gene cluster membership
 (\texttt{pmw:BiosyntheticGeneCluster}, \texttt{pmw:MemberIdentifier}) and the PlantCyc/GPML
 key--value property layer (\texttt{pmw:gpmlProperty}, \texttt{pmw:key}, \texttt{pmw:value},
-\texttt{pmw:plantcycId}). Alongside these it carries the two WikiPathways vocabularies as SKOS
-concept schemes, 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All terms are typed as OWL
+\texttt{pmw:plantcycId}). Alongside these terms, the two WikiPathways vocabularies (GPML-RDF and WP-RDF) are incluced as SKOS
+concept schemes, 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All integrated vocabulary terms are typed as OWL
 classes and properties and carry \texttt{rdfs:label}, textual definitions, and
 \texttt{rdfs:domain}/\texttt{rdfs:range} constraints. Because these definitions sit alongside the
 data, a client can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in
 the same SPARQL query that retrieves the data, without consulting an external ontology service. All
-workflows used to generate the resource are openly available and version-controlled, enabling
+workflows used to generate the knowledge graph are openly available and version-controlled, enabling
 reproducible regeneration and versioning from source data.
 
 % ---------------------------------------------------------------------------
@@ -765,13 +764,15 @@ A central feature of PlantMetWiki is the representation of pathways as multispec
 in which genes, enzymes, reactions, metabolites, and taxonomic annotations can be queried together.
 This representation enables comparison of pathway coverage across species (e.g., via the previously
 mentioned catalysis-chain assignment) and supports the identification of annotation gaps that may not
-be apparent in species-specific pathway views. For each pathway, we classify missing species-reaction
+be apparent in species-specific pathway views. For each pathway, we define missing species-reaction
 annotation as an \emph{inferable gap} if at least one other species in the same pathway has a direct
 enzyme annotation for that reaction, and as a \emph{non-inferable gap} if no species in the pathway
 does. Inferable gaps mark positions where cross-species evidence can prioritize candidate genes,
 enzymes, or reactions (\texttt{wp:Conversion}) for further investigation, while non-inferable gaps
 indicate pathway steps that currently require experimental characterization rather than annotation
-transfer. To demonstrate this capability, we examined pathways representing distinct biological
+transfer. 
+
+To retrieve the missing species-reaction annotations, we examined pathways representing distinct biological
 scenarios, including species-specific specialized metabolism, medicinal alkaloid biosynthesis, and
 specialized metabolites from non-model plants.
 
@@ -779,21 +780,20 @@ Throughout this section, reaction counts refer to distinct biochemical conversio
 GPML diagram branch-point duplicates; raw \texttt{wp:Conversion} node counts returned by the endpoint
 are correspondingly higher.
 
+\subsubsection*{Capsaicin biosynthesis}
 The capsaicin biosynthesis pathway (PWY-5710; PC629) illustrates how PlantMetWiki can be used to
 identify annotation gaps and generate a concrete annotation-transfer hypothesis within an economically
-important species and a well-characterized metabolite. PlantMetWiki contains annotations for four
+important species for a well-characterized metabolite. PlantMetWiki contains annotations for four
 \textit{Capsicum} taxa: three species (\textit{Capsicum annuum}, \textit{Capsicum chinense}, and
 \textit{Capsicum frutescens}) and the genus-level node \textit{Capsicum}. \textit{C. annuum} is the
 most extensively represented of these taxa across the entire PlantMetWiki core graph, with direct
 enzyme annotations in 34 pathways. However, querying PWY-5710 reveals an annotation gap for this
 species, with \textit{C. annuum} showing no directly annotated gene or enzyme nodes in the capsaicin
-biosynthesis pathway. This absence reflects a limitation of the source curation and demonstrates how
-cross-species querying can reveal pathway-specific gaps that are difficult to identify through
-conventional pathway browsing. In total, nine species are represented in the pathway, including
+biosynthesis pathway. This absence reflects a limitation of the source curation, which could be resolved by cross-species querying and data integration to reveal pathway-specific gaps that are difficult to identify through
+conventional pathway browsing. The pathway contains additional species annotations (nine in total), including
 \textit{C. chinense}, \textit{C. frutescens}, and four phylogenetically distant species that
 contribute annotations to individual pathway steps. The pathway comprises seven biochemical
 conversions, of which only 10 of the 63 possible species--reaction combinations (15.9\%) are directly
-annotated across all nine species combined (Fig.~S10--12). Capsaicin synthase (MONOMER-13528, UniProt
 O81646; Figure~\ref{fig:capsaicin}), the pathway's terminal acyltransferase, is annotated in \textit{C.
 chinense} and catalyzes a reaction (RXN-8925) that is unannotated in \textit{C. annuum}, \textit{C.
 frutescens}, and the genus-level \textit{Capsicum} node. The \textit{C. chinense} capsaicin synthase
@@ -1548,10 +1548,9 @@ Netherlands Organization for Scientific Research (NWO) Vidi Grant VI.Vidi.213.18
 
 \section*{AI usage statement}
 
-During the preparation of this work, the authors used ChatGPT for brainstorming and obtaining
+During the preparation of this work, some authors used ChatGPT for brainstorming and obtaining
 feedback on the manuscript; Claude and Claude Code for coding assistance and debugging, GitHub
-Copilot to aid in code review, and Grammarly for copyediting. After using these tools, the authors
-reviewed and edited the AI-assisted work as needed and take full responsibility for the content.
+Copilot to aid in code review, and Grammarly for copyediting. After using these tools, all authors reviewed and edited the AI-assisted work as needed and take full responsibility for the content.
 
 %==============================================================================
 % FIGURES
