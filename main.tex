@@ -412,10 +412,13 @@ it.} \\
 % --- ORIGINAL (revised 6 October 2026 for FAIR rigour; uncomment to restore) ---------------------
 % F4: (Meta)data are registered or indexed in a searchable resource & SPARQL endpoint.
 % --------------------------------------------------------------------------
-F4: (Meta)data are registered or indexed in a searchable resource &  The resource is registered on bio.tools and its project
+F4: (Meta)data are registered or indexed in a searchable resource & The resource is registered on bio.tools and its project
 metadata is published as a nanopublication space under a \texttt{w3id.\allowbreak{}org} identifier,
-while GPML and BridgeDb, on which PlantMetWiki is built, are registered in FAIRsharing. Content is
-in addition directly searchable through the public SPARQL endpoint.
+while GPML and BridgeDb, on which PlantMetWiki is built, are registered in FAIRsharing. Each content
+graph is additionally archived as a separately indexed, DOI-identified deposit on Zenodo
+(Table~\ref{tab:graphs}), and the VoID description reachable from any of these entry points
+catalogues every dataset the resource comprises, so a single point of discovery leads to the rest.
+Content is in addition directly searchable through the public SPARQL endpoint.
 \rev{See the queries reported throughout this work, all of which are run against this endpoint.} \\
 \addlinespace
 A1: (Meta)data are retrievable by their identifier using a standardized communications protocol.
@@ -429,7 +432,9 @@ our data.
 \rev{See the tutorial queries that reproduce Figs~\ref{fig:matrix}--\ref{fig:wikidata}.} \\
 \addlinespace
 A2: Metadata are accessible, even when the data are no longer available &
-(1) All data accessible via the SPARQL endpoint are archived on Zenodo;
+(1) All PlantMetWiki-generated datasets served by the endpoint are archived as versioned Zenodo
+releases (Table~\ref{tab:graphs}); federated external resources (Wikidata, ChEBI, PubChem and
+others) remain under the stewardship and availability of their respective providers;
 (2) The software to create the data is available on GitHub.
 \rev{See the Zenodo deposits listed under Data availability.} \\
 \addlinespace
