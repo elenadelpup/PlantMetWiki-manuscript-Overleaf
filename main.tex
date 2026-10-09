@@ -357,7 +357,7 @@ curation gaps and prioritization of candidate annotations through alignment of c
 information and independent knowledge resources, crosslinks in the knowledge graph (to MIBiG, NCBI,
 plantiSMASH), and federated queries. PlantMetWiki supports the FAIR principles by adopting RDF-based
 semantic representations, including standard ontologies, machine-readable metadata, and public data
-access mechanisms, described in more detail in Table~\ref{tab:fair}.
+access mechanisms, described in more detail in Table~\ref{tab:fair}. PlantMetWiki is cross-validated against external community tools to ensure data quality and compliance with LOD and FAIR practices, including YummyData\cite{yamamoto2018}, which monitors SPARQL endpoint availability and metadata richness, and FAIR-Checker\cite{gaignard2023}, which evaluates FAIRness metrics against Semantic Web standards.
 
 % --- ORIGINAL (replaced 6 October 2026; uncomment to restore) ---------------------
 % \begin{longtable}{p{0.44\textwidth} p{0.50\textwidth}}
@@ -1365,7 +1365,7 @@ core pathways, representing the pathway model for all 1,162 PlantCyc pathways; (
 containing the model for all 1,316 individual PlantCyc-derived reactions; (3) taxonomy extra,
 containing taxonomic annotations (\texttt{wp:organism}) on gene, protein, and compound nodes,
 including \texttt{foaf:page} links; and (4) properties extra, containing links to PlantCyc
-identifiers, stable pathway Uniform Resource Identifiers (URIs), and key--value properties. \textcolor{red}{Beyond these internal checks, PlantMetWiki is cross-validated against external community tools to ensure data quality and compliance with FAIR practices, including YummyData\cite{yamamoto2018}, which monitors SPARQL endpoint availability and metadata richness, and FAIR-Checker\cite{gaignard2023}, which evaluates FAIRness metrics against Semantic Web standards.}
+identifiers, stable pathway Uniform Resource Identifiers (URIs), and key--value properties. 
 
 \subsection*{Extending pathway knowledge with crosslinks to biosynthetic gene clusters}
 The PlantCyc-derived pathway RDF is extended with crosslinks to two BGC databases: MIBiG (curated
