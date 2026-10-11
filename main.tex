@@ -51,6 +51,19 @@
   \usepackage{fontspec}
 \fi
 
+% Long \texttt{} identifiers (wp:, dcterms:, graph/...) have no natural break
+% point once \allowbreak runs out of room in a tight paragraph, and still ran
+% off the right margin in a few spots even with \allowbreak added. microtype
+% tunes font expansion/protrusion and interword spacing automatically, which
+% resolves the great majority of these without touching any text; it works
+% under pdfLaTeX, XeLaTeX and LuaLaTeX alike (reduced to protrusion-only under
+% Xe/LuaTeX, which is still enough for this case). \emergencystretch is a
+% last-resort safety net: if a line still cannot be broken well, TeX is
+% allowed to stretch interword spaces further rather than let the box run
+% overfull into the margin.
+\usepackage{microtype}
+\emergencystretch=3em
+
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
