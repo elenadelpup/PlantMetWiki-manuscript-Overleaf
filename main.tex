@@ -121,7 +121,7 @@ current version.''} Tick the box and add the date.
 \ckbox & Egon L. Willighagen          & \dotfill \\
 \ckdone& Marnix H. Medema             & \hrulefill\ 6 October 2026 \\
 \ckbox & Denise Slenter               & \dotfill \\
-\ckdone & Justin J.J. van der Hooft    & \dotfill \\ 9 October 2026 \\
+\ckdone & Justin J.J. van der Hooft    & \hrulefill\ 9 October 2026 \\
        & \footnotesize \textit{Author}& \footnotesize \textit{Date} \\
 \end{tabular}
 
@@ -842,7 +842,7 @@ thaliana} therefore provides no reaction-level evidence that is not already pres
 producer, despite its near-equivalent enzyme count. The remaining four reactions that have no
 \texttt{wp:Catalysis} evidence from any of the 15 species annotated in this pathway, including
 \textit{A. strigosa} itself, constitute a non-inferable gap: PlantMetWiki currently provides no
-cross-species evidence that could support tentative annotations of these steps, highlighting them as priorities
+cross-species evidence that could support potential annotations of these steps, highlighting them as priorities
 for experimental characterization rather than annotation transfer (Fig.~S14).
 
 \subsubsection*{Case study 4: Monolignol biosynthesis}
@@ -863,7 +863,7 @@ the target crops than the \textit{A. thaliana} reference. Improving monolignol p
 these species has direct relevance for the rational design of modified-lignin varieties for cellulosic
 bioenergy and improved biomass digestibility (Fig.~S15).
 
-These four scenarios presented above illustrate different uses of the cross-species pathway representations in
+These four case studies presented above illustrate different uses of the cross-species pathway representations in
 PlantMetWiki: from hypothesis generation for annotation transfer of reaction steps and related enzymes of
 a related species (capsaicin), pooled reconstruction of bioconversion steps from multiple
 complementary sources (hyoscyamine/scopolamine), the difference between cross-species coverage of
@@ -871,7 +871,7 @@ precursor and tailoring enzymatic steps (avenacin), to breadth-based inference w
 taxonomically diverse family (monolignol). By combining pathway structure with species annotations in
 a common semantic framework, PlantMetWiki enables researchers to identify annotation gaps, retrieve
 candidate annotations from related species, and prioritize biosynthetic hypotheses for experimental
-follow-up. The public SPARQL endpoint provides quick access to these analyses and allows for customizable queries, while the Zenodo releases provide reproducibility for workflow development, and all queries
+follow-up. The public SPARQL endpoint provides reproducible access to these analyses, and all queries
 used in this study are available through the accompanying notebooks and example queries (see Data
 availability section).
 
@@ -889,20 +889,21 @@ graph, indicating that the corresponding reaction may be catalyzed in the target
 remaining 36.9\% reflect pathway steps for which no
 evidence is currently available anywhere in the knowledge graph and therefore requires additional
 experimental characterization rather than annotation propagation. The pathway case studies presented
-above showed higher levels of inferable annotation space than the global average. Capsaicin biosynthesis contained 55.6\% inferable gaps,
+above showed higher levels of inferable annotation space than the global average, as
+reflected in Figure~\ref{fig:matrix}B. Capsaicin biosynthesis contained 55.6\% inferable gaps,
 hyoscyamine and scopolamine biosynthesis 48.6\%, avenacin A biosynthesis 56.9\%, and monolignol
 biosynthesis 83.7\%, compared to 47.9\% globally. These numbers most likely reflect the selection criteria used to
 identify these case studies ($\geq$3 annotated species, $\geq$8 biochemical conversions, $\geq$6
 enzyme annotations), which favour pathways with sufficient cross-species annotation density for
 inferable gaps. The top 15 pathways with the highest number of inferable enzymes from other species (reflected in Figure~\ref{fig:matrix}B) shows that most of these pathways do not reach the global average annotation of 24.1\%, but good potential to infer relevant enzymes to reduce gaps in pathway annotations (ranging from 143 reactions to 1036). However, two pathways in this list specifically show a non-inferable gap close to or higher than 50\% (PWY-1121. suberin monomers biosynthesis and PWY-7156, sp. of ergosterol biosynthesis II), and do not include enough data to complete the biochemical pathway knowledge.
 
-To measure if inferable gaps can be best resolved by knowledge on one model species or a broader species diversity, \textit{A. thaliana} was selected, since this species is the most extensively annotated model species in PlantMetWiki. Of the 13,922 inferable gap cells (species--reaction pairs with no direct enzyme
+Then, we measured if inferable gaps can be resolved by knowledge on \textit{A. thaliana} model species (the most extensively annotated species in PlantMetWiki) or a broader species diversity. Of the 13,922 inferable gap cells (species--reaction pairs with no direct enzyme
 annotation for that species), 2,921 (21.0\%) could only be resolved using \textit{A. thaliana}
 annotations (i.e., \textit{A. thaliana} is the sole species covering that reaction within its
 pathway). A further 4,153 (29.8\%) have \textit{A. thaliana} as one of several possible sources, and
 the remaining 6,848 (49.2\%) rely entirely on evidence from other species. Overall, \textit{A.
 thaliana} annotations could contribute to approximately half (50.8\%) of the inferable gap, while the
-other half is independent of \textit{A. thaliana} and draws on a long lineage of species, most prominently
+other half is independent of \textit{A. thaliana} and draws on a long tail of species, most prominently
 \textit{Lathyrus oleraceus}, \textit{Zea mays}, \textit{Solanum lycopersicum}, \textit{Glycine max},
 and \textit{Oryza sativa} (Figure~\ref{fig:matrix}C and E). In terms of evidence robustness, 54.4\% of
 inferable gap cells have only a single potential source species, while the remaining 45.6\% are
@@ -911,7 +912,7 @@ indicate that, while \textit{A. thaliana}'s annotation depth makes this species 
 reference for metabolic reaction knowledge in PlantMetWiki, cross-species inference in this resource is not solely dependent on
 a model-plant reference and draws on a broad repertoire of annotated taxa. However, to fully resolve biochemical reactions through multi-species annotations and data integration, interoperable chemical identifier mappings are required.
 
-\subsection*{Cross-referencing metabolic identifiers for federation and mappings to the Linked Open Data ecosystem}
+\subsection*{Cross-referencing metabolite identifiers for federation and mappings to the Linked Open Data ecosystem}
 
 % \rev{The third design decision, mapping metabolites onto interoperable chemical identifiers, is what
 % allows the resource to be queried alongside the wider Linked Open Data ecosystem; the following
@@ -936,7 +937,7 @@ dedicated \texttt{wp:bdb*} predicates: 3,059 to Wikidata, 2,926 PubChem, 2,805 C
 1,120 KEGG, 975 HMDB, and 510 LIPID MAPS links (Figure~\ref{fig:bridgedb}).
 
 Of the 4,577
-metabolite nodes in PlantMetWiki, 4,111 (89.8\%) was cross-referenced to an InChIKey and can be matched to Wikidata entries. Additional federation points are provided through ChEBI (174), MetaNetX (172),
+metabolite nodes in PlantMetWiki, 4,111 (89.8\%) carry an InChIKey and can be matched to Wikidata entries with a query. Additional federation points are provided through ChEBI (174), MetaNetX (172),
 PubChem Compound (75), and KEGG Compound (43) metabolite identifiers (Fig.~S18). However, most source
 metabolites carry only a single primary identifier and almost no cross-references
 between chemical databases, so cannot be federated against Wikidata and require a manual lookup in the source database.
@@ -963,7 +964,7 @@ cross-database quality control. Two case studies illustrate complementary direct
 enriching PlantMetWiki with external chemical and pharmacological annotation (alpha-tomatine) and
 using external knowledge to expose gaps within PlantMetWiki itself (theobromine). 
 
-\subsubsection*{Case study 5: Alpha-tomatine metabolite}
+\subsubsection*{Case study 5: Alpha-tomatine}
 \vspace*{-1em}
 Alpha-tomatine, a
 steroidal glycoalkaloid produced by \textit{Solanum lycopersicum} (tomato) and related Solanaceae
@@ -971,7 +972,7 @@ species, is directly linked to Wikidata (Q288051), PubChem CID (28523), and ChEB
 Federation retrieves annotations from Wikidata describing alpha-tomatine as an antifungal agent,
 anti-infective agent, and bitter compound, and from PubChem adding toxicological studies and records of
 industrial applications in cosmetics and as an agricultural fungicide. This information is now
-available through the PlantMetWiki UI through to queries targeting both resources. Additionally,
+available through the PlantMetWiki UI via queries targeting both resources. Additionally,
 PlantMetWiki supplies what neither resource provides alone: the three distinct glycoforms of tomatine
 (alpha, beta-1, and gamma), each represented as a separate metabolite node with an InChIKey
 identifier, placed in their biosynthetic context within the glycoalkaloid metabolism superpathway
@@ -981,7 +982,7 @@ biological activity recorded in Wikidata, through the biosynthetic route encoded
 the specific plant species and enzymatic steps responsible: a workflow that would otherwise require
 sequential manual lookup or integrating webcrawlers or different API calls across three separate databases.
 
-\subsubsection*{Case study 6: theobromine metabolite}
+\subsubsection*{Case study 6: Theobromine}
 \vspace*{-1em}
 Theobromine illustrates federation working in both directions simultaneously. Theobromine is a
 well-characterized methylxanthine alkaloid (Wikidata Q206844, ChEBI 28946, CAS 83-67-0) with extensive
@@ -989,7 +990,7 @@ pharmacological annotations documented across these resources, including its rol
 bronchodilator, vasodilator, and nootropic. PlantMetWiki adds pathway-level context: theobromine
 participates in seven pathways, spanning two dedicated biosynthesis routes resulting from convergent
 evolution of methylxanthine metabolism in plants, with enzymatic annotations linking
-\textit{Coffea arabica} (12 annotated gene and enzyme nodes) and \textit{Camellia sinensis} (4 geneproduct nodes)
+\textit{Coffea arabica} (12 annotated gene and enzyme nodes) and \textit{Camellia sinensis} (4 nodes)
 as the primary gene-annotated species (Fig.~S16--17). The resource also captures the metabolic
 neighbourhood of theobromine within the methylxanthine family, with caffeine, theophylline, and
 7-methylxanthine represented as co-metabolites across overlapping pathways, providing a
@@ -1001,8 +1002,8 @@ theobromine its name, as a confirmed theobromine-producing taxon via the found-i
 \textit{Paullinia cupana}. Yet, the PlantCyc source data and PlantMetWiki core graph contain no
 annotated gene or enzyme nodes for \textit{T. cacao} in any of the theobromine biosynthesis pathways,
 despite this species being the historically and commercially primary producer of the compound. This gap is
-invisible when exploring PlantCyc alone, however becomes immediately apparent once the theobromine InChIKey
-is used in a federated query against relevant species in Wikidata. This finding shows that the \textit{T. cacao} theobromine pathway
+invisible when exploring PlantCyc alone, but becomes immediately apparent once the theobromine InChIKey
+is used in a federated query against organism coverage in Wikidata. This finding shows that the \textit{T. cacao} theobromine pathway
 annotation is a high-priority curation target and how linked data can function both as an
 integration framework and as a mechanism for quality control and gap detection.
 
