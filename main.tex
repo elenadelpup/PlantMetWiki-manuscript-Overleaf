@@ -355,15 +355,16 @@ for pathway knowledge gap discovery, such as microbes and fungi.
 %==============================================================================
 \section*{Results}
 
-PlantMetWiki is accessible through an open-access SNORQL User Interface (UI)
-(\url{https://plantmetwiki.bioinformatics.nl}) and a dedicated SPARQL endpoint
-(\url{https://plantmetwiki.bioinformatics.nl/sparql}), including diverse customizable example
+PlantMetWiki is accessible through a dedicated SPARQL endpoint
+(\url{https://plantmetwiki.bioinformatics.nl/sparql}) and an open-access SNORQL User Interface (UI)
+(\url{https://plantmetwiki.bioinformatics.nl}), including diverse customizable example
 queries. A dedicated tutorial includes relevant documentation of the UI, endpoint, and example
 queries, supporting integration with user-provided data, including multi-omics data, phenotypes,
 federated queries to Wikidata, and BGCs (from MIBiG and plantiSMASH). Results can be exported in
 standard formats such as CSV, JSON, and XML to be further analyzed using network tools such as
 Cytoscape and combined with multi-omics visualizations and integrative representations such as
-metabolic networks~\cite{mildau2025} or paired omics approaches~\cite{wolters2024}.
+metabolic networks~\cite{mildau2025} or paired omics approaches~\cite{wolters2024}. The public PlantMetWiki SPARQL endpoint is what makes pathway knowledge machine-actionable and acts as the primary access route and the reusable part of the architecture, while graphical interfaces such as the UI are convenience layers that can be built on top of such an endpoint with
+comparatively little effort.
 
 Querying the semantically modelled pathway information in PlantMetWiki supports identification of
 curation gaps and prioritization of candidate annotations through alignment of cross-species pathway
@@ -1107,12 +1108,6 @@ interoperability, integration, and reuse, using standard RDF vocabularies, persi
 machine-readable provenance, and SPARQL-based access. This LOD representation enables pathway
 knowledge to be queried together with external biological, chemical, and genomic resources without
 requiring duplication of those resources or manual data integration.
-\textcolor{red}{ A public SPARQL endpoint is essential for fair 
-A public SPARQL endpoint is what makes machine-actionable FAIR access possible in the
-first place: 
-and graphical interfaces 
-are a convenience layer that can be built on top of such an endpoint with
-comparatively little effort, and resources like rather than the primary access route itself.}
 
 Semantic integration via existing vocabularies, such as the WikiPathways (\texttt{wp:}) one,
 functions not only as a mechanism for interoperability but also as a framework for identifying
