@@ -33,6 +33,14 @@
 
 \usepackage[margin=2.5cm]{geometry}
 \usepackage[hidelinks]{hyperref}
+% Long emails/URLs in \href{} have no natural break point (hyperref alone
+% doesn't permit breaking at @ or .), and the reviewer-list emails ran off
+% the right margin as a result. xurl permits a break at any character in a
+% URL/email; microtype + emergencystretch is the same systemic fix already
+% applied to main.tex for the identical problem there.
+\usepackage{xurl}
+\usepackage{microtype}
+\emergencystretch=3em
 \usepackage{setspace}
 
 \onehalfspacing
