@@ -1029,10 +1029,7 @@ integration framework and as a mechanism for quality control and gap detection.
 Beyond these two case studies on individual compounds, InChIKeys were used to quantify how much of PlantMetWiki's chemistry is
 absent from external resources. A complete federated scan of all 4,111 InChIKey-annotated PlantMetWiki
 metabolites against Wikidata showed that 2,876 metabolites (70.0\%) currently have an exact InChIKey
-match in Wikidata, whereas 1,235 (30.0\%) are not present in Wikidata. These include compounds such as the acylated
-sucrose ester 4-(3-methylbutanoyl)sucrose (XUZMIKFKZAUSGG-IVHWZWKWSA-N), the acylated flavonoid
-glycoside isorhamnetin 3-O-(3″,6″-di-O-4-coumaroyl)glucoside (CQKFGYQBBQNDQG-NKXGADSASA-N), and the
-\textit{Allium} organosulfur volatile (Z)-butanethial oxide (BQXJLKVZTDDERJ-UHFFFAOYSA-N), which are
+match in Wikidata, whereas 1,235 (30.0\%) are not present in Wikidata. These metabolites are
 present in PlantMetWiki with full pathway context but have no corresponding Wikidata entry.
 
 Most of these absences reflect alternative molecular representations rather than genuinely missing
@@ -1055,8 +1052,15 @@ compound-centric one (PubChem/Wikidata). The remaining 421 metabolites (34.1\% o
 no structurally related Wikidata representation was identified using the skeleton-level comparison applied,
 marking them as the strongest candidates for
 genuinely novel contributions to the LOD ecosystem (Figure~\ref{fig:wikidata}A,C; Supplementary Table
-S7). 
-True novelty can be checked with similarity to other database entries, e.g. from ChEBI ID via IDSM (supportig queries are provided on the SPARQL explorer)
+S7).
+True novelty can be checked with similarity to other database entries, e.g. from ChEBI ID via IDSM
+(supporting queries are provided on the SPARQL explorer). Using PlantCyc's native pathway
+classification, terpenoid/sterol pathways account for the largest share of these putative Wikidata
+annotation target metabolites (25.6\%), consistent with terpenoids being the most structurally diverse class of plant
+specialized metabolites; glycoside/acylsugar-conjugate pathways show the strongest relative enrichment
+compared to the skeleton-matched set (16.6\% vs.\ 7.5\%), while flavonoid/anthocyanin (8.1\% vs.\
+18.7\%) and alkaloid (9.6\% vs.\ 15.9\%) pathways are depleted, consistent with those classes being
+among the most extensively catalogued in existing chemical databases.
 
 Specialized chemistry drives the Wikidata annotation gap, evident in both pathway distribution and,
 more strongly, the taxonomic distribution of the absent metabolites, which concentrate
@@ -1073,8 +1077,8 @@ species; and 7.3\%, 3/41 at ten or more) (Fig.~S19).
 
 Single-pathway metabolites are overwhelmingly single-species (86\% are modeled to occur $\leq$1 annotated
 species), and for 93\% of the 421 compounds are produced by at most one annotated species,
-consistent with the highly specialized nature of plant metabolism. The novel-scaffold set (no
-structurally related entries in Wikidata) is dominated by taxonomically restricted metabolites
+consistent with the highly specialized nature of plant metabolism. This set of putative Wikidata
+annotation targets (no structurally related entries in Wikidata) is dominated by taxonomically restricted metabolites
 (compounds present in a single PlantMetWiki pathway and modeled to be produced by a single annotated species). These
 span diverse classes of specialized metabolism, for example the triterpenoid-saponin precursor des-acyl avenacin A
 (WDHZXDLRQGPOGR-WGJSNZCWSA-N; \textit{Avena strigosa}, four pathways), the jasmonate conjugate
@@ -1722,7 +1726,7 @@ metabolites belonging to standalone reactions (no membership of PC* pathways), s
 \textbf{(C)} For the 814 skeleton-matched metabolites, the distribution of how many other related
 entries (different stereoisomers/forms of the same skeleton) Wikidata already holds: most skeletons
 have only 1--2 related Wikidata entries, but a few (e.g., kaempferol glycosides) already have many.
-\textbf{(D)} The 12 highest-priority lineage-specific novel-scaffold metabolites (compounds absent
+\textbf{(D)} The 12 highest-priority lineage-specific putative Wikidata annotation target metabolites (compounds absent
 from Wikidata, with no skeleton match, that are produced by exactly one annotated species) ranked by
 pathway count and labelled with the producing genus. Restricting to single-species compounds excludes
 reaction intermediates with no organism-annotated enzyme and highlights the taxonomically restricted
