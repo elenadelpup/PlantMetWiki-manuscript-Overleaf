@@ -678,8 +678,8 @@ accessible via the SPARQL endpoint. A vocabulary graph enables a self-describing
 WikiPathways vocabularies do not cover: biosynthetic gene cluster membership
 (\texttt{pmw:BiosyntheticGeneCluster}, \texttt{pmw:MemberIdentifier}) and the PlantCyc/GPML
 key--value property layer (\texttt{pmw:gpmlProperty}, \texttt{pmw:key}, \texttt{pmw:value},
-\texttt{pmw:plantcycId}). \textcolor{red}{Alongside these terms, the two WikiPathways vocabularies are
-included as SKOS concept schemes: 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}.} All integrated vocabulary terms are typed as OWL
+\texttt{pmw:plantcycId}). Alongside these terms, the two WikiPathways vocabularies are
+included as SKOS concept schemes: 38 terms in \texttt{wp:} and 87 in \texttt{gpml:}. All integrated vocabulary terms are typed as OWL
 classes and properties and carry \texttt{rdfs:label}, textual definitions, and
 \texttt{rdfs:domain}/\texttt{rdfs:range} constraints. Because these definitions sit alongside the
 data, they can resolve the meaning of any \texttt{pmw:}, \texttt{wp:} or \texttt{gpml:} term in
@@ -783,9 +783,7 @@ transfer.
 
 To retrieve the missing species-reaction annotations, we examined pathways representing distinct biological
 scenarios, including species-specific specialized metabolism, medicinal alkaloid biosynthesis, and
-specialized metabolites from non-model plants. Throughout this section, reaction counts refer to distinct biochemical conversions after collapsing
-GPML diagram branch-point duplicates; raw \texttt{wp:Conversion} node counts returned by the endpoint
-are correspondingly higher.
+specialized metabolites from non-model plants. Throughout this section, reaction counts refer to distinct biochemical conversions, even when duplicate \texttt{wp:Conversion} entries exist in RDF for each reaction product. A direct query of the live endpoint returns a higher count. 
 
 \subsubsection*{Case study 1: Capsaicin biosynthesis}
 \vspace*{-1em}
@@ -904,12 +902,12 @@ remaining 36.9\% reflect pathway steps for which no
 evidence is currently available anywhere in the knowledge graph and therefore requires additional
 experimental characterization rather than annotation propagation. The pathway case studies presented
 above showed higher levels of inferable annotation space than the global average, as
-reflected in Figure~\ref{fig:matrix}B. Capsaicin biosynthesis contained 55.6\% inferable gaps,
+reflected in Figure~\ref{fig:matrix}A. Capsaicin biosynthesis contained 55.6\% inferable gaps,
 hyoscyamine and scopolamine biosynthesis 48.6\%, avenacin A biosynthesis 56.9\%, and monolignol
-biosynthesis 83.7\%, compared to 47.9\% globally. These numbers most likely reflect the selection criteria used to
-identify these case studies ($\geq$3 annotated species, $\geq$8 biochemical conversions, $\geq$6
+biosynthesis 83.7\%, compared to 47.9\% globally. These numbers reflect criteria we used to
+select these case studies ($\geq$3 annotated species, $\geq$8 biochemical conversions, $\geq$6
 enzyme annotations), which favour pathways with sufficient cross-species annotation density for
-inferable gaps. The top 15 pathways with the highest number of inferable enzymes from other species (reflected in Figure~\ref{fig:matrix}B) shows that most of these pathways do not reach the global average annotation of 24.1\%, but good potential to infer relevant enzymes to reduce gaps in pathway annotations (ranging from 143 reactions to 1036). However, two pathways in this list specifically show a non-inferable gap close to or higher than 50\% (PWY-1121. suberin monomers biosynthesis and PWY-7156, sp. of ergosterol biosynthesis II), and do not include enough data to complete the biochemical pathway knowledge.
+inferable gaps. Figure~\ref{fig:matrix}B shows the top 15 pathways ranked by absolute inferable reaction--species count, ranging from 143 to 1,036 inferable pairs. Several of these are PlantCyc superpathways (labelled ``sp.'' in the panel), which combine multiple sub-pathways into one larger reaction set with a correspondingly larger number of species annotations, resulting in sparse and scattered annotation across the constituent sub-pathways. Most of the 15 fall below the 24.1\% global direct-annotation rate. The superpathway of ergosterol biosynthesis II (PC610) has the highest non-inferable gap in this list at 50.0\%, followed by suberin monomers biosynthesis (PC604) at 40.0\%.
 
 Then, we measured if inferable gaps can be resolved by knowledge on \textit{A. thaliana} model species (the most extensively annotated species in PlantMetWiki) or a broader species diversity. Of the 13,922 inferable gap cells (species--reaction pairs with no direct enzyme
 annotation for that species), 2,921 (21.0\%) could only be resolved using \textit{A. thaliana}
@@ -920,7 +918,7 @@ thaliana} annotations could contribute to approximately half (50.8\%) of the inf
 other half is independent of \textit{A. thaliana} and draws on a long tail of species, most prominently
 \textit{Lathyrus oleraceus}, \textit{Zea mays}, \textit{Solanum lycopersicum}, \textit{Glycine max},
 and \textit{Oryza sativa} (Figure~\ref{fig:matrix}C and E). In terms of evidence robustness, 54.4\% of
-inferable gap cells have only a single potential source species, while the remaining 45.6\% are
+inferable gaps have only a single potential source species, while the remaining 45.6\% are
 supported by two or more independent species, providing mutually corroborating evidence (Figure~\ref{fig:matrix}D). These results
 indicate that, while \textit{A. thaliana}'s annotation depth makes this species the single most valuable
 reference for metabolic reaction knowledge in PlantMetWiki, cross-species inference in this resource is not solely dependent on
@@ -936,41 +934,43 @@ The PlantMetWiki SPARQL endpoint positions biochemical plant pathway knowledge i
 two complementary strategies: 1. through direct cross-resource identifier mapping via BridgeDb, which
 extends internal identifiers to external chemical database identifiers and structural identifiers in the PlantMetWiki knowledge graph, and 2. via
 federated queries that reach any LOD resource through shared URIs. Together, these annotations allow users to connect metabolites to other
-resources, such as Wikidata, ChEBI, and PubChem within a single
+resources, such as Wikidata, ChEBI~\cite{malik2026}, and PubChem~\cite{kim2025} within a single
 SPARQL query. This
 interoperability addresses a long-standing disconnect in plant biochemistry: pathway databases
 capture how and in which species metabolites are produced, whereas chemical databases focus on
 molecular properties, biological activities, toxicology, and applications. In Wikidata alone, the
-production of atropine (Q26272) is not connected to the \textit{A. belladonna} plant (Q156091) (while this information is described in free text in Wikipedia);
-identifier mapping and federated queries bridges these complementary resources.
+production of atropine (Q26272) is not connected to the \textit{A. belladonna} plant (Q156091). Identifier mapping and federated queries bridge these complementary resources. 
+
+Nearly 90\% of PlantMetWiki metabolites can be linked to Wikidata entries through federated queries using
+their InChIKey~\cite{heller2015}, which Wikidata uses as a standard chemical identifier (wdt:P235). Of the 4,577
+metabolite nodes in PlantMetWiki, 4,111 (89.8\%) carry an InChIKey and can be matched to Wikidata entries
+with a query. The remaining 466 each carry exactly one additional identifier: ChEBI (174), MetaNetX
+(172), PubChem Compound (75), or KEGG Compound (43) (Fig.~S16). Wikidata has a corresponding property
+for ChEBI (\texttt{wdt:P683}), PubChem (\texttt{wdt:P662}), and KEGG (\texttt{wdt:P665}), so these 292
+metabolites can also be federated to a matching Wikidata entry when one exists. MetaNetX has no
+corresponding Wikidata property, so the 172 metabolites with only a MetaNetX identifier cannot be
+federated to Wikidata at all. Because each of these 466 metabolites carries only one identifier type,
+with no redundancy across databases, a federated query that does not resolve to a Wikidata entry has no
+alternative identifier to try, and requires a manual lookup in the source database instead.
 
 To make these links first-class and directly queryable, we integrated the BridgeDb metabolite
 ID-mapping database (build 20260102; derived from HMDB, ChEBI, and Wikidata) into the GPML-to-RDF
 conversion. This materialized cross-references for 3,198 of 4,577 metabolites (69.9\%), stored under
-dedicated \texttt{wp:bdb*} predicates: 3,059 to Wikidata, 2,926 PubChem, 2,805 ChEBI, 2,317 ChemSpider,
-1,120 KEGG, 975 HMDB, and 510 LIPID MAPS links (Figure~\ref{fig:bridgedb}).
-
-Of the 4,577 metabolite nodes in PlantMetWiki, 4,111 (89.8\%) carry an InChIKey and can be matched to
-Wikidata entries with a query. The remaining 466 each carry exactly one additional identifier: ChEBI
-(174), MetaNetX (172), PubChem Compound (75), or KEGG Compound (43) (Fig.~S16). Wikidata has a
-corresponding property for ChEBI (\texttt{wdt:P683}), PubChem (\texttt{wdt:P662}), and KEGG
-(\texttt{wdt:P665}), so these 292 metabolites can also be federated to a matching Wikidata entry when
-one exists. MetaNetX has no corresponding Wikidata property, so the 172 metabolites with only a
-MetaNetX identifier cannot be federated to Wikidata at all. Because each of these 466 metabolites
-carries only one identifier type, with no redundancy across databases, a federated query that does not
-resolve to a Wikidata entry has no alternative identifier to try, and requires a manual lookup in the
-source database instead.
-
-Inclusion of BridgeDb identifier mappings for metabolites extends the
-sparse PlantCyc-derived annotations, raising ChEBI coverage from 174 to 2,805
-metabolites, PubChem from 75 to 2,926, and KEGG from 43 to 1,120. BridgeDb further adds Wikidata,
-ChemSpider, HMDB, and LIPID MAPS links, which are otherwise absent from the source PlantCyc altogether.
-This extention resulted in the majority of mapped metabolites now linking to four or more databases. InChIKey-based federation remains available for the 26.4\% of metabolites not covered by BridgeDb.
+dedicated \texttt{wp:bdb*} predicates: 3,059 Wikidata, 2,926 PubChem, 2,805 ChEBI, 2,317 ChemSpider,
+1,120 KEGG, 975 HMDB, and 510 LIPID MAPS links  (Figure~\ref{fig:bridgedb}). BridgeDb thus densifies the
+sparse PlantCyc-derived identifiers into multi-database hubs, increasing ChEBI coverage from 174 to 2,805
+metabolites, PubChem from 75 to 2,926, and KEGG from 43 to 1,120. BridgeDb also adds Wikidata,
+ChemSpider, HMDB, and LipidMaps links, which are otherwise absent from the source PlantCyc altogether.
+This results in the majority of mapped metabolites now linking to four or more databases. The two
+strategies are therefore complementary. While federation reaches a Wikidata entry at query time by
+matching on the InChIKey, BridgeDb stores the other database entities as an explicit link on the
+metabolite node, so the connection is resolved once, offline, and is directly traversable.
+InChIKey-based federation remains available for 26.4\% of metabolites not covered by BridgeDb.
 
 Because BridgeDb writes these cross-references under separate predicates, storing the external links
-directly on each metabolite, it expands rather than overwrites the curated PlantCyc annotations. Of
-the 2,904 metabolites carrying both a source and a BridgeDb-derived InChIKey, 2,897 (99.8\%) agreed
-exactly. For the unmatched InChIKeys, four metabolites received a BridgeDb InChIKey sharing the 2D skeleton but differing in the
+directly on each metabolite, it augments rather than overwrites the curated PlantCyc identifier. Of
+the 2,904 metabolites that carry both a source and a BridgeDb-derived InChIKey, 2,897 (99.8\%) agreed
+exactly.Four metabolites received a BridgeDb InChIKey sharing the 2D skeleton but differing in the
 stereochemistry layer: maltose, hemanthamine, lanatoside C, and polyneuridine aldehyde. Three cofactors
 (FMN, protoheme, and molecular hydrogen, H₂) received structurally unrelated key values, reflecting
 the well-known difficulties in annotating charged and metal-coordinated species rather than mapping
@@ -1008,7 +1008,7 @@ well-characterized methylxanthine alkaloid (Wikidata Q206844, ChEBI 28946, CAS 8
 pharmacological annotations documented across these resources, including its roles as a
 bronchodilator, vasodilator, and nootropic. PlantMetWiki adds pathway-level context: theobromine
 participates in seven pathways, spanning two dedicated biosynthesis routes resulting from convergent
-evolution of methylxanthine metabolism in plants, with enzymatic annotations linking
+evolution of methylxanthine metabolism in plants~\cite{huangr2016}, with enzymatic annotations linking
 \textit{Coffea arabica} (12 annotated gene and enzyme nodes) and \textit{Camellia sinensis} (4 nodes)
 as the primary gene-annotated species (Fig.~S17--18). The resource also captures the metabolic
 neighbourhood of theobromine within the methylxanthine family, with caffeine, theophylline, and
@@ -1070,12 +1070,12 @@ produces (612/1,617), to 30.6\% for those made by a single species (476/1,554), 
 species (124/664), and below 10\% for those synthesized by four or more (8.5\%, 20/235 at four to nine
 species; and 7.3\%, 3/41 at ten or more) (Fig.~S19).
 
-Single-pathway metabolites are overwhelmingly single-species (86\% are modeled to occure $\leq$1 annotated
-species), and 93\% of the 421 novel-scaffold compounds are produced by at most one annotated species,
+Single-pathway metabolites are overwhelmingly single-species (86\% are modeled to occur $\leq$1 annotated
+species), and for 93\% of the 421 compounds there is evidence that these are produced by at most one annotated species,
 consistent with the highly specialized nature of plant metabolism. The novel-scaffold set (no
 structurally related entries in Wikidata) is dominated by taxonomically restricted metabolites
-(compounds present in a single PlantMetWiki pathway and produced by a single annotated species). These
-span diverse classes of specialized metabolism: the triterpenoid-saponin precursor des-acyl avenacin A
+(compounds present in a single PlantMetWiki pathway and modeled to be produced by a single annotated species). These
+span diverse classes of specialized metabolism, for example the triterpenoid-saponin precursor des-acyl avenacin A
 (WDHZXDLRQGPOGR-WGJSNZCWSA-N; \textit{Avena strigosa}, four pathways), the jasmonate conjugate
 jasmonoyl-L-valine (\textit{Nicotiana attenuata}, three pathways), and the polymethylated flavonoid
 3,6,7,2′,4′-pentamethylquercetagetin (\textit{Chrysosplenium americanum}, two pathways), each confined
@@ -1088,12 +1088,11 @@ Wikidata enriches PlantMetWiki with biological-role, taxonomic, pharmacological,
 information, while PlantMetWiki contributes pathway context and at least 421 largely specialized
 metabolites for which no structurally related Wikidata representation was identified using
 the skeleton-level comparison applied. Beyond
-identifying gaps, federation also exposes cross-resource curation differences: as shown for momilactone
-A, exact-match absences can reflect differing stereochemical completeness rather than missing
-chemistry, so the two-tier (exact plus skeleton-level) comparison both separates genuine novelty from
+identifying gaps, federation also exposes cross-resource curation differences, since exact-match absences for chemical structures can reflect differing stereochemical completeness rather than missing
+chemistry. Using a two-tier approach (exact matches plus skeleton-level) separates genuine novelty from
 representational variants and flags concrete reconciliation targets. Federated querying thereby
-provides a quantitative framework for assessing knowledge completeness across biological knowledge
-graphs, for detecting curation discrepancies between them, and for prioritizing future curation where
+provides a quantitative framework for assessing knowledge completeness across knowledge
+graphs, detecting curation discrepancies between them, and to prioritizing future curation where
 it is most needed. The SPARQL endpoint and federated query patterns demonstrated in the accompanying
 notebook (see Data availability) provide the infrastructure to systematically contribute this pathway
 context to Wikidata as a community curation effort.
