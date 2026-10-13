@@ -1014,7 +1014,7 @@ as the primary gene-annotated species (Fig.~S17--18). The resource also captures
 neighbourhood of theobromine within the methylxanthine family, with caffeine, theophylline, and
 7-methylxanthine represented as co-metabolites across overlapping pathways, providing a
 graph-queryable view of the xanthine alkaloid network that Wikidata and ChEBI currently do not
-integrate data on. This example shows federation in the reverse direction, exposing a significant gap in
+represent at the pathway level. This example shows federation in the reverse direction, exposing a significant gap in
 PlantMetWiki itself. Wikidata records \textit{Theobroma cacao} (cocoa), the plant that gives
 theobromine its name, as a confirmed theobromine-producing taxon via the found-in-taxon property
 (wdt:P703), alongside \textit{Coffea arabica}, \textit{Camellia sinensis}, \textit{Cola nitida}, and
@@ -1055,7 +1055,8 @@ compound-centric one (PubChem/Wikidata). The remaining 421 metabolites (34.1\% o
 no structurally related Wikidata representation was identified using the skeleton-level comparison applied,
 marking them as the strongest candidates for
 genuinely novel contributions to the LOD ecosystem (Figure~\ref{fig:wikidata}A,C; Supplementary Table
-S7).
+S7). 
+True novelty can be checked with similarity to other database entries, e.g. from ChEBI ID via IDSM (supportig queries are provided on the SPARQL explorer)
 
 Specialized chemistry drives the Wikidata annotation gap, evident in both pathway distribution and,
 more strongly, the taxonomic distribution of the absent metabolites, which concentrate
@@ -1071,7 +1072,7 @@ species (124/664), and below 10\% for those synthesized by four or more (8.5\%, 
 species; and 7.3\%, 3/41 at ten or more) (Fig.~S19).
 
 Single-pathway metabolites are overwhelmingly single-species (86\% are modeled to occur $\leq$1 annotated
-species), and for 93\% of the 421 compounds there is evidence that these are produced by at most one annotated species,
+species), and for 93\% of the 421 compounds are produced by at most one annotated species,
 consistent with the highly specialized nature of plant metabolism. The novel-scaffold set (no
 structurally related entries in Wikidata) is dominated by taxonomically restricted metabolites
 (compounds present in a single PlantMetWiki pathway and modeled to be produced by a single annotated species). These
@@ -1088,11 +1089,12 @@ Wikidata enriches PlantMetWiki with biological-role, taxonomic, pharmacological,
 information, while PlantMetWiki contributes pathway context and at least 421 largely specialized
 metabolites for which no structurally related Wikidata representation was identified using
 the skeleton-level comparison applied. Beyond
-identifying gaps, federation also exposes cross-resource curation differences, since exact-match absences for chemical structures can reflect differing stereochemical completeness rather than missing
+identifying gaps, federation also exposes cross-resource curation differences: as shown for momilactone
+A, exact-match absences for chemical structures can reflect differing stereochemical completeness rather than missing
 chemistry. Using a two-tier approach (exact matches plus skeleton-level) separates genuine novelty from
 representational variants and flags concrete reconciliation targets. Federated querying thereby
-provides a quantitative framework for assessing knowledge completeness across knowledge
-graphs, detecting curation discrepancies between them, and to prioritizing future curation where
+provides a quantitative framework for assessing knowledge completeness across biological knowledge
+graphs, detecting curation discrepancies between them, and prioritizing future curation where
 it is most needed. The SPARQL endpoint and federated query patterns demonstrated in the accompanying
 notebook (see Data availability) provide the infrastructure to systematically contribute this pathway
 context to Wikidata as a community curation effort.
