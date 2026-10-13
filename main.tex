@@ -950,11 +950,16 @@ conversion. This materialized cross-references for 3,198 of 4,577 metabolites (6
 dedicated \texttt{wp:bdb*} predicates: 3,059 to Wikidata, 2,926 PubChem, 2,805 ChEBI, 2,317 ChemSpider,
 1,120 KEGG, 975 HMDB, and 510 LIPID MAPS links (Figure~\ref{fig:bridgedb}).
 
-Of the 4,577
-metabolite nodes in PlantMetWiki, 4,111 (89.8\%) carry an InChIKey and can be matched to Wikidata entries with a query. Additional federation points are provided through ChEBI (174), MetaNetX (172),
-PubChem Compound (75), and KEGG Compound (43) metabolite identifiers (Fig.~S18). However, most source
-metabolites carry only a single primary identifier and almost no cross-references
-between chemical databases, so cannot be federated against Wikidata and require a manual lookup in the source database.
+Of the 4,577 metabolite nodes in PlantMetWiki, 4,111 (89.8\%) carry an InChIKey and can be matched to
+Wikidata entries with a query. The remaining 466 each carry exactly one additional identifier: ChEBI
+(174), MetaNetX (172), PubChem Compound (75), or KEGG Compound (43) (Fig.~S16). Wikidata has a
+corresponding property for ChEBI (\texttt{wdt:P683}), PubChem (\texttt{wdt:P662}), and KEGG
+(\texttt{wdt:P665}), so these 292 metabolites can also be federated to a matching Wikidata entry when
+one exists. MetaNetX has no corresponding Wikidata property, so the 172 metabolites with only a
+MetaNetX identifier cannot be federated to Wikidata at all. Because each of these 466 metabolites
+carries only one identifier type, with no redundancy across databases, a federated query that does not
+resolve to a Wikidata entry has no alternative identifier to try, and requires a manual lookup in the
+source database instead.
 
 Inclusion of BridgeDb identifier mappings for metabolites extends the
 sparse PlantCyc-derived annotations, raising ChEBI coverage from 174 to 2,805
@@ -1005,7 +1010,7 @@ bronchodilator, vasodilator, and nootropic. PlantMetWiki adds pathway-level cont
 participates in seven pathways, spanning two dedicated biosynthesis routes resulting from convergent
 evolution of methylxanthine metabolism in plants, with enzymatic annotations linking
 \textit{Coffea arabica} (12 annotated gene and enzyme nodes) and \textit{Camellia sinensis} (4 nodes)
-as the primary gene-annotated species (Fig.~S16--17). The resource also captures the metabolic
+as the primary gene-annotated species (Fig.~S17--18). The resource also captures the metabolic
 neighbourhood of theobromine within the methylxanthine family, with caffeine, theophylline, and
 7-methylxanthine represented as co-metabolites across overlapping pathways, providing a
 graph-queryable view of the xanthine alkaloid network that Wikidata and ChEBI currently do not
