@@ -356,8 +356,9 @@ for pathway knowledge gap discovery, such as microbes and fungi.
 \section*{Results}
 
 PlantMetWiki is accessible through a dedicated SPARQL endpoint
-(\url{https://plantmetwiki.bioinformatics.nl/sparql}) and an open-access SNORQL User Interface (UI)
-(\url{https://plantmetwiki.bioinformatics.nl}), including diverse customizable example
+(\url{https://plantmetwiki.bioinformatics.nl/sparql}) and an open-access \textcolor{red}{SPARQL Explorer}
+(\url{https://plantmetwiki.bioinformatics.nl}) \textcolor{red}{built on a SNORQL user interface (UI)}, including
+diverse customizable example
 queries. A dedicated tutorial includes relevant documentation of the UI, endpoint, and example
 queries, supporting integration with user-provided data, including multi-omics data, phenotypes,
 federated queries to Wikidata, and BGCs (from MIBiG and plantiSMASH). Results can be exported in
@@ -493,7 +494,7 @@ R1.1 (Meta)data are released with a clear and accessible data usage license.
 R1.2 (Meta)data are associated with detailed provenance.
 R1.3 (Meta)data meet domain-relevant community standards &
 (1) License and provenance are recorded in the VoID header file for automated retrieval;
-(2) License and provenance of data and software are included in the SNORQL UI banner, to support user
+(2) License and provenance of data and software are included in the \textcolor{red}{SPARQL Explorer} banner, to support user
 awareness;
 (3) GPML and BridgeDb are recognized resources in FAIRSharing, on which the PlantMetWiki tool is
 built. (4) PlantMetWiki itself is also registered in FAIRsharing~\cite{plantmetwiki2026fairsharing}; (5) data quality and FAIR compliance are cross-checked against community tools, including YummyData~\cite{yamamoto2018} and FAIR-Checker~\cite{gaignard2023}.
@@ -511,7 +512,7 @@ The PlantMetWiki open-source web interface is the result of six co-designed and 
 repositories hosted in the GitHub Pathway-LOD community (see Code availability statement) that
 capture all steps from transforming data from PlantCyc in their native BioPAX standard to GPML2021
 and RDF, metabolite mappings via BridgeDb, establishing BGC crosslinks, creating a metadata schema,
-versioning, automated SNORQL UI hosting, SPARQL example querying, documentation, and tutorials
+versioning, automated \textcolor{red}{SPARQL Explorer} hosting, SPARQL example querying, documentation, and tutorials
 (Figure~\ref{fig:pipeline}). Data, metadata and software versioning and archiving on Zenodo are
 automated steps, with dedicated workflows available on GitHub (see Code availability statement).
 Pathway and reaction data from PlantCyc 17.0 are modelled into 1,162 multispecies pathway files and
@@ -1054,7 +1055,7 @@ marking them as the strongest candidates for
 genuinely novel contributions to the LOD ecosystem (Figure~\ref{fig:wikidata}A,C; Supplementary Table
 S7).
 True novelty can be checked with similarity to other database entries, e.g. from ChEBI ID via IDSM
-(supporting queries are provided on the SPARQL Explorer). Using PlantCyc's native pathway
+(supporting queries are provided on the \textcolor{red}{SPARQL Explorer}). Using PlantCyc's native pathway
 classification, terpenoid/sterol pathways account for the largest share of these putative Wikidata
 annotation target metabolites (25.6\%), consistent with terpenoids being the most structurally diverse class of plant
 specialized metabolites; glycoside/acylsugar-conjugate pathways show the strongest relative enrichment
@@ -1416,21 +1417,18 @@ datasets are described using a VoID metadata file that records dataset provenanc
 licensing information (see Data availability).
 
 \subsection*{Deployment, validation and accessibility}
-PlantMetWiki is available via a SPARQL Explorer with example queries that can be customized; a
-tutorial and documentation are available. The pathway data and connected annotations are made
-available via a SPARQL endpoint which can be accessed by the PlantMetWiki SPARQL Explorer, a SNORQL
-UI including a panel with example queries. SNORQL is a query editor that offers
-syntax highlighting for writing and executing SPARQL queries directly on our existing SPARQL endpoint,
-mirroring the usage of WikiPathways~\cite{martens2020}. The PlantMetWiki deployment of the interface,
+\textcolor{red}{PlantMetWiki's pathway data and connected annotations are accessible via a SPARQL
+endpoint, queried through the SPARQL Explorer, which offers syntax highlighting and a panel of
+customizable example queries, mirroring the usage of WikiPathways~\cite{martens2020}.}
+The PlantMetWiki deployment of the interface,
 together with the scripts that load the endpoint's named graphs, is released as versioned software
 and archived on Zenodo~\cite{delpup2026snorql}. The example queries auto-populate the SPARQL
 Explorer and can be adapted by users directly on the browser, or in a customizable GitHub repository
 (\url{https://github.com/pathway-lod/SPARQLQueries}). This repository stores queries in folders,
-allowing new users to navigate through our example queries panel with more ease and to generate
-permalinks to their queries for reproducibility of the results. This setup allows collaboration on the
-creation of queries over topics, communities, or external data sources
-for federated queries. Links of PlantCyc pathways with BGCs can be browsed with the "BGC Crosslinks"
-menu.
+allowing new users to navigate through our example queries panel with more ease. \textcolor{red}{Queries
+can be organised by topic or community and shared as permalinks, supporting collaborative curation of
+reusable and federated queries.} Links of PlantCyc pathways with BGCs can be browsed with the "BGC
+Crosslinks" menu.
 
 The example queries provided in the UI include federated queries using the QLever~\cite{qlever2017}
 search engine for quicker and more reliable access to Wikidata
@@ -1519,7 +1517,7 @@ PlantCyc-to-GPML2021 conversion pipeline that produces the GPML2021 pathway and 
 layer that generates the named graphs and their VoID metadata (\emph{pipeline tools; metadata
 creation})~\cite{delpup2026gpml2rdf}; the BGC crosslink generation pipeline that links MIBiG and
 plantiSMASH gene clusters to pathway enzymes, archived together with its output
-(\emph{pipeline tools})~\cite{delpup2026bgc}; and the SPARQL Explorer together with the scripts
+(\emph{pipeline tools})~\cite{delpup2026bgc}; and the \textcolor{red}{SPARQL Explorer} together with the scripts
 that load the named graphs into the Virtuoso triplestore (\emph{Virtuoso triplestore; access and
 results})~\cite{delpup2026snorql}.
 
@@ -1609,7 +1607,7 @@ subsetting). \textbf{(4) Virtuoso triplestore} (green): eight named graphs holdi
 WikiPathways RDF, entity-level species annotations, PlantCyc-specific properties, the BGC crosslinks,
 the NCBITaxon lineage subset, the VoID metadata, and the \texttt{wp:}/\texttt{gpml:} vocabulary
 definitions. \textbf{(5) Access and results} (purple): a
-public SPARQL endpoint and SNORQL UI allow direct querying of the named graphs, supported by a
+public SPARQL endpoint and \textcolor{red}{SPARQL Explorer (a SNORQL user interface)} allow direct querying of the named graphs, supported by a
 tutorial, documentation and example queries; Jupyter notebooks reproduce the figures, the
 cross-species inference analyses, and the federated queries to external endpoints such as Wikidata.
 All repositories are at \url{https://github.com/pathway-lod}; tool versions, scripts and URLs are
