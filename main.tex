@@ -130,8 +130,8 @@ current version.''} Tick the box and add the date.
 \begin{tabular}{@{}p{3.2em} p{0.44\textwidth} p{0.26\textwidth}@{}}
 \ckdone & Elena Del Pup                & \hrulefill\ 2 October 2026 \\
 \ckdone & Max Muller              & \hrulefill\ 5 October 2026 \\
-\ckbox & Marvin Martens               & \dotfill \\
-\ckbox & Egon L. Willighagen          & \dotfill \\
+\ckdone & Marvin Martens               & \hrulefill\ 15 October 2026 \\
+\ckdone & Egon L. Willighagen          & \hrulefill Did by email \\
 \ckdone& Marnix H. Medema             & \hrulefill\ 6 October 2026 \\
 \ckbox & Denise Slenter               & \dotfill \\
 \ckdone & Justin J.J. van der Hooft    & \hrulefill\ 9 October 2026 \\
@@ -371,7 +371,7 @@ curation gaps and prioritization of candidate annotations through alignment of c
 information and independent knowledge resources, crosslinks in the knowledge graph (to MIBiG, NCBI,
 plantiSMASH), and federated queries. PlantMetWiki supports the FAIR principles by adopting RDF-based
 semantic representations, including standard ontologies, machine-readable metadata, and public data
-access mechanisms, described in more detail in Table~\ref{tab:fair}. PlantMetWiki is cross-validated against external community tools to ensure data quality and compliance with LOD and FAIR practices, including YummyData~\cite{yamamoto2018}, which monitors SPARQL endpoint availability and metadata richness, and FAIR-Checker~\cite{gaignard2023}, which evaluates FAIRness metrics against Semantic Web standards.
+access mechanisms, described in more detail in Table~\ref{tab:fair}. PlantMetWiki is cross-validated against external community tools to ensure data quality and compliance with LOD and FAIR practices, including YummyData~\cite{yamamoto2018}, which monitors SPARQL endpoint availability and metadata richness (score of 89 as of 16 October 2026), and FAIR-Checker~\cite{gaignard2023}, which evaluates FAIRness metrics against Semantic Web standards (score of 91.67\% as of 16 October 2026).
 
 % --- ORIGINAL (replaced 6 October 2026; uncomment to restore) ---------------------
 % \begin{longtable}{p{0.44\textwidth} p{0.50\textwidth}}
@@ -1054,7 +1054,7 @@ marking them as the strongest candidates for
 genuinely novel contributions to the LOD ecosystem (Figure~\ref{fig:wikidata}A,C; Supplementary Table
 S7).
 True novelty can be checked with similarity to other database entries, e.g. from ChEBI ID via IDSM
-(supporting queries are provided on the SPARQL explorer). Using PlantCyc's native pathway
+(supporting queries are provided on the SPARQL Explorer). Using PlantCyc's native pathway
 classification, terpenoid/sterol pathways account for the largest share of these putative Wikidata
 annotation target metabolites (25.6\%), consistent with terpenoids being the most structurally diverse class of plant
 specialized metabolites; glycoside/acylsugar-conjugate pathways show the strongest relative enrichment
@@ -1416,19 +1416,19 @@ datasets are described using a VoID metadata file that records dataset provenanc
 licensing information (see Data availability).
 
 \subsection*{Deployment, validation and accessibility}
-PlantMetWiki is available via a SNORQL user interface with example queries that can be customized; a
+PlantMetWiki is available via a SPARQL Explorer with example queries that can be customized; a
 tutorial and documentation are available. The pathway data and connected annotations are made
 available via a SPARQL endpoint which can be accessed by the PlantMetWiki SPARQL Explorer, a SNORQL
-User Interface (UI) including a panel with example queries. SNORQL is a query editor that offers
+UI including a panel with example queries. SNORQL is a query editor that offers
 syntax highlighting for writing and executing SPARQL queries directly on our existing SPARQL endpoint,
 mirroring the usage of WikiPathways~\cite{martens2020}. The PlantMetWiki deployment of the interface,
 together with the scripts that load the endpoint's named graphs, is released as versioned software
 and archived on Zenodo~\cite{delpup2026snorql}. The example queries auto-populate the SPARQL
-Explorer and can be adapted by users directly on the webserver, or in a customizable GitHub repository
+Explorer and can be adapted by users directly on the browser, or in a customizable GitHub repository
 (\url{https://github.com/pathway-lod/SPARQLQueries}). This repository stores queries in folders,
 allowing new users to navigate through our example queries panel with more ease and to generate
 permalinks to their queries for reproducibility of the results. This setup allows collaboration on the
-creation of queries over topics, communities, collaborations functionality, or external data sources
+creation of queries over topics, communities, or external data sources
 for federated queries. Links of PlantCyc pathways with BGCs can be browsed with the "BGC Crosslinks"
 menu.
 
@@ -1440,7 +1440,7 @@ user can point the UI to other repositories containing custom queries.
 
 To enable local taxon label resolution and taxonomic reasoning without a runtime dependency on an
 external federation endpoint, the NCBITaxon ontology (release v2026-05-13, OBO Foundry, CC0 1.0
-Universal)~\cite{federhen2012} is loaded from \url{http://purl.obolibrary.org/obo/ncbitaxon.owl} into a
+Universal)~\cite{federhen2012} is transformed and loaded from \url{http://purl.obolibrary.org/obo/ncbitaxon.owl} into a
 dedicated \texttt{graph/ncbitaxon} named graph. The pathway IRIs already use the Open Bio-Ontologies
 (OBO) Foundry~\cite{smith2007} IRI scheme
 (\texttt{http://\allowbreak{}purl.\allowbreak{}obolibrary.\allowbreak{}org/\allowbreak{}obo/\allowbreak{}NCBITaxon\_\allowbreak{}<id>}), so taxon labels are resolved through a
@@ -1519,7 +1519,7 @@ PlantCyc-to-GPML2021 conversion pipeline that produces the GPML2021 pathway and 
 layer that generates the named graphs and their VoID metadata (\emph{pipeline tools; metadata
 creation})~\cite{delpup2026gpml2rdf}; the BGC crosslink generation pipeline that links MIBiG and
 plantiSMASH gene clusters to pathway enzymes, archived together with its output
-(\emph{pipeline tools})~\cite{delpup2026bgc}; and the SNORQL user interface together with the scripts
+(\emph{pipeline tools})~\cite{delpup2026bgc}; and the SPARQL Explorer together with the scripts
 that load the named graphs into the Virtuoso triplestore (\emph{Virtuoso triplestore; access and
 results})~\cite{delpup2026snorql}.
 
@@ -1539,7 +1539,7 @@ results})~\cite{delpup2026snorql}.
 Elena Del Pup: Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation,
 Software, Writing -- original draft.
 Max Muller: Data curation, Formal analysis, Software, Validation.
-Marvin Martens: Methodology, Software, Validation.
+Marvin Martens: Methodology, Software, Validation, Writing – review \& editing.
 Egon L. Willighagen: Conceptualization, Formal analysis, Methodology, Software, Writing -- review \& editing.
 Marnix H. Medema: Funding acquisition, Project administration, Supervision, Writing -- review \& editing.
 Denise Slenter: Conceptualization, Data curation, Formal analysis, Methodology, Software, Supervision,
