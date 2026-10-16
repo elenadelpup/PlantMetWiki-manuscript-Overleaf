@@ -357,7 +357,8 @@ for pathway knowledge gap discovery, such as microbes and fungi.
 
 PlantMetWiki is accessible through a dedicated SPARQL endpoint
 (\url{https://plantmetwiki.bioinformatics.nl/sparql}) and an open-access \textcolor{red}{SPARQL Explorer}
-(\url{https://plantmetwiki.bioinformatics.nl}) \textcolor{red}{built on a SNORQL user interface (UI)}, including
+(\url{https://plantmetwiki.bioinformatics.nl}) \textcolor{red}{built on a SNORQL user interface (UI)
+(Figure~\ref{fig:sparqlexplorer})}, including
 diverse customizable example
 queries. A dedicated tutorial includes relevant documentation of the UI, endpoint, and example
 queries, supporting integration with user-provided data, including multi-omics data, phenotypes,
@@ -668,8 +669,7 @@ The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-g
 triplestore, including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
 layer of the data model (Table~\ref{tab:graphs}; Supplementary Table S6). Across these eight graphs,
 the endpoint serves \textcolor{red}{6,501,361 triples (Table~\ref{tab:graphs}), reproducible directly
-from the live endpoint with a single example query run in the SPARQL Explorer
-(Figure~\ref{fig:sparqlexplorer})}. The core graph encodes 2,758 gene products, 3,750 enzymes,
+from the live endpoint with a single example query run in the SPARQL Explorer}. The core graph encodes 2,758 gene products, 3,750 enzymes,
 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927 are biochemical conversions
 and 12,359 are catalytic links. Pathway content is supported by \rev{5,722} distinct literature references
 annotated with PubMed IDs on pathway nodes. A separate properties graph preserves PlantCyc-specific
@@ -1596,7 +1596,23 @@ Copilot to aid in code review, and Grammarly for copyediting. After using these 
 \section*{Figures}
 
 \begin{center}
-\includegraphics[height=0.64\textheight,keepaspectratio]{figures/figure1.png}
+\includegraphics[width=\textwidth]{figures/figure1.png}
+\end{center}
+
+\captionof{figure}{\footnotesize \textcolor{red}{\textbf{The PlantMetWiki SPARQL Explorer.} Screenshot of the public
+SNORQL-based query interface (\url{https://plantmetwiki.bioinformatics.nl}), here running the
+\texttt{GraphIsLoaded.rq} example query from the ``1.(Meta)Data'' category of the SPARQL example
+repository (\url{https://github.com/pathway-lod/SPARQLQueries}). The query counts triples in each of
+the eight named graphs via a \texttt{VALUES}/\texttt{GROUP BY} pattern, reproducing
+the per-graph triple counts reported in Table~\ref{tab:graphs} directly from the live endpoint. The
+interface provides syntax highlighting, a searchable panel of categorized example queries, and
+one-click export to CSV, JSON, or XML.}}
+\label{fig:sparqlexplorer}
+
+\clearpage
+
+\begin{center}
+\includegraphics[height=0.64\textheight,keepaspectratio]{figures/figure2.png}
 \end{center}
 
 \captionof{figure}{\scriptsize \textbf{PlantMetWiki data transformation pipeline and architecture.} The five
@@ -1626,23 +1642,7 @@ given in Materials and Methods. Solid arrows: automated steps; dashed arrows: ma
 \clearpage
 
 \begin{center}
-\includegraphics[width=\textwidth]{figures/figure_sparql_explorer.png}
-\end{center}
-
-\captionof{figure}{\footnotesize \textcolor{red}{\textbf{The PlantMetWiki SPARQL Explorer.} Screenshot of the public
-SNORQL-based query interface (\url{https://plantmetwiki.bioinformatics.nl}), here running the
-\texttt{GraphIsLoaded.rq} example query from the ``1.(Meta)Data'' category of the SPARQL example
-repository (\url{https://github.com/pathway-lod/SPARQLQueries}). The query counts triples in each of
-the eight named graphs via a \texttt{VALUES}/\texttt{GROUP BY} pattern, reproducing
-the per-graph triple counts reported in Table~\ref{tab:graphs} directly from the live endpoint. The
-interface provides syntax highlighting, a searchable panel of categorized example queries, and
-one-click export to CSV, JSON, or XML.}}
-\label{fig:sparqlexplorer}
-
-\clearpage
-
-\begin{center}
-\includegraphics[width=\textwidth]{figures/figure2.png}
+\includegraphics[width=\textwidth]{figures/figure3.png}
 \end{center}
 
 \captionof{figure}{\footnotesize \textbf{PlantMetWiki core graph model.} \textbf{(A) Pathway semantic model.} Every pathway
@@ -1674,7 +1674,7 @@ formation: \texttt{wp:Binding}/\texttt{wp:ComplexBinding} links \texttt{wp:Metab
 \clearpage
 
 \begin{center}
-\includegraphics[width=\textwidth]{figures/figure3.png}
+\includegraphics[width=\textwidth]{figures/figure4.png}
 \end{center}
 
 \captionof{figure}{\footnotesize \textbf{Semantic model of the capsaicin biosynthesis pathway (PWY-5710) across named
@@ -1693,8 +1693,8 @@ PWY-5710 via \texttt{dcterms:isPartOf} in \texttt{graph/pathways}.}
 \clearpage
 
 \begin{center}
-\includegraphics[width=0.92\textwidth]{figures/figure4a.pdf}\\[0.8em]
-\includegraphics[width=0.92\textwidth]{figures/figure4b.pdf}
+\includegraphics[width=0.92\textwidth]{figures/figure5a.pdf}\\[0.8em]
+\includegraphics[width=0.92\textwidth]{figures/figure5b.pdf}
 \end{center}
 
 \captionof{figure}{\footnotesize \textbf{Metabolic annotation matrix and cross-species inference potential of PlantMetWiki and
@@ -1715,7 +1715,7 @@ several sources; no \textit{A. thaliana} evidence). \textbf{(D)} Distribution of
 \clearpage
 
 \begin{center}
-\includegraphics[width=\textwidth]{figures/figure5.pdf}
+\includegraphics[width=\textwidth]{figures/figure6.pdf}
 \end{center}
 
 \captionof{figure}{\footnotesize \textbf{Metabolite cross-reference coverage: direct BridgeDb mapping complements InChIKey
@@ -1736,7 +1736,7 @@ never overwrite the curated identifier.}
 \clearpage
 
 \begin{center}
-\includegraphics[width=0.95\textwidth]{figures/figure6.pdf}
+\includegraphics[width=0.95\textwidth]{figures/figure7.pdf}
 \end{center}
 
 \captionof{figure}{\footnotesize \textbf{Wikidata coverage and chemical novelty of the 4,111 InChIKey-annotated
