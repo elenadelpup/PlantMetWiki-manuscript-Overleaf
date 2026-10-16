@@ -527,8 +527,12 @@ genes (\texttt{wp:GeneProduct}), 3,750 enzymes (\texttt{wp:Protein}), 70 protein
 (Fig.~S1). Interactions encode directed biological events between DataNodes as
 \texttt{wp:target}/\texttt{wp:source} edges (Figure~\ref{fig:model}), and are split into 15 subtypes,
 summarized in Fig.~S2. Conversions (\texttt{wp:Conversion}) representing biochemical reactions
-involving metabolite substrates and products encode 36.4\% (19,927) of the total Interactions,
-followed by Catalysis (\texttt{wp:Catalysis}), linking \texttt{wp:GeneProduct} or \texttt{wp:Protein}
+involving metabolite substrates and products encode 36.4\% (19,927) of the total Interactions.
+\textcolor{red}{Each conversion is scoped to the specific PlantCyc pathway in which it is curated, so
+the same biochemical reaction occurring in more than one distinct pathway is counted once per pathway
+rather than deduplicated into a single resource-wide reaction total; deduplicating by reaction identity
+across all pathways yields 13,959 distinct reactions.}
+These are followed by Catalysis (\texttt{wp:Catalysis}), linking \texttt{wp:GeneProduct} or \texttt{wp:Protein}
 to the reaction these entities catalyze, with 22.6\% (12,359),
 \texttt{wp:TranscriptionTranslation} (links genes to the protein these encode) 15.1\% (8,280),
 \texttt{wp:Inhibition}/\texttt{wp:Stimulation} (negative or positive regulatory effects) 6.4\%
@@ -663,7 +667,9 @@ PlantCyc pathway.
 The resulting current PlantMetWiki RDF knowledge graph is organized as a multi-graph Virtuoso
 triplestore, including eight named graphs (Figure~\ref{fig:pipeline}), each representing a distinct
 layer of the data model (Table~\ref{tab:graphs}; Supplementary Table S6). Across these eight graphs,
-the endpoint serves 6,522,435 triples. The core graph encodes 2,758 gene products, 3,750 enzymes,
+the endpoint serves \textcolor{red}{6,501,361 triples (Table~\ref{tab:graphs}), reproducible directly
+from the live endpoint with a single example query run in the SPARQL Explorer
+(Figure~\ref{fig:sparqlexplorer})}. The core graph encodes 2,758 gene products, 3,750 enzymes,
 4,577 metabolites, and 54,800 typed interaction edges, of which 19,927 are biochemical conversions
 and 12,359 are catalytic links. Pathway content is supported by \rev{5,722} distinct literature references
 annotated with PubMed IDs on pathway nodes. A separate properties graph preserves PlantCyc-specific
@@ -1386,12 +1392,12 @@ counts; and (3) pattern scanning of the large core graph bundle and full parsing
 verifying that at least four \texttt{void:Dataset} instances are present. The complete RDF dataset is
 uploaded to the PlantMetWiki community on Zenodo as a versioned, citable
 release~\cite{delpup2026rdf} via the Zenodo API, with metadata and license
-information derived from the VoID header. The resulting RDF is structured as four named graphs: (1)
-core pathways, representing the pathway model for all 1,162 PlantCyc pathways; (2) core reactions,
-containing the model for all 1,316 individual PlantCyc-derived reactions; (3) taxonomy extra,
+information derived from the VoID header. \textcolor{red}{The resulting RDF is structured as three
+named graphs: (1) core pathways and reactions, representing the pathway model for all 1,162 PlantCyc
+pathways together with all 1,316 individual PlantCyc-derived reactions; (2) taxonomy extra,
 containing taxonomic annotations (\texttt{wp:organism}) on gene, protein, and compound nodes,
-including \texttt{foaf:page} links; and (4) properties extra, containing links to PlantCyc
-identifiers, stable pathway Uniform Resource Identifiers (URIs), and key--value properties.
+including \texttt{foaf:page} links; and (3) properties extra, containing links to PlantCyc
+identifiers, stable pathway Uniform Resource Identifiers (URIs), and key--value properties.}
 
 \subsection*{Extending pathway knowledge with crosslinks to biosynthetic gene clusters}
 The PlantCyc-derived pathway RDF is extended with crosslinks to two BGC databases: MIBiG (curated
@@ -1594,26 +1600,44 @@ Copilot to aid in code review, and Grammarly for copyediting. After using these 
 \end{center}
 
 \captionof{figure}{\scriptsize \textbf{PlantMetWiki data transformation pipeline and architecture.} The five
-stages of PlantMetWiki knowledge-graph construction. \textbf{(1) Source data} (blue): MIBiG 4.0 and
-plantiSMASH 2.0 biosynthetic gene cluster (BGC) annotations, PlantCyc 17.0 (1,162 pathways, 1,316
-reactions, 439 NCBI taxa), and the OBO Foundry NCBITaxon ontology. \textbf{(2) Pipeline tools}
-(yellow): PlantCyc input validation checks \texttt{proteins.dat} and \texttt{genes.dat} for taxonomic
-consistency before any files are generated; the GPML conversion tool produces 2,478 GPML2021 pathway
-and reaction files; a post-build validator confirms GPML2021 XSD compliance; the RDF conversion layer
-generates three named graphs; and the BGC "map-to-RDF" pipeline links BGC gene nodes to pathway
-enzymes. \textbf{(3) Metadata creation} (red): a VoID RDF Schema vocabulary captures the metadata of
-all RDF datasets, in three stages (core RDF conversion, BGC crosslink mapping, NCBI Taxonomy
-subsetting). \textbf{(4) Virtuoso triplestore} (green): eight named graphs holding the core
-WikiPathways RDF, entity-level species annotations, PlantCyc-specific properties, the BGC crosslinks,
-the NCBITaxon lineage subset, the VoID metadata, and the \texttt{wp:}/\texttt{gpml:} vocabulary
-definitions. \textbf{(5) Access and results} (purple): the PlantMetWiki \textcolor{red}{SPARQL Explorer
-(a SNORQL user interface)} makes the results accessible via a
+stages of PlantMetWiki knowledge-graph construction. \textbf{(1) Source data} (blue): plantiSMASH 2.0
+(65 predicted BGCs in \textit{A. thaliana}), MIBiG 4.0 (43 plant BGCs, 9 in \textit{A. thaliana}),
+PlantCyc 17.0 (1,162 pathways, 1,316 reactions), and the OBO Foundry NCBITaxon ontology.
+\textbf{(2) Pipeline tools} (yellow): PlantCyc validation (5 errors, skipped) precedes GPML2021
+creation, producing 2,478 GPML2021 pathway and reaction files; a post-build validator confirms
+GPML2021 XSD compliance (0 errors); BGC mapping in \textit{A. thaliana} yields 225 BGC--pathway
+crosslinks; taxonomy subsetting resolves 424 seed taxa and their ancestors; these three streams (core
+pathway/taxonomy/properties data, BGC crosslinks, and taxonomy) converge on RDF creation, which is
+validated with 0 errors. \textbf{(3) Metadata creation} (red): a VoID RDF Schema vocabulary captures
+the metadata of all RDF datasets (5 \texttt{void:Dataset}, 1 \texttt{void:LinkSet}).
+\textbf{(4) Virtuoso triplestore} (green): eight named graphs --- the core RDF group
+(\texttt{graph/pathways}, \texttt{graph/gpml-properties-extra}, \texttt{graph/gpml-taxonomy-extra}),
+\texttt{graph/bgc-mibig}, \texttt{graph/bgc-plantismash}, \texttt{graph/ncbitaxon},
+\texttt{graph/void}, and \texttt{graph/vocabularies}.
+\textbf{(5) Access and results} (purple): the PlantMetWiki SPARQL Explorer
+(a SNORQL user interface) makes the results accessible via a
 public SPARQL endpoint, allowing direct querying of the named graphs, supported by a
 tutorial, documentation and example queries. Versioned Jupyter notebooks reproduce the figures, the
 cross-species inference analyses, and the federated queries to external endpoints such as Wikidata.
 All repositories are at \url{https://github.com/pathway-lod}; tool versions, scripts and URLs are
 given in Materials and Methods. Solid arrows: automated steps; dashed arrows: manual steps.}
 \label{fig:pipeline}
+
+\clearpage
+
+\begin{center}
+\includegraphics[width=\textwidth]{figures/figure_sparql_explorer.png}
+\end{center}
+
+\captionof{figure}{\footnotesize \textcolor{red}{\textbf{The PlantMetWiki SPARQL Explorer.} Screenshot of the public
+SNORQL-based query interface (\url{https://plantmetwiki.bioinformatics.nl}), here running the
+\texttt{GraphIsLoaded.rq} example query from the ``1.(Meta)Data'' category of the SPARQL example
+repository (\url{https://github.com/pathway-lod/SPARQLQueries}). The query counts triples in each of
+the eight named graphs via a \texttt{VALUES}/\texttt{GROUP BY} pattern, reproducing
+the per-graph triple counts reported in Table~\ref{tab:graphs} directly from the live endpoint. The
+interface provides syntax highlighting, a searchable panel of categorized example queries, and
+one-click export to CSV, JSON, or XML.}}
+\label{fig:sparqlexplorer}
 
 \clearpage
 
@@ -1631,7 +1655,8 @@ blue dashed box) and Interactions (directed biological events; brown dashed box)
 (12,359), \texttt{wp:Conversion} (19,927), \texttt{wp:TranscriptionTranslation} (8,280),
 \texttt{wp:Inhibition} (3,486), \texttt{wp:Stimulation} (865),
 \texttt{wp:Binding}/\texttt{wp:ComplexBinding} (70). Total interactions: 54,800. Total unique
-DataNodes: 11,155. \textbf{(B) DataNode--Interaction connection patterns.} Each
+DataNodes: \textcolor{red}{11,138 (17 nodes are typed as both \texttt{wp:GeneProduct} and
+\texttt{wp:Protein})}. \textbf{(B) DataNode--Interaction connection patterns.} Each
 \texttt{wp:Interaction} subtype connects two participants via \texttt{wp:source} (red arrows),
 \texttt{wp:target} (blue arrows), or \texttt{wp:participants} (pink arrows). The diagram shows all
 DataNode types that act as sources, targets, or participants for each Interaction type. Through the
