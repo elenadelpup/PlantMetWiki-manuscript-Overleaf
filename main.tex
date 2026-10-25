@@ -100,62 +100,6 @@ representation and integration}
 \begin{document}
 
 %==============================================================================
-% CO-AUTHOR APPROVAL CHECKLIST -- INTERNAL ONLY.
-% DELETE THIS WHOLE BLOCK (down to the matching marker) BEFORE SUBMISSION.
-%==============================================================================
-\newcommand{\ckbox}{\framebox[2.4ex]{\rule{0pt}{2.2ex}}}
-\newcommand{\ckdone}{\framebox[2.4ex]{\rule[-0.3ex]{0pt}{2.2ex}$\times$}}
-
-\begin{center}
-\fcolorbox{red}{white}{\begin{minipage}{0.93\textwidth}
-\color{red}
-\vspace{0.4em}
-\begin{center}\textbf{\large Co-author approval}\\[0.3em]
-\textit{Internal record --- not part of the submitted manuscript}\end{center}
-\vspace{0.2em}
-
-\textbf{Timeline}
-\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-  \item \textbf{16 October 2026} --- deadline to approve this version and provide
-        your final comments.
-  \item \textbf{26 October 2026} --- submission to the journal.
-\end{itemize}
-
-\vspace{0.4em}
-Each author confirms: \textbf{``I have approved the manuscript for publication in the
-current version.''} Tick the box and add the date.
-
-\vspace{0.8em}
-\renewcommand{\arraystretch}{1.55}
-\begin{tabular}{@{}p{3.2em} p{0.44\textwidth} p{0.26\textwidth}@{}}
-\ckdone & Elena Del Pup                & \hrulefill\ 2 October 2026 \\
-\ckdone & Max Muller              & \hrulefill\ 5 October 2026 \\
-\ckdone & Marvin Martens               & \hrulefill\ 15 October 2026 \\
-\ckdone & Egon L. Willighagen          & \hrulefill Did by email \\
-\ckdone& Marnix H. Medema             & \hrulefill\ 6 October 2026 \\
-\ckbox & Denise Slenter               & \dotfill \\
-\ckdone & Justin J.J. van der Hooft    & \hrulefill\ 9 October 2026 \\
-       & \footnotesize \textit{Author}& \footnotesize \textit{Date} \\
-\end{tabular}
-
-\vspace{1.0em}
-\rule{\linewidth}{0.4pt}
-
-\vspace{0.3em}
-{\footnotesize In LaTeX, change that author's \texttt{\textbackslash ckbox} to
-\texttt{\textbackslash ckdone} and replace the \texttt{\textbackslash dotfill} with the date.
-On paper or PDF, tick the box and write the date by hand.}
-
-\vspace{0.8em}
-{\footnotesize \textbf{Version reviewed: compiled \today.} Record the manuscript version
-(e.g.\ the git commit hash) alongside each signature so it is unambiguous which text was
-approved.}
-\vspace{0.4em}
-\end{minipage}}
-\end{center}
-
-\clearpage
-%==============================================================================
 % END OF CO-AUTHOR APPROVAL CHECKLIST -- delete to here.
 %==============================================================================
 
@@ -790,7 +734,7 @@ transfer.
 
 To retrieve the missing species-reaction annotations, we examined pathways representing distinct biological
 scenarios, including species-specific specialized metabolism, medicinal alkaloid biosynthesis, and
-specialized metabolites from non-model plants. Throughout this section, reaction counts refer to distinct biochemical conversions, even when duplicate \texttt{wp:Conversion} entries exist in RDF for each reaction product. A direct query of the live endpoint returns a higher count. 
+specialized metabolites from non-model plants. Throughout this section, reaction counts refer to distinct biochemical conversions, even when duplicate \texttt{wp:Conversion} entries exist in RDF for each reaction product. Direct query of the reaction count via the live endpoint without duplicate handling returns a higher count. 
 
 \subsubsection*{Case study 1: Capsaicin biosynthesis}
 \vspace*{-1em}
@@ -801,8 +745,8 @@ important species for a well-characterized metabolite. PlantMetWiki contains ann
 \textit{Capsicum frutescens}) and the genus-level node \textit{Capsicum}. \textit{C. annuum} is the
 most extensively represented of these taxa across the entire PlantMetWiki core graph, with direct
 enzyme annotations in 34 pathways. However, querying PWY-5710 reveals an annotation gap for this
-species, with \textit{C. annuum} showing no directly annotated gene or enzyme nodes in the capsaicin
-biosynthesis pathway. This absence reflects a limitation of the source curation, which could be resolved by cross-species querying and data integration to reveal pathway-specific gaps that are difficult to identify through
+species, with \textit{C. annuum} showing that no directly annotated gene or enzyme nodes are in the capsaicin
+biosynthesis pathway. This absence reflects a limitation of source curation, which could be resolved by cross-species querying and data integration to reveal pathway-specific gaps that are difficult to identify through
 conventional pathway browsing. The pathway contains additional species annotations (nine in total), including
 \textit{C. chinense}, \textit{C. frutescens}, and four phylogenetically distant species that
 contribute annotations to individual pathway steps (Fig.~S10–12). The pathway comprises seven biochemical
@@ -1115,56 +1059,43 @@ context to Wikidata as a community curation effort.
 %==============================================================================
 \section*{Discussion}
 
-%brief summary of resource
-PlantMetWiki enables FAIR multispecies representation of plant metabolism for cross-species comparison, pathway gap analysis, and finding candidates. By transforming species-centric pathway information into a FAIR multispecies knowledge graph, previously hidden relationships and annotation gaps were revealed across pathways through integrating genomic, taxonomic, and chemical resources.  Cross-species pathway queries revealed pathway positions lacking
+%brief summary of our resource and presented work
+PlantMetWiki enables FAIR multispecies representation of plant metabolism for cross-species comparison, pathway gap analysis, and finding candidates. By transforming species-centric pathway information into a FAIR multispecies knowledge graph, previously hidden relationships and annotation gaps were revealed across pathways through integrating genomic, taxonomic, and chemical resources. Cross-species pathway queries revealed pathway steps lacking
 annotation in individual species despite supporting evidence elsewhere in the graph. Integration with
 biosynthetic gene cluster resources exposed clustered genomic regions that currently lack pathway
-assignments. Federated querying against Wikidata revealed both representation-level discrepancies
+assignment. Federated querying against Wikidata revealed both representation-level discrepancies
 arising from alternative stereochemical forms and 421 metabolites for which no structurally related
-Wikidata representation was identified using the skeleton-level comparison applied. These examples demonstrate that incompleteness can become visible
-only when complementary knowledge sources are considered simultaneously.
-
-
-While Plant Metabolic Network remains the authoritative source for plant pathway
+Wikidata representation was identified. These examples demonstrate that incompleteness can become visible
+only when complementary knowledge sources are considered simultaneously. 
+While Plant Metabolic Network currently remains the authoritative source for plant pathway
 curation, PlantMetWiki provides a complementary semantic representation enabling
 interoperability using standard RDF vocabularies, persistent identifiers,
-machine-readable provenance, and SPARQL-based access.
+machine-readable provenance, and SPARQL-based access. 
+% This LOD representation enables pathway
+% knowledge to be queried together with external biological, chemical, and genomic resources without
+% requiring duplication of those resources or manual data integration.
 
-Semantic integration via existing vocabularies, such as the WikiPathways (\texttt{wp:}) one,
-functions not only as a mechanism for interoperability but also as a framework for identifying
-knowledge gaps across resources. The distinction between
-exact InChIKey matches and skeleton-level matches illustrates the importance of chemical
-normalization when assessing interoperability between biological knowledge graphs, as many apparent
-absences reflect alternative stereochemical or protonation representations rather than genuinely
-missing chemistry. The reliable determination of stereochemistry and the subsequent reporting of
-certainty and uncertainty of chiral centers in compounds are challenging aspects that LOD and
-federation can help to normalize across resources with different curation depth. As stereochemistry
-plays a key role in specialized compound bioactivity, with increasing reporting standards and
-uptake~\cite{cicek2024}, resources like PlantMetWiki can help to uncover specific stereochemical
-patterns across multiple species.
+%%More details on usecases, and limitations thereof; using same order as info presented before
 
-Integration of biosynthetic gene cluster annotations illustrates how semantic representations can
-connect traditionally separate views of plant metabolism. Pathway databases describe biochemical
-transformations, whereas genome-mining resources focus on clustered genomic loci. By linking
-PlantCyc-derived pathways to experimentally validated clusters from MIBiG and predicted clusters from
-plantiSMASH, PlantMetWiki enables these complementary pathway representations and collections to be
-explored jointly. The resulting crosslinks connect clustered and unclustered biosynthesis within a
-common framework and provide a basis for investigating how genomic organization relates to metabolic
-pathway structure. This demonstrates how FAIR knowledge graph approaches and Semantic Web
-technologies can bridge resources that were originally developed for different biological questions
-or with different search methods (such as genome mining in the case of plantiSMASH and MIBiG). Thanks
-to these crosslinks, the PlantCyc pathways can now be connected to clustered regions in the genome,
-which were not available either via PMN or MIBiG repositories. By linking clustered and unclustered
-biosynthesis, PlantMetWiki will further help to understand the complex metabolic network in plants,
-and their chromosomal arrangement.
+%%Cross species data integration
+PlantMetWiki provides a semantic web framework for integrating plant metabolic pathway knowledge across
+diverse data types and species, thereby supporting hypothesis generation in plant natural
+product research from distributed biological knowledge. PlantMetWiki facilitates the exploration of
+biosynthetic pathways as interconnected, queryable graphs to identify gaps in pathway knowledge, compare biosynthetic routes
+across taxa, transfer knowledge from well-characterized species to less-studied taxa, and link
+chemical occurrence data to underlying biosynthetic mechanisms. The resulting graph captures both
+shared and species-specific aspects of metabolism, providing a reusable framework for studying
+pathway evolution, annotation transfer, and specialized metabolism across the plant kingdom. In
+addition, the availability of a SPARQL endpoint allows integration with visualization and
+analysis platforms such as Cytoscape~\cite{shannon2003}, facilitating the exploration of metabolic and
+regulatory networks in combination with user-provided omics data.
 
-A key advantage of PlantMetWiki is its ability to connect pathway knowledge with biosynthetic gene
-cluster (BGC) information, bridging curated metabolic pathways with genome mining approaches, and
-fill the knowledge gaps in complex and partially clustered biosynthesis. By integrating
-experimentally validated clusters from MIBiG 4.0 and predicted clusters from plantiSMASH 2.0, the
-resource enables users to explore relationships between clustered and unclustered biosynthetic routes
-and to identify candidate genes associated with specific metabolic conversions and fills annotation
-gaps across resources focusing on clustered or unclustered pathways. For instance, the alpha-tomatine
+%%BCG integration
+The integration of biosynthetic gene cluster annotations illustrates how semantic representations can
+connect traditionally separate views of plant metabolism. By linking
+PlantCyc-derived biochemical transformations to genome-mining resources such as experimentally validated clusters from MIBiG and predicted clusters from
+plantiSMASH, PlantMetWiki provides a basis to investigate how clustered genomic organization relates to metabolic
+pathway structure and to identify candidate genes associated with specific metabolic conversions. For instance, the alpha-tomatine
 BGC has been key to characterize two related glycoalkaloid biosynthetic pathways involving
 orthologous genes between tomato (\textit{Solanum lycopersicum}) and potato (\textit{Solanum
 tuberosum}) and spanning across two biosynthetic loci: a cluster on chromosome 7 and an additional
@@ -1175,19 +1106,25 @@ lycopersicum} BGCs with ten other BGCs across species, to facilitate comparative
 plantiSMASH-detected regions to PlantCyc pathway annotations, PlantMetWiki facilitates further
 comparative studies involving pathways across species, resources, and genomic context.
 
-PlantMetWiki provides a unified framework for integrating plant metabolic pathway knowledge across
-diverse data types and species, enabling new opportunities for hypothesis generation in plant natural
-product research across species from distributed biological knowledge. By combining curated metabolic
-pathway annotations with Semantic Web technologies, PlantMetWiki facilitates the exploration of
-biosynthetic pathways as interconnected, queryable graphs. This approach supports collaborative
-discovery by allowing researchers to identify gaps in pathway knowledge, compare biosynthetic routes
-across taxa, transfer knowledge from well-characterized species to less-studied taxa, and link
-chemical occurrence data to underlying biosynthetic mechanisms. The resulting graph captures both
-shared and species-specific aspects of metabolism, providing a reusable framework for studying
-pathway evolution, annotation transfer, and specialized metabolism across the plant kingdom. In
-addition, the availability of a SPARQL endpoint allows seamless integration with visualization and
-analysis platforms such as Cytoscape~\cite{shannon2003}, facilitating the exploration of metabolic and
-regulatory networks in combination with user-provided omics data.
+This demonstrates how FAIR knowledge graph approaches and Semantic Web
+technologies can bridge resources that were originally developed for different biological questions
+and different search methods (such as genome mining in the case of plantiSMASH and MIBiG). Thanks
+to these crosslinks, the PlantCyc pathways can now be connected to clustered regions in the genome,
+which were not available either via PMN or MIBiG repositories. By linking clustered and unclustered
+biosynthesis, PlantMetWiki will further help to understand the complex metabolic network in plants and their chromosomal arrangement, and
+fill knowledge gaps by identifying candidate genes associated with specific metabolic conversions in complex and partially clustered biosynthesis. 
+
+%%Wikidata stereochemistry
+The distinction between
+exact InChIKey matches and skeleton-level matches illustrates the importance of chemical
+normalization when assessing interoperability between biological knowledge graphs, as many apparent
+absences reflect alternative stereochemical or protonation representations rather than genuinely
+missing chemistry. The reliable determination of stereochemistry and the subsequent reporting of
+certainty and uncertainty of chiral centers in compounds are challenging aspects that LOD and
+federation can help to normalize across resources with different curation depth. As stereochemistry
+is a key determinant for specialized compound bioactivity, with increasing reporting standards and
+uptake~\cite{cicek2024}, resources like PlantMetWiki can help to uncover differences in stereochemical
+patterns across multiple species.
 
 These findings demonstrate the power of interoperability for generating biologically meaningful
 insights: by making pathway, taxonomic, genomic, and chemical information queryable within a common
@@ -1195,6 +1132,11 @@ framework, PlantMetWiki enables systematic assessment of annotation completeness
 complementary resources. Federated queries allow researchers to move seamlessly from biological
 activity and toxicology to biosynthetic origin, genomic context, and species distribution, and
 address completeness and curation of knowledge gaps.
+
+%% General positive remarks
+The availability of a SPARQL endpoint allows seamless integration with visualization and
+analysis platforms such as Cytoscape~\cite{shannon2003}, facilitating the exploration of metabolic and
+regulatory networks in combination with user-provided omics data.
 
 \subsection*{Limitations: annotation quality of source databases, genome versioning, identifier mapping, and external endpoint availability}
 
@@ -1212,25 +1154,23 @@ the NCBI RefSeq genome annotation (GCF\_036512215.1, generating LOC identifiers 
 BioProject PRJDB16644), while PlantCyc uses the ITAG annotation~\cite{sato2012} (generating Solyc
 identifiers hosted in SolGenomics Network~\cite{fernandez2015}). These two annotation systems define
 different gene models for the same genome sequence and cannot be directly matched. BridgeDb can
-support mapping annotation across resources, but the capacity of such tools needs to be constantly
-updated to represent different sources and taxa, and it cannot bridge across truly different
-annotations, such as gene annotations coming from different reference genomes, which is known as one
-of the biggest challenges limiting the transferability of findings and integration of omics
+support mapping annotation across resources, but the capacity of such tools needs constant updates to represent different and up-to-date sources and taxa, and it cannot bridge across truly different
+annotations. Gene annotations coming from different reference genomes limit the transferability of findings and integration of omics
 experiments in the plant sciences field~\cite{roeder2025}. Maintaining and extending current mapping
-tools to additional species and genome annotations will be important for improving interoperability
+tools to additional species and genome annotations will be essential for improving interoperability
 across plant genomic resources. Additionally, the dependence on genome annotations introduces
 challenges related to versioning and consistency, particularly in plant systems where genome
 assemblies and annotations are frequently updated. Addressing this issue requires adherence to FAIR
 data principles and explicit tracking of genome annotation versions, for example, through
-standardized references to GenBank assemblies, to ensure reproducibility and transparency. The
-PlantMetWiki knowledge graph provides a flexible framework to manage these evolving datasets but does
+standardized references to GenBank assemblies, to ensure reproducibility and transparency. While the
+PlantMetWiki knowledge graph provides a flexible framework to manage and integrate these evolving datasets, this design does
 not eliminate the need for careful data curation.
 
 Federated analyses depend on the continued availability and interoperability of external resources.
-While LOD approaches reduce information duplication, they also rely on external services to maintain
+LOD ecosystems eliminate the need for information duplication, but they rely on external services to maintain
 stable identifiers and accessible query interfaces. This limitation is particularly apparent for
 plantiSMASH and MIBiG, whose biological content is currently accessible primarily through web
-interfaces rather than semantically modelled LOD, limiting the discoverability of the information
+interfaces rather than semantically modeled LOD, limiting the discoverability of the information
 contained in these resources. As a result, PlantMetWiki can link users to biosynthetic gene clusters,
 but cannot yet perform deeper federated queries across cluster-associated genes, metabolites,
 taxonomic annotations, or chemical structures. The utility of federated analyses remains dependent on
@@ -1238,8 +1178,7 @@ the continued availability of public SPARQL endpoints such as Wikidata and the N
 project~\cite{federhen2012}. These limitations underscore the importance of continued adoption of FAIR
 principles, identifier harmonization, and LOD technologies across plant biology resources. Expanding
 the ecosystem of queryable resources, for example, through public mirrors of databases such as ChEMBL
-or the conversion of domain-specific datasets into LOD formats, will further enhance the utility of
-Semantic Web platforms like PlantMetWiki.
+or the conversion of domain-specific datasets into LOD formats, will further enhance the utility of platforms like PlantMetWiki.
 
 \subsection*{Conclusions and Outlook: PlantMetWiki as a FAIR infrastructure for pathway knowledge}
 
