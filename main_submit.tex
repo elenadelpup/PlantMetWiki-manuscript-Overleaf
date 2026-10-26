@@ -1,5 +1,10 @@
 \documentclass[11pt,a4paper]{article}
 
+\usepackage{silence}
+\WarningFilter{newunicodechar}{Redefining Unicode character}
+\WarningFilter{microtype}{Unable to apply patch}
+\WarningFilter{latex}{No \author given}
+
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[utf8]{inputenc}
@@ -39,6 +44,10 @@
 \usepackage{caption}
 \usepackage{lineno}
 \usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdfauthor={Elena Del Pup, Max Muller, Marvin Martens, Egon L. Willighagen, Marnix H. Medema, Denise Slenter, Justin J.J. van der Hooft},
+  pdftitle={A FAIR knowledge graph for plant metabolic pathway cross-species representation and integration}
+}
 
 \usepackage{xurl}
 \usepackage{setspace}
